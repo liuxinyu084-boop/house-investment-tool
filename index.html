@@ -156,7 +156,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 专业房产投资计算器</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.3</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.4</span>
 </div>
 <div class="c">
 
@@ -303,7 +303,8 @@ let authMode='login',tt=null;
 // ═══ Auth ═══
 function switchAuthTab(m){authMode=m;document.getElementById('tabLogin').className='auth-tab'+(m==='login'?' active':'');document.getElementById('tabReg').className='auth-tab'+(m==='register'?' active':'');document.getElementById('authBtn').textContent=m==='login'?'登 录':'注 册';document.getElementById('authErr').textContent='';document.getElementById('authOk').textContent=''}
 async function handleAuth(){
-  if(!sb){document.getElementById('authErr').textContent='正在连接服务器，请稍候再试';return}
+  if(!sb){document.getElementById('authErr').textContent='⏳ 正在连接，请稍候再试';return}
+  var btn=document.getElementById('authBtn');btn.innerHTML='<span class="spinner"></span>处理中…';btn.disabled=true;
   const e=document.getElementById('authEmail').value.trim(),p=document.getElementById('authPassword').value,er=document.getElementById('authErr'),ok=document.getElementById('authOk');er.textContent='';ok.textContent='';
   if(!e){er.textContent='请输入邮箱地址';return}if(!p||p.length<6){er.textContent='密码至少6位';return}
   const b=document.getElementById('authBtn');b.innerHTML='<span class="spinner"></span>处理中…';b.disabled=true;
@@ -560,13 +561,36 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
 // ═══ Init ═══
 (async function init(){
   var overlay=document.getElementById('authOverlay');
+  var errEl=document.getElementById('authErr');
+  var mainApp=document.getElementById('mainApp');
   overlay.style.display='flex';
-  document.getElementById('mainApp').style.display='none';
+  mainApp.style.display='none';
   
-  if(typeof supabase==='undefined'){document.getElementById('authErr').textContent='⚠️ 脚本加载失败，请刷新页面';return}
-  sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  // Step 1: Check library
+  errEl.textContent='⏳ 加载核心组件...';errEl.style.color='#6b7280';
+  if(typeof supabase==='undefined'){errEl.textContent='❌ 核心组件加载失败，请刷新页面';errEl.style.color='#dc2626';return}
   
-  try{var r=await sb.auth.getSession();if(r&&r.data&&r.data.session&&r.data.session.user){currentUser=r.data.session.user;overlay.style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
+  // Step 2: Init client
+  errEl.textContent='⏳ 连接服务器...';
+  try{sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY)}catch(e){errEl.textContent='❌ 连接初始化失败';errEl.style.color='#dc2626';return}
+  
+  // Step 3: Check session
+  errEl.textContent='⏳ 检查登录状态...';
+  try{
+    var sessionResult=await sb.auth.getSession();
+    if(sessionResult&&sessionResult.data&&sessionResult.data.session&&sessionResult.data.session.user){
+      currentUser=sessionResult.data.session.user;
+      overlay.style.display='none';
+      mainApp.style.display='block';
+      document.getElementById('userEmail').textContent=currentUser.email;
+      await loadCloudData();
+      return;
+    }
+  }catch(e){}
+  
+  // Step 4: Show login
+  errEl.textContent='';
+  errEl.style.color='';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
 })();
 </script>
