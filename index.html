@@ -164,7 +164,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 专业房产投资计算器</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.1</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.2</span>
 </div>
 <div class="c">
 
@@ -311,6 +311,7 @@ let authMode='login',tt=null;
 // ═══ Auth ═══
 function switchAuthTab(m){authMode=m;document.getElementById('tabLogin').className='auth-tab'+(m==='login'?' active':'');document.getElementById('tabReg').className='auth-tab'+(m==='register'?' active':'');document.getElementById('authBtn').textContent=m==='login'?'登 录':'注 册';document.getElementById('authErr').textContent='';document.getElementById('authOk').textContent=''}
 async function handleAuth(){
+  if(!sb){document.getElementById('authErr').textContent='正在连接服务器，请稍候再试';return}
   const e=document.getElementById('authEmail').value.trim(),p=document.getElementById('authPassword').value,er=document.getElementById('authErr'),ok=document.getElementById('authOk');er.textContent='';ok.textContent='';
   if(!e){er.textContent='请输入邮箱地址';return}if(!p||p.length<6){er.textContent='密码至少6位';return}
   const b=document.getElementById('authBtn');b.innerHTML='<span class="spinner"></span>处理中…';b.disabled=true;
@@ -566,15 +567,21 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
 
 // ═══ Init ═══
 (async function init(){
-  document.getElementById('authOverlay').style.display='flex';
+  // Show loading overlay
+  var errEl=document.getElementById('authErr');
+  var overlay=document.getElementById('authOverlay');
+  overlay.style.display='flex';
   document.getElementById('mainApp').style.display='none';
+  errEl.textContent='⏳ 正在连接服务器...';
+  errEl.style.color='#6b7280';
   
   var loaded=await _ensureSupabase();
-  if(!loaded){document.getElementById('authErr').textContent='⚠️ 网络异常，请检查网络后刷新';return}
+  if(!loaded){errEl.textContent='⚠️ 网络异常，请检查网络后刷新';errEl.style.color='#dc2626';return}
   sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  errEl.textContent='';
+  errEl.style.color='';
   
   try{var r=await sb.auth.getSession();if(r&&r.data&&r.data.session&&r.data.session.user){currentUser=r.data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
-  document.getElementById('authOverlay').style.display='flex';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
 })();
 </script>
