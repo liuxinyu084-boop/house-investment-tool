@@ -7,46 +7,46 @@
 <link rel="dns-prefetch" href="https://webvtoarwrulkynixank.supabase.co">
 <link rel="preconnect" href="https://webvtoarwrulkynixank.supabase.co">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script>
-// CDN fallback if Supabase JS failed to load
-if (typeof supabase === 'undefined') {
-  document.write('<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"><\/script>');
-}
-</script>
+<script>if(typeof supabase==='undefined')document.write('<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"><\/script>')</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1a1a2e;--primary-light:#16213e;--accent:#2563eb;--accent-bg:#e8f0fe;--positive:#059669;--negative:#dc2626;--bg:#f1f3f6;--card:#fff;--border:#d1d5db;--text:#111827;--text2:#6b7280;--text3:#9ca3af;--tag:#e5e7eb;--r:12px}
+:root{--primary:#1a1a2e;--primary-light:#16213e;--accent:#2563eb;--accent-bg:#e8f0fe;--positive:#059669;--negative:#dc2626;--bg:#f1f3f6;--card:#fff;--border:#d1d5db;--text:#111827;--text2:#6b7280;--text3:#9ca3af;--tag:#e5e7eb;--r:12px;--note-c:#9ca3af}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding:0 0 40px;min-height:100vh;display:flex;flex-direction:column;align-items:center}
 .c{max-width:640px;width:100%;padding:0 14px}
-.hd{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:24px 16px 20px;text-align:center;margin:0 -14px 16px;position:relative}
-.hd h1{font-size:21px;font-weight:700;letter-spacing:.5px}
-.hd p{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+.hd{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:20px 16px 18px;text-align:center;margin:0 -14px 14px;position:relative}
+.hd h1{font-size:20px;font-weight:700;letter-spacing:.5px}
+.hd p{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px}
 .hd .badge{display:inline-block;background:rgba(255,255,255,.12);padding:3px 10px;border-radius:10px;font-size:11px;color:rgba(255,255,255,.75);margin-top:5px}
-.hd .user-bar{position:absolute;top:10px;right:16px;display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.7)}
-.hd .user-bar .uemail{max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hd .user-bar button{background:rgba(255,255,255,.15);border:none;color:#fff;padding:3px 10px;border-radius:6px;font-size:10px;cursor:pointer;transition:.2s}
-.hd .user-bar button:hover{background:rgba(255,255,255,.25)}
-.sec{background:var(--card);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
-.st{font-size:14px;font-weight:600;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #eef1f5;display:flex;align-items:center;gap:5px}
-.fg{margin-bottom:11px}.fg:last-child{margin-bottom:0}
-.fg label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px;font-weight:500}
-.fg input,.fg select,.fg .faux-input{width:100%;padding:10px 12px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:.2s;background:#fafbfc;color:var(--text);-webkit-appearance:none;appearance:none}
+.hd .user-bar{position:absolute;top:10px;right:16px;display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.7)}
+.hd .user-bar .uemail{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hd .user-bar button{background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer}
+.sec{background:var(--card);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.st{font-size:14px;font-weight:600;margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid #eef1f5;display:flex;align-items:center;gap:5px}
+.meta-note{font-size:11px;color:var(--note-c);line-height:1.5;margin-bottom:10px;padding:0 2px}
+.fg{margin-bottom:9px}.fg:last-child{margin-bottom:0}
+.fg label{display:block;font-size:12px;color:var(--text2);margin-bottom:3px;font-weight:500}
+.fg input,.fg select,.fg .faux-input{width:100%;padding:9px 12px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:.2s;background:#fafbfc;color:var(--text);-webkit-appearance:none;appearance:none}
 .fg select{background:#fafbfc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath fill='%23999' d='M5.5 7L0 0h11z'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px}
 .fg input:focus,.fg select:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .fg .faux-input{background:#f3f4f6;border-color:#e5e7eb;color:var(--text2);cursor:default}
 .fg input:disabled,.fg select:disabled{background:#f3f4f6;opacity:.7}
-.fgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fgr .fg{margin-bottom:0}
-.unit-hint{font-size:11px;color:var(--text3);margin-top:2px;padding-left:2px}
+.fgr{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fgr .fg{margin-bottom:0}
+.fgr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.fgr3 .fg{margin-bottom:0}
+.unit-hint{font-size:10px;color:var(--note-c);margin-top:2px;padding-left:2px}
 .tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:6px;background:var(--tag);color:var(--text2);font-weight:500;margin-left:5px;white-space:nowrap}
 .tag-auto{background:#d1fae5;color:#059669}.tag-manual{background:#eef1f5;color:#666}
 .tag-veto{background:#fee2e2;color:#dc2626;font-weight:700}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:10px 16px;font-size:14px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
-.btn-p{background:var(--accent);color:#fff;width:100%}
-.btn-p:active{background:#1d4ed8;transform:scale(.97)}
+/* radio group */
+.rg{display:flex;gap:8px}
+.rg label{display:flex;align-items:center;gap:4px;font-size:13px;color:var(--text);cursor:pointer;padding:8px 14px;background:#f7f8fa;border-radius:8px;border:1.5px solid var(--border);transition:.15s;flex:1;justify-content:center;user-select:none}
+.rg label:has(input:checked){background:var(--accent-bg);border-color:var(--accent);color:var(--accent);font-weight:600}
+.rg input[type=radio]{accent-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:9px 16px;font-size:14px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
+.btn-p{background:var(--accent);color:#fff;width:100%}.btn-p:active{background:#1d4ed8;transform:scale(.97)}
 .btn-d{background:#fee2e2;color:var(--negative);font-size:12px;padding:5px 10px;width:auto}.btn-d:active{background:#fecaca}
 .btn-o{background:transparent;border:1.5px solid var(--border);color:var(--text);font-size:12px;padding:7px 12px;width:auto}.btn-o:active{background:#f3f4f6}
 .br{display:flex;gap:8px;margin-top:8px}.br .btn{flex:1}
-.pl{margin-top:12px}
+.pl{margin-top:10px}
 .pi{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f7f8fa;border-radius:8px;margin-bottom:6px;cursor:pointer;transition:.15s}
 .pi:active{background:#eef1f5}.pi .i{flex:1;min-width:0}
 .pi .n{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -54,61 +54,60 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 .pi .r{font-size:13px;font-weight:700;white-space:nowrap}
 .pi .r.g{color:var(--positive)}.pi .r.r{color:var(--negative)}
 .pe{text-align:center;color:var(--text3);font-size:12px;padding:16px 10px;line-height:1.6}
-.rc{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--r);padding:22px 18px 18px;margin-bottom:12px;text-align:center;box-shadow:0 4px 20px rgba(26,26,46,.12)}
-.rc .rl{color:rgba(255,255,255,.55);font-size:13px;font-weight:500;letter-spacing:.3px}
-.rc .rn{font-size:44px;font-weight:800;color:#fff;line-height:1.1;margin:5px 0 3px;transition:.3s;letter-spacing:-.5px}
+.rc{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--r);padding:20px 16px 16px;margin-bottom:10px;text-align:center;box-shadow:0 4px 20px rgba(26,26,46,.12)}
+.rc .rl{color:rgba(255,255,255,.55);font-size:13px;font-weight:500}
+.rc .rn{font-size:42px;font-weight:800;color:#fff;line-height:1.1;margin:4px 0 2px;transition:.3s;letter-spacing:-.5px}
 .rc .rn.g{color:#34d399}.rc .rn.r{color:#f87171}
 .rc .rs{color:rgba(255,255,255,.35);font-size:11px}
-.dg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.di{background:#f7f8fa;border-radius:8px;padding:10px 12px}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.di{background:#f7f8fa;border-radius:8px;padding:9px 11px}
 .di .l{font-size:11px;color:var(--text3);margin-bottom:2px}
-.di .v{font-size:15px;font-weight:700;color:var(--text);transition:.3s}
+.di .v{font-size:14px;font-weight:700;color:var(--text);transition:.3s}
 .di .v.g{color:var(--positive)}.di .v.r{color:var(--negative)}.fw{grid-column:span 2}
-.at{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
-.at th{background:#f3f4f6;padding:7px 6px;text-align:center;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border)}
-.at td{padding:6px;text-align:center;border-bottom:1px solid #f3f4f6}
+.at{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
+.at th{background:#f3f4f6;padding:5px 4px;text-align:center;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border)}
+.at td{padding:4px;text-align:center;border-bottom:1px solid #f3f4f6}
 .at tr:last-child td{border-bottom:none}.at .tot{background:#eef1f5;font-weight:700}
-.at-wrap{max-height:320px;overflow-y:auto;border-radius:8px;border:1px solid #eef1f5}
+.at .sub{background:#fafbfc;color:var(--text2)}
+.at-wrap{max-height:280px;overflow-y:auto;border-radius:8px;border:1px solid #eef1f5}
 .lg{display:none;margin-top:8px;padding:10px 12px;background:#fafbfc;border-radius:8px;border:1px solid #eef1f5}
 .lg.show{display:block}.lg-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px}
-.stats{font-size:12px;color:var(--text2);line-height:1.7;padding:8px 10px;background:#fafbfc;border-radius:8px;margin-top:6px}
-.subs{margin-top:12px;padding-top:10px;border-top:1px dashed #e5e7eb}
+.stats{font-size:11px;color:var(--text2);line-height:1.6;padding:7px 9px;background:#fafbfc;border-radius:8px;margin-top:6px}
+.subs{margin-top:10px;padding-top:8px;border-top:1px dashed #e5e7eb}
 .subs:first-child{border-top:none;margin-top:0;padding-top:0}
-.subs-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px}
+.subs-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px}
 .tb{display:flex;gap:8px;margin-top:8px}.tb .btn{flex:1;font-size:12px;padding:7px 8px}
-.cbg{display:flex;flex-wrap:wrap;gap:8px}
-.cbg label{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text);cursor:pointer;padding:6px 10px;background:#f7f8fa;border-radius:6px;border:1.5px solid var(--border);transition:.15s;user-select:none}
+.cbg{display:flex;flex-wrap:wrap;gap:6px}
+.cbg label{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text);cursor:pointer;padding:5px 8px;background:#f7f8fa;border-radius:6px;border:1.5px solid var(--border);transition:.15s;user-select:none}
 .cbg label:has(input:checked){background:var(--accent-bg);border-color:var(--accent)}
-.cbg input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
-.sc{border-radius:var(--r);padding:20px 18px;margin-bottom:12px;text-align:center;transition:.3s}
+.cbg input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent)}
+.sc{border-radius:var(--r);padding:18px 16px;margin-bottom:10px;text-align:center;transition:.3s}
 .sc-s{background:linear-gradient(135deg,#059669,#34d399);color:#fff}
 .sc-a{background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff}
 .sc-b{background:linear-gradient(135deg,#d97706,#fbbf24);color:#fff}
 .sc-c{background:linear-gradient(135deg,#dc2626,#f87171);color:#fff}
 .sc-veto{background:linear-gradient(135deg,#7f1d1d,#ef4444);color:#fff}
-.sc .snum{font-size:56px;font-weight:800;line-height:1;margin:4px 0}
-.sc .slabel{font-size:13px;font-weight:500;opacity:.85;margin-bottom:2px;letter-spacing:.5px}
-.sc .sgrade{font-size:16px;font-weight:700;margin-top:4px}
-.sc .sveto{font-size:14px;font-weight:700;margin-top:4px;background:rgba(255,255,255,.15);display:inline-block;padding:4px 16px;border-radius:8px}
-.sd{background:#f7f8fa;border-radius:8px;padding:12px;margin-bottom:8px}
-.sd:last-child{margin-bottom:0}.sd .sdt{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-.sd .sdn{font-size:13px;font-weight:600;color:var(--text)}
-.sd .sdv{font-size:15px;font-weight:700}
+.sc .snum{font-size:50px;font-weight:800;line-height:1;margin:3px 0}
+.sc .slabel{font-size:13px;font-weight:500;opacity:.85;margin-bottom:2px}
+.sc .sgrade{font-size:15px;font-weight:700;margin-top:3px}
+.sd{background:#f7f8fa;border-radius:8px;padding:10px;margin-bottom:7px}
+.sd:last-child{margin-bottom:0}.sd .sdt{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.sd .sdn{font-size:12px;font-weight:600;color:var(--text)}.sd .sdv{font-size:14px;font-weight:700}
 .sd .sdv.g{color:var(--positive)}.sd .sdv.r{color:var(--negative)}.sd .sdv.y{color:#d97706}
-.sd .sdb{width:100%;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.sd .sdb{width:100%;height:5px;background:#e5e7eb;border-radius:3px;overflow:hidden}
 .sd .sdb .sdf{height:100%;border-radius:3px;transition:width .3s}
-.sd .sdnote{font-size:11px;color:var(--text3);margin-top:3px;padding-left:2px}
-.va{background:#fef2f2;border:2px solid #dc2626;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px}
-.va .vat{font-size:16px;font-weight:700;color:var(--negative)}.va .vad{font-size:13px;color:#991b1b;margin-top:4px}
-.stips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.stips .tip{padding:10px 12px;border-radius:8px}
-.tip-adv{background:#ecfdf5;border:1px solid #a7f3d0}.tip-adv .tt{font-size:12px;font-weight:700;color:#065f46;margin-bottom:2px}.tip-adv .td{font-size:11px;color:#047857;line-height:1.5}
-.tip-risk{background:#fef2f2;border:1px solid #fecaca}.tip-risk .tt{font-size:12px;font-weight:700;color:#991b1b;margin-bottom:2px}.tip-risk .td{font-size:11px;color:#b91c1c;line-height:1.5}
-.tip-hint{background:#fffbeb;border:1px solid #fde68a}.tip-hint .tt{font-size:12px;font-weight:700;color:#92400e;margin-bottom:2px}.tip-hint .td{font-size:11px;color:#a16207;line-height:1.5}
+.sd .sdnote{font-size:10px;color:var(--note-c);margin-top:2px}
+.va{background:#fef2f2;border:2px solid #dc2626;border-radius:10px;padding:12px;text-align:center;margin-bottom:10px}
+.va .vat{font-size:15px;font-weight:700;color:var(--negative)}.va .vad{font-size:12px;color:#991b1b;margin-top:3px}
+.stips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.stips .tip{padding:8px 10px;border-radius:8px}
+.tip-adv{background:#ecfdf5;border:1px solid #a7f3d0}.tip-adv .tt{font-size:11px;font-weight:700;color:#065f46;margin-bottom:1px}.tip-adv .td{font-size:10px;color:#047857;line-height:1.4}
+.tip-risk{background:#fef2f2;border:1px solid #fecaca}.tip-risk .tt{font-size:11px;font-weight:700;color:#991b1b;margin-bottom:1px}.tip-risk .td{font-size:10px;color:#b91c1c;line-height:1.4}
+.tip-hint{background:#fffbeb;border:1px solid #fde68a}.tip-hint .tt{font-size:11px;font-weight:700;color:#92400e;margin-bottom:1px}.tip-hint .td{font-size:10px;color:#a16207;line-height:1.4}
 .toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:9px 22px;border-radius:10px;font-size:13px;font-weight:500;z-index:999;opacity:0;pointer-events:none;transition:opacity .25s;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .toast.show{opacity:1}
-.ft{text-align:center;color:var(--text3);font-size:11px;margin:16px 0;line-height:1.5}
-/* Auth overlay */
+.ft{text-align:center;color:var(--text3);font-size:11px;margin:14px 0;line-height:1.5}
+.split-label{font-size:11px;color:var(--accent);font-weight:600;margin:8px 0 4px;padding-left:2px}
 .auth-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:1000;display:flex;justify-content:center;align-items:center;padding:20px}
 .auth-box{background:var(--card);border-radius:var(--r);padding:30px 24px;max-width:400px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.1);text-align:center}
 .auth-box h1{font-size:22px;color:var(--primary);margin-bottom:6px}
@@ -122,21 +121,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 .auth-box .auth-btn:active{background:#1d4ed8;transform:scale(.97)}
 .auth-err{color:var(--negative);font-size:12px;margin-top:8px;min-height:18px}
 .auth-ok{color:var(--positive);font-size:12px;margin-top:8px;min-height:18px}
-/* Spinner */
 .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:4px}
 @keyframes spin{to{transform:rotate(360deg)}}
 #mainApp{display:none}
 @media(max-width:440px){
-.fgr,.stips{grid-template-columns:1fr}.dg{grid-template-columns:1fr}.fw{grid-column:span 1}
-.rc .rn{font-size:36px}.hd{padding:20px 14px 18px}.hd h1{font-size:18px}
-.at{font-size:11px}.at td,.at th{padding:5px 4px}.sc .snum{font-size:42px}
+.fgr,.fgr3,.stips{grid-template-columns:1fr}.dg{grid-template-columns:1fr}.fw{grid-column:span 1}
+.rc .rn{font-size:34px}.hd{padding:18px 14px 16px}.hd h1{font-size:17px}
+.at{font-size:10px}.at td,.at th{padding:3px 2px}.sc .snum{font-size:38px}
 .auth-box{padding:24px 18px}
 }
 </style>
 </head>
 <body>
-
-<!-- ═══ 登录/注册界面 ═══ -->
 <div class="auth-overlay" id="authOverlay">
 <div class="auth-box">
 <h1>🏠 房产投资计算器</h1>
@@ -155,28 +151,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 </div>
 </div>
 
-<!-- ═══ 主程序（登录后才显示） ═══ -->
 <div id="mainApp">
-
 <div class="hd">
-<div style="position:absolute;top:10px;right:16px;display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.7)">
-<span class="uemail" id="userEmail" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
-<button onclick="handleLogout()" style="background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer">退出</button>
-</div>
+<div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 专业房产投资计算器</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div>
-<span style="font-size:10px;opacity:0.5;margin-left:8px">v4.3</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.0</span>
 </div>
 <div class="c">
 
-<!-- ═══ 一、基础房源信息录入 ═══ -->
+<!-- ═══ 一、基础房源信息 ═══ -->
 <div class="sec">
 <div class="st">📋 ① 基础房源信息录入</div>
 <div class="fg"><label>房源名称 / 地址</label><input type="text" id="addr" placeholder="例：A房源-朝阳XX小区3号楼502"></div>
 <div class="fgr">
 <div class="fg"><label>房屋总价（万元）</label><input type="number" id="price" step="any" placeholder="如 300" oninput="onPriceChange()"></div>
 <div class="fg"><label>房本建筑面积（㎡）</label><input type="number" id="area" step="any" placeholder="如 89.5" oninput="onAreaChange()"></div>
+</div>
+<div class="fgr3">
+<div class="fg"><label>户型（几居室）</label><select id="layout"><option value="">— 请选择 —</option><option value="1">一居室</option><option value="2">两居室</option><option value="3">三居室</option><option value="4">四居室</option><option value="5">五居室及以上</option></select></div>
+<div class="fg"><label>所在楼层</label><input type="number" id="floor" step="1" placeholder="如 12"></div>
+<div class="fg"><label>电梯配置</label><div class="rg"><label><input type="radio" name="elevator" value="yes" id="elevYes"> 有电梯</label><label><input type="radio" name="elevator" value="no" id="elevNo"> 无电梯</label></div></div>
 </div>
 <div class="fgr">
 <div class="fg"><label>房本年限</label><select id="houseYears" onchange="onTaxChange()"><option value="">— 请选择 —</option><option value="lt2">不满2年</option><option value="2to5">满2年不满5年</option><option value="5only">满5年唯一住房</option><option value="5notOnly">满5年不唯一住房</option></select></div>
@@ -214,31 +209,51 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="pl" id="propList"><div class="pe">你还没有保存任何房源<br>填好信息，点「保存当前房源」</div></div>
 </div>
 
-<!-- ═══ 二、贷款&税费自动测算 ═══ -->
+<!-- ═══ 二、贷款测算 ═══ -->
 <div class="sec">
 <div class="st">💰 ② 贷款 &amp; 税费自动测算</div>
-<div class="fgr"><div class="fg"><label>还款方式</label><select id="repayMethod" onchange="calc()"><option value="">— 请选择 —</option><option value="equalPayment">等额本息</option><option value="equalPrincipal">等额本金</option></select></div></div>
-<div class="fgr"><div class="fg"><label>贷款类型</label><select id="loanType" onchange="onLoanTypeChange()"><option value="">— 请选择 —</option><option value="commercial">纯商业贷款</option><option value="fund">纯公积金贷款</option><option value="combined">组合贷款</option></select></div></div>
+<div class="fgr">
+<div class="fg"><label>还款方式</label><select id="repayMethod" onchange="calc()"><option value="">— 请选择 —</option><option value="equalPayment">等额本息</option><option value="equalPrincipal">等额本金</option></select></div>
+<div class="fg"><label>贷款类型</label><select id="loanType" onchange="onLoanTypeChange()"><option value="">— 请选择 —</option><option value="commercial">纯商业贷款</option><option value="fund">纯公积金贷款</option><option value="combined">组合贷款</option></select></div>
+</div>
 <div class="lg" id="lgCommercial"><div class="fg"><label>商业贷款额度（万元）<span class="tag tag-auto">自动填写</span></label><input type="number" id="commAmt" step="any" readonly></div><div class="fg"><label>商业贷款年利率（%）</label><input type="number" id="commRate" step="any" placeholder="如 3.85" oninput="calc()"></div></div>
 <div class="lg" id="lgFund"><div class="fg"><label>公积金贷款额度（万元）<span class="tag tag-auto">自动填写</span></label><input type="number" id="fundAmt" step="any" readonly></div><div class="fg"><label>公积金贷款年利率（%）</label><input type="number" id="fundRate" step="any" placeholder="如 2.85" oninput="calc()"></div></div>
-<div class="lg" id="lgCombined"><div class="lg-title">公积金部分</div><div class="fgr"><div class="fg"><label>公积金贷款额度（万元）</label><input type="number" id="combFundAmt" step="any" oninput="onCombinedChange()"></div><div class="fg"><label>公积金年利率（%）</label><input type="number" id="combFundRate" step="any" oninput="calc()"></div></div><div class="lg-title" style="margin-top:10px">商业贷款部分</div><div class="fgr"><div class="fg"><label>商贷贷款额度（万元）</label><input type="number" id="combCommAmt" step="any" oninput="onCombinedChange()"></div><div class="fg"><label>商贷年利率（%）</label><input type="number" id="combCommRate" step="any" oninput="calc()"></div></div><div class="stats" id="combStats"></div></div>
+<div class="lg" id="lgCombined">
+<div class="lg-title">公积金部分</div><div class="fgr"><div class="fg"><label>公积金额度（万元）</label><input type="number" id="combFundAmt" step="any" oninput="onCombinedChange()"></div><div class="fg"><label>公积金年利率（%）</label><input type="number" id="combFundRate" step="any" oninput="calc()"></div></div>
+<div class="lg-title" style="margin-top:8px">商业贷款部分</div><div class="fgr"><div class="fg"><label>商贷额度（万元）</label><input type="number" id="combCommAmt" step="any" oninput="onCombinedChange()"></div><div class="fg"><label>商贷年利率（%）</label><input type="number" id="combCommRate" step="any" oninput="calc()"></div></div>
+<div class="stats" id="combStats"></div>
+</div>
 <div class="fgr"><div class="fg"><label>贷款年限（年）</label><input type="number" id="loanYears" placeholder="如 30" oninput="calc()"></div></div>
 <div class="stats" id="loanSummary">选好贷款信息后自动显示月供</div>
 </div>
 
-<!-- ═══ 三、月度还款明细 ═══ -->
+<!-- ═══ 三、还款明细 ═══ -->
 <div class="sec" id="amortSection" style="display:none">
-<div class="st">📅 ③ 月度还款明细</div><div id="amortSummary"></div>
+<div class="st">📅 ③ 月度还款明细</div>
+<div id="amortSummary"></div>
 <div class="subs"><div class="subs-title">📊 年度汇总</div><div class="at-wrap"><table class="at" id="amortTable"></table></div></div>
 <div class="subs"><div class="subs-title">📌 全周期总汇</div><div class="dg" id="termTotals"></div></div>
 </div>
 
-<!-- ═══ 四、专业投资回报财务分析 ═══ -->
+<!-- ═══ 四、投资回报财务分析 ═══ -->
 <div class="sec">
-<div class="st">📈 ④ 专业投资回报财务分析</div>
-<div class="fg"><label>预期持有年限（年）<span class="tag">用于IRR计算</span></label><input type="number" id="holdYears" placeholder="如 10" oninput="calc()" value="10"></div>
-<div class="subs"><div class="subs-title">🏢 第一套：房产静态投资回报率（和贷款无关）</div><div class="dg" id="staticROI"></div><div class="stats" id="staticNote" style="margin-top:8px"></div></div>
-<div class="subs"><div class="subs-title">💵 第二套：自有资金真实动态回报率（含IRR）</div><div class="dg" id="dynamicROI"></div><div class="stats" id="dynamicNote" style="margin-top:8px"></div></div>
+<div class="st">📈 ④ 投资回报财务分析</div>
+<div class="subs">
+<div class="subs-title">一、房产静态投资回报率（纸面收益测算）</div>
+<div class="meta-note">* 本测算仅看房产本身的租金收益与总价，不计算贷款、首付、持有成本，适合快速判断房产的基础投资价值</div>
+<div class="dg" id="staticROI"></div>
+<div class="stats" id="staticNote" style="margin-top:6px"></div>
+</div>
+<div class="subs">
+<div class="subs-title">二、自有资金真实投资回报率（动态IRR测算）</div>
+<div class="meta-note">* 本测算以你实际自掏的本金为基数，结合贷款月供、租金现金流、持有周期、最终卖房回款，算出这笔投资的真实年化收益，可直接对比银行理财、基金等其他投资产品的收益</div>
+<div class="fgr" style="margin-bottom:8px">
+<div class="fg"><label>计划持有年限（年）<span class="tag">IRR输入</span></label><input type="number" id="holdYears" placeholder="如 10" oninput="calc()" value="10"><div class="unit-hint">* 你打算持有这套房产的时间，比如打算5年后卖掉，就填5</div></div>
+<div class="fg"><label>预计出售时到手总价（万元）<span class="tag">IRR输入</span></label><input type="number" id="salePrice" step="any" placeholder="留空默认原价卖出" oninput="calc()" value="0"><div class="unit-hint">* 持有到期卖掉房子、还清银行剩余贷款后，最终能拿到手的净资金。留空则按原价卖出、还清贷款计算</div></div>
+</div>
+<div class="dg" id="dynamicROI"></div>
+<div class="stats" id="dynamicNote" style="margin-top:6px"></div>
+</div>
 </div>
 
 <!-- ═══ 五、配套与市场评估 ═══ -->
@@ -266,7 +281,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 </div>
 </div>
 
-<!-- ═══ 六、房源评分与专业评估 ═══ -->
+<!-- ═══ 六、房源评分 ═══ -->
 <div class="sec" id="scoreSection">
 <div class="st">⭐ ⑥ 房源评分与专业评估</div>
 <div id="scoreContent"><div class="pe" style="padding:20px">填完房源所有信息后自动算出评分<br>包括基础信息、贷款、配套、市场数据</div></div>
@@ -274,8 +289,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 
 <div class="ft">数据自动同步到云端 · 同一账号登录数据不丢<br>税费按2026年北京二手房政策自动计算</div>
 </div>
-</div><!-- end #mainApp -->
-
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -283,494 +297,203 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 const SUPABASE_URL='https://webvtoarwrulkynixank.supabase.co';
 const SUPABASE_KEY='sb_publishable_a01uqLOBkjBCcYrwQNtlhg_vQzWIygW';
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let currentUser=null,allProperties={},editingId=null;
+let taxIsAuto=false,ratioIsApplied=false,downPmtIsManual=false;
+let authMode='login',tt=null;
 
-// ═══ Auth State ═══
-let currentUser=null;
-let authMode='login'; // 'login' or 'register'
-
-function switchAuthTab(mode){
-  authMode=mode;
-  document.getElementById('tabLogin').className='auth-tab'+(mode==='login'?' active':'');
-  document.getElementById('tabReg').className='auth-tab'+(mode==='register'?' active':'');
-  document.getElementById('authBtn').textContent=mode==='login'?'登 录':'注 册';
-  document.getElementById('authErr').textContent='';
-  document.getElementById('authOk').textContent='';
-}
-
+// ═══ Auth ═══
+function switchAuthTab(m){authMode=m;document.getElementById('tabLogin').className='auth-tab'+(m==='login'?' active':'');document.getElementById('tabReg').className='auth-tab'+(m==='register'?' active':'');document.getElementById('authBtn').textContent=m==='login'?'登 录':'注 册';document.getElementById('authErr').textContent='';document.getElementById('authOk').textContent=''}
 async function handleAuth(){
-  const email=document.getElementById('authEmail').value.trim();
-  const password=document.getElementById('authPassword').value;
-  const errEl=document.getElementById('authErr');
-  const okEl=document.getElementById('authOk');
-  errEl.textContent='';okEl.textContent='';
-
-  if(!email){errEl.textContent='请输入邮箱地址';return}
-  if(!password||password.length<6){errEl.textContent='密码至少6位';return}
-
-  const btn=document.getElementById('authBtn');
-  btn.innerHTML='<span class="spinner"></span>处理中…';
-  btn.disabled=true;
-
+  const e=document.getElementById('authEmail').value.trim(),p=document.getElementById('authPassword').value,er=document.getElementById('authErr'),ok=document.getElementById('authOk');er.textContent='';ok.textContent='';
+  if(!e){er.textContent='请输入邮箱地址';return}if(!p||p.length<6){er.textContent='密码至少6位';return}
+  const b=document.getElementById('authBtn');b.innerHTML='<span class="spinner"></span>处理中…';b.disabled=true;
   try{
-    if(authMode==='register'){
-      const{data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:'https://liuxinyu084-boop.github.io/house-investment-tool/'}});
-      if(error){errEl.textContent=error.message||'注册失败，请重试';btn.innerHTML=authMode==='login'?'登 录':'注 册';btn.disabled=false;return}
-      if(data.user&&data.user.identities&&data.user.identities.length===0){
-        okEl.textContent='该邮箱已注册，请切换到登录';
-        btn.innerHTML=authMode==='login'?'登 录':'注 册';btn.disabled=false;return;
-      }
-      if(data.session){
-        currentUser=data.user;
-        onLoginSuccess();
-      }else{
-        okEl.textContent='注册成功！请检查邮箱确认链接（或已直接登录）';
-        // Try auto-login if session-less
-        setTimeout(async()=>{
-          const{data:d2,error:e2}=await sb.auth.getSession();
-          if(d2.session){currentUser=d2.session.user;onLoginSuccess()}
-        },1500);
-      }
-    }else{
-      const{data,error}=await sb.auth.signInWithPassword({email,password});
-      if(error){errEl.textContent=error.message||'登录失败，请检查邮箱和密码';btn.innerHTML=authMode==='login'?'登 录':'注 册';btn.disabled=false;return}
-      currentUser=data.user;
-      onLoginSuccess();
-    }
-  }catch(e){
-    errEl.textContent='网络异常，请检查网络后重试';
-    btn.innerHTML=authMode==='login'?'登 录':'注 册';btn.disabled=false;
-  }
+    if(authMode==='register'){const{data,error}=await sb.auth.signUp({email:e,password:p,options:{emailRedirectTo:'https://liuxinyu084-boop.github.io/house-investment-tool/'}});
+      if(error){er.textContent=error.message||'注册失败';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false;return}
+      if(data.user&&data.user.identities&&data.user.identities.length===0){ok.textContent='该邮箱已注册，请切换到登录';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false;return}
+      if(data.session){currentUser=data.user;onLoginSuccess()}else{ok.textContent='注册成功！';setTimeout(async()=>{const{data:d2}=await sb.auth.getSession();if(d2.session){currentUser=d2.session.user;onLoginSuccess()}},1500)}
+    }else{const{data,error}=await sb.auth.signInWithPassword({email:e,password:p});if(error){er.textContent=error.message||'登录失败';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false;return}currentUser=data.user;onLoginSuccess()}
+  }catch(x){er.textContent='网络异常，请检查网络后重试';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false}
 }
+function onLoginSuccess(){document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;loadCloudData()}
+async function handleLogout(){await sb.auth.signOut();currentUser=null;allProperties={};document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';document.getElementById('authBtn').innerHTML='登 录';document.getElementById('authBtn').disabled=false;renderPropList();updateCnt()}
 
-function onLoginSuccess(){
-  document.getElementById('authOverlay').style.display='none';
-  document.getElementById('mainApp').style.display='block';
-  document.getElementById('userEmail').textContent=currentUser.email;
-  loadCloudData();
-}
+// ═══ Cloud ═══
+async function loadCloudData(){try{const{data,error}=await sb.from('properties').select('*').eq('user_id',currentUser.id).order('updated_at',{ascending:false});if(error){showToast('⚠️ 加载云端数据失败');return}const m={};for(const r of data||[])m[r.id]=typeof r.property_data==='string'?JSON.parse(r.property_data):r.property_data;allProperties=m}catch(x){showToast('⚠️ 加载云端数据失败')}renderPropList();updateCnt();calc()}
+async function cloudSave(id,d){try{await sb.from('properties').upsert({id,user_id:currentUser.id,property_data:d,updated_at:new Date().toISOString()},{onConflict:'id'})}catch(x){showToast('⚠️ 云端保存失败')}}
+async function cloudDelete(id){try{await sb.from('properties').delete().eq('id',id)}catch(x){showToast('⚠️ 云端删除失败')}}
 
-async function handleLogout(){
-  await sb.auth.signOut();
-  currentUser=null;
-  document.getElementById('authOverlay').style.display='flex';
-  document.getElementById('mainApp').style.display='none';
-  document.getElementById('authErr').textContent='';
-  document.getElementById('authOk').textContent='';
-  document.getElementById('authBtn').innerHTML='登 录';
-  document.getElementById('authBtn').disabled=false;
-  // Clear in-memory cache
-  allProperties={};
-  renderPropList();updateCnt();
-}
+// ═══ Tax ═══
+function calcTax(pw,a,hy,pc){const pr=pw*10000;let vat=0,it=0,dt=0;if(hy==='lt2')vat=pr*0.053;if(hy!=='5only')it=pr*0.01;const f=pc==='first';if(f)dt=pr*(a<=90?0.01:0.015);else dt=pr*(a<=90?0.01:0.02);return{vat:Math.round(vat),incomeTax:Math.round(it),deedTax:Math.round(dt),totalWan:Math.round(vat+it+dt)/10000}}
 
-// ═══ Cloud Data (Supabase) ═══
-let allProperties={}; // In-memory cache: {localId: data}
+// ═══ Loan ═══
+function calcMonthlyPmt(pw,ar,mo){const p=pw*10000;if(p<=0||mo<=0)return 0;const mr=ar/100/12;if(mr<=0)return p/mo;const f=Math.pow(1+mr,mo);if(f<=1)return p/mo;return p*mr*f/(f-1)}
+function genSched(pw,ar,mo){const p=pw*10000,r=[];if(p<=0||mo<=0||ar<=0){for(let m=0;m<mo;m++)r.push({payment:0,principal:0,interest:0,balance:m<mo-1?p:0});return r}const mr=ar/100/12,pmt=p*mr*Math.pow(1+mr,mo)/(Math.pow(1+mr,mo)-1);let bal=p;for(let m=0;m<mo;m++){const it=bal*mr,pr=pmt-it;bal-=pr;if(Math.abs(bal)<0.01)bal=0;r.push({payment:pmt,principal:pr,interest:it,balance:bal})}return r}
+function genSchedEP(pw,ar,mo){const p=pw*10000,r=[];if(p<=0||mo<=0||ar<=0){for(let m=0;m<mo;m++)r.push({payment:0,principal:0,interest:0,balance:m<mo-1?p:0});return r}const mr=ar/100/12,mp=p/mo;let bal=p;for(let m=0;m<mo;m++){const it=bal*mr,pmt=mp+it;bal-=mp;if(Math.abs(bal)<0.01)bal=0;r.push({payment:pmt,principal:mp,interest:it,balance:bal})}return r}
+function getAmort(pw,ar,mo,method){if(pw<=0||mo<=0||ar<=0)return null;return aggAmort(method==='equalPrincipal'?genSchedEP(pw,ar,mo):genSched(pw,ar,mo))}
+function aggAmort(rows){if(!rows||!rows.length)return null;const yr=Math.ceil(rows.length/12),ann=[];let tp=0,tpr=0,ti=0;for(let y=0;y<yr;y++){let p=0,pr=0,it=0,lb=0;for(let m=y*12;m<Math.min((y+1)*12,rows.length);m++){p+=rows[m].payment;pr+=rows[m].principal;it+=rows[m].interest;lb=rows[m].balance}tp+=p;tpr+=pr;ti+=it;ann.push({year:y+1,payment:p,principal:pr,interest:it,balance:lb})}return{annual:ann,totalPmt:tp,totalPrin:tpr,totalInt:ti,rows}}
+function combineAmort(a1,a2){if(!a1&&!a2)return null;if(!a1)return a2;if(!a2)return a1;const ml=Math.max(a1.rows.length,a2.rows.length),rows=[];for(let i=0;i<ml;i++){const r1=a1.rows[i]||{payment:0,principal:0,interest:0,balance:0},r2=a2.rows[i]||{payment:0,principal:0,interest:0,balance:0};rows.push({payment:r1.payment+r2.payment,principal:r1.principal+r2.principal,interest:r1.interest+r2.interest,balance:r1.balance+r2.balance})}return aggAmort(rows)}
+function getAmortCombined(){const lt=document.getElementById('loanType').value,ly=parseInt(document.getElementById('loanYears').value)||0,m=ly*12,method=document.getElementById('repayMethod').value;if(!method||!lt||!ly)return null;if(lt==='commercial'){const a=parseFloat(document.getElementById('commAmt').value)||0,r=parseFloat(document.getElementById('commRate').value)||0;return{combined:getAmort(a,r,m,method)}}if(lt==='fund'){const a=parseFloat(document.getElementById('fundAmt').value)||0,r=parseFloat(document.getElementById('fundRate').value)||0;return{combined:getAmort(a,r,m,method)}}if(lt==='combined'){const fa=parseFloat(document.getElementById('combFundAmt').value)||0,fr=parseFloat(document.getElementById('combFundRate').value)||0,ca=parseFloat(document.getElementById('combCommAmt').value)||0,cr=parseFloat(document.getElementById('combCommRate').value)||0;if(fa<=0&&ca<=0)return null;const fA=fa>0?getAmort(fa,fr,m,method):null,cA=ca>0?getAmort(ca,cr,m,method):null;return{combined:combineAmort(fA,cA),fundPart:fA,commPart:cA}}return null}
+function calcIRR(cfs){if(!cfs||cfs.length<2)return null;let r=0.1;for(let i=0;i<1000;i++){let n=0,d=0;for(let j=0;j<cfs.length;j++){const den=Math.pow(1+r,j);n+=cfs[j]/den;d-=j*cfs[j]/Math.pow(1+r,j+1)}if(Math.abs(n)<1e-7)return r;if(d===0)return null;r=r-n/d;if(r<-0.999)return null}return r}
 
-async function loadCloudData(){
-  if(!currentUser)return;
-  try{
-    const{data,error}=await sb.from('properties').select('*').eq('user_id',currentUser.id).order('updated_at',{ascending:false});
-    if(error){console.error('Load error:',error);showToast('⚠️ 加载云端数据失败');return}
-    const map={};
-    for(const row of data||[]){
-      map[row.id]=typeof row.property_data==='string'?JSON.parse(row.property_data):row.property_data;
-    }
-    allProperties=map;
-  }catch(e){showToast('⚠️ 加载云端数据失败')}
-  renderPropList();updateCnt();calc();
-}
-
-async function cloudSave(localId,propData){
-  if(!currentUser)return;
-  try{
-    const row={id:localId,user_id:currentUser.id,property_data:propData,updated_at:new Date().toISOString()};
-    // Upsert: try insert, if conflict update
-    const{error}=await sb.from('properties').upsert(row,{onConflict:'id'});
-    if(error)throw error;
-  }catch(e){showToast('⚠️ 云端保存失败，请检查网络')}
-}
-
-async function cloudDelete(localId){
-  if(!currentUser)return;
-  try{
-    const{error}=await sb.from('properties').delete().eq('id',localId);
-    if(error)throw error;
-  }catch(e){showToast('⚠️ 云端删除失败')}
-}
-
-// ═══ Storage (in-memory + cloud sync) ═══
-function loadAll(){return allProperties}
-function saveAll(d){/* no-op: cloud sync happens in handleSave */}
-function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
-
-// ═══ Tax Calc (2026 Beijing) ═══
-function calcTax(priceWan,area,houseYears,purchaseCount){
-  const p=priceWan*10000;let vat=0,it=0,dt=0;
-  if(houseYears==='lt2') vat=p*0.053;
-  if(houseYears!=='5only') it=p*0.01;
-  const first=purchaseCount==='first';
-  if(first) dt=p*(area<=90?0.01:0.015);else dt=p*(area<=90?0.01:0.02);
-  return {vat:Math.round(vat),incomeTax:Math.round(it),deedTax:Math.round(dt),totalWan:Math.round(vat+it+dt)/10000};
-}
-
-// ═══ Loan calc helpers ═══
-function calcMonthlyPmt(principalWan,annualRate,months){
-  const p=principalWan*10000;if(p<=0||months<=0) return 0;
-  const mr=annualRate/100/12;if(mr<=0) return p/months;
-  const f=Math.pow(1+mr,months);if(f<=1) return p/months;
-  return p*mr*f/(f-1);
-}
-function genSchedule(principalWan,annualRate,months){
-  const p=principalWan*10000;const rows=[];if(p<=0||months<=0||annualRate<=0){for(let m=0;m<months;m++) rows.push({payment:0,principal:0,int:0,balance:m<months-1?p:0});return rows}
-  const mr=annualRate/100/12;const pmt=p*mr*Math.pow(1+mr,months)/(Math.pow(1+mr,months)-1);let bal=p;
-  for(let m=0;m<months;m++){const interest=bal*mr;const principal=pmt-interest;bal-=principal;if(Math.abs(bal)<0.01) bal=0;rows.push({payment:pmt,principal,interest,balance:bal})}return rows;
-}
-function genSchedEP(principalWan,annualRate,months){
-  const p=principalWan*10000;const rows=[];if(p<=0||months<=0||annualRate<=0){for(let m=0;m<months;m++) rows.push({payment:0,principal:0,int:0,balance:m<months-1?p:0});return rows}
-  const mr=annualRate/100/12;const mp=p/months;let bal=p;
-  for(let m=0;m<months;m++){const interest=bal*mr;const payment=mp+interest;bal-=mp;if(Math.abs(bal)<0.01) bal=0;rows.push({payment,principal:mp,interest,balance:bal})}return rows;
-}
-function getAmortSections(principalWan,annualRate,months,method){
-  if(principalWan<=0||months<=0||annualRate<=0) return null;
-  const rows=method==='equalPrincipal'?genSchedEP(principalWan,annualRate,months):genSchedule(principalWan,annualRate,months);
-  return aggregateAmort(rows);
-}
-function aggregateAmort(rows){
-  if(!rows||!rows.length) return null;
-  const years=Math.ceil(rows.length/12);const annual=[];let totalPmt=0,totalPrin=0,totalInt=0;
-  for(let y=0;y<years;y++){let p=0,pr=0,it=0,lastBal=0;for(let m=y*12;m<Math.min((y+1)*12,rows.length);m++){p+=rows[m].payment;pr+=rows[m].principal;it+=rows[m].interest;lastBal=rows[m].balance}totalPmt+=p;totalPrin+=pr;totalInt+=it;annual.push({year:y+1,payment:p,principal:pr,interest:it,balance:lastBal})}
-  return {annual,totalPmt,totalPrin,totalInt,rows};
-}
-function combineAmort(a1,a2){
-  if(!a1&&!a2)return null;if(!a1)return a2;if(!a2)return a1;
-  const maxLen=Math.max(a1.rows.length,a2.rows.length);const rows=[];
-  for(let i=0;i<maxLen;i++){const r1=a1.rows[i]||{payment:0,principal:0,interest:0,balance:0};const r2=a2.rows[i]||{payment:0,principal:0,interest:0,balance:0};rows.push({payment:r1.payment+r2.payment,principal:r1.principal+r2.principal,interest:r1.interest+r2.interest,balance:r1.balance+r2.balance})}
-  return aggregateAmort(rows);
-}
-function getTotalAmort(){
-  const lt=document.getElementById('loanType').value;const ly=parseInt(document.getElementById('loanYears').value)||0;const m=ly*12;const method=document.getElementById('repayMethod').value;
-  if(!method||!lt||!ly)return null;
-  if(lt==='commercial'){const amt=parseFloat(document.getElementById('commAmt').value)||0;const rate=parseFloat(document.getElementById('commRate').value)||0;return getAmortSections(amt,rate,m,method)}
-  if(lt==='fund'){const amt=parseFloat(document.getElementById('fundAmt').value)||0;const rate=parseFloat(document.getElementById('fundRate').value)||0;return getAmortSections(amt,rate,m,method)}
-  if(lt==='combined'){const fa=parseFloat(document.getElementById('combFundAmt').value)||0;const fr=parseFloat(document.getElementById('combFundRate').value)||0;const ca=parseFloat(document.getElementById('combCommAmt').value)||0;const cr=parseFloat(document.getElementById('combCommRate').value)||0;if(fa<=0&&ca<=0)return null;return combineAmort(fa>0?getAmortSections(fa,fr,m,method):null,ca>0?getAmortSections(ca,cr,m,method):null)}
-  return null;
-}
-function calcIRR(cfs){
-  if(!cfs||cfs.length<2)return null;let rate=0.1;
-  for(let i=0;i<1000;i++){let npv=0,dnpv=0;for(let j=0;j<cfs.length;j++){const d=Math.pow(1+rate,j);npv+=cfs[j]/d;dnpv-=j*cfs[j]/Math.pow(1+rate,j+1)}if(Math.abs(npv)<1e-7)return rate;if(dnpv===0)return null;rate=rate-npv/dnpv;if(rate<-0.999)return null}
-  return rate;
-}
-let taxIsAuto=false,ratioIsApplied=false,downPmtIsManual=false,editingId=null;
-
+// ═══ Form events ═══
 function onPriceChange(){if(ratioIsApplied&&document.getElementById('downRatio').value)applyRatio(parseFloat(document.getElementById('downRatio').value));updateLoanDisplay();onTaxChange();calc()}
 function onAreaChange(){onTaxChange();calc()}
-function onTaxChange(){
-  const p=parseFloat(document.getElementById('price').value)||0,a=parseFloat(document.getElementById('area').value)||0,hy=document.getElementById('houseYears').value,pc=document.getElementById('purchaseCount').value;
-  const ti=document.getElementById('tax'),hint=document.getElementById('taxHint'),tag=document.getElementById('taxTag');
-  if(p>0&&a>0&&hy&&pc){
-    const r=calcTax(p,a,hy,pc);ti.value=r.totalWan;taxIsAuto=true;tag.textContent='自动';tag.className='tag tag-auto';
-    const parts=[];if(r.vat>0) parts.push('增值税 '+fmtWan(r.vat/10000)+'万');else parts.push('增值税 免');
-    if(r.incomeTax>0) parts.push('个税 '+fmtWan(r.incomeTax/10000)+'万');else parts.push('个税 免');
-    parts.push('契税 '+fmtWan(r.deedTax/10000)+'万');hint.innerHTML='明细：'+parts.join(' · ');
-  }else{if(!taxIsAuto&&ti.value){tag.textContent='手动';tag.className='tag tag-manual'}hint.innerHTML='<span style="color:var(--accent)">选完房本年限+套数+面积=自动算税</span>'}
-  calc();
-}
+function onTaxChange(){const p=parseFloat(document.getElementById('price').value)||0,a=parseFloat(document.getElementById('area').value)||0,hy=document.getElementById('houseYears').value,pc=document.getElementById('purchaseCount').value,ti=document.getElementById('tax'),hint=document.getElementById('taxHint'),tag=document.getElementById('taxTag');if(p>0&&a>0&&hy&&pc){const r=calcTax(p,a,hy,pc);ti.value=r.totalWan;taxIsAuto=true;tag.textContent='自动';tag.className='tag tag-auto';const ps=[];if(r.vat>0)ps.push('增值税 '+fmtWan(r.vat/10000)+'万');else ps.push('增值税 免');if(r.incomeTax>0)ps.push('个税 '+fmtWan(r.incomeTax/10000)+'万');else ps.push('个税 免');ps.push('契税 '+fmtWan(r.deedTax/10000)+'万');hint.innerHTML='明细：'+ps.join(' · ')}else{if(!taxIsAuto&&ti.value){tag.textContent='手动';tag.className='tag tag-manual'}hint.innerHTML='<span style="color:var(--accent)">选完房本年限+套数+面积=自动算税</span>'}calc()}
 function onTaxManual(){if(taxIsAuto){taxIsAuto=false;document.getElementById('taxTag').textContent='手动';document.getElementById('taxTag').className='tag tag-manual';document.getElementById('taxHint').innerHTML='已切手动，不再自动覆盖'}calc()}
-function applyRatio(pct){
-  const p=parseFloat(document.getElementById('price').value)||0,dp=p*pct/100,loan=p-dp;
-  document.getElementById('downPmt').value=Math.round(dp*100)/100;document.getElementById('dpTag').textContent='自动'+pct+'%';document.getElementById('dpTag').className='tag tag-auto';document.getElementById('dpHint').textContent='首付 '+dp.toFixed(2)+'万 · 贷款 '+loan.toFixed(2)+'万';updateLoanDisplay();ratioIsApplied=true;downPmtIsManual=false;calc()
-}
+function applyRatio(pct){const p=parseFloat(document.getElementById('price').value)||0,dp=p*pct/100,loan=p-dp;document.getElementById('downPmt').value=Math.round(dp*100)/100;document.getElementById('dpTag').textContent='自动'+pct+'%';document.getElementById('dpTag').className='tag tag-auto';document.getElementById('dpHint').textContent='首付 '+dp.toFixed(2)+'万 · 贷款 '+loan.toFixed(2)+'万';updateLoanDisplay();ratioIsApplied=true;downPmtIsManual=false;calc()}
 function onRatioChange(){const v=document.getElementById('downRatio').value;if(v)applyRatio(parseFloat(v));else{ratioIsApplied=false;calc()}}
 function onDownPmtManual(){if(!downPmtIsManual&&!ratioIsApplied)return;downPmtIsManual=true;ratioIsApplied=false;document.getElementById('downRatio').value='';document.getElementById('dpTag').textContent='手动';document.getElementById('dpTag').className='tag tag-manual';document.getElementById('dpHint').textContent='已切换手动填写';updateLoanDisplay();calc()}
-function updateLoanDisplay(){
-  const p=parseFloat(document.getElementById('price').value)||0,dp=parseFloat(document.getElementById('downPmt').value)||0,loan=Math.max(0,p-dp);
-  document.getElementById('totalLoanDisplay').textContent=loan.toFixed(2)+'万元';document.getElementById('loanTag').textContent='自动';
-  const lt=document.getElementById('loanType').value;
-  if(lt==='commercial') document.getElementById('commAmt').value=loan>0?loan:'';else if(lt==='fund') document.getElementById('fundAmt').value=loan>0?loan:'';else if(lt==='combined') onCombinedChange();
-}
-function onLoanTypeChange(){
-  const lt=document.getElementById('loanType').value;
-  document.getElementById('lgCommercial').className='lg'+(lt==='commercial'?' show':'');document.getElementById('lgFund').className='lg'+(lt==='fund'?' show':'');document.getElementById('lgCombined').className='lg'+(lt==='combined'?' show':'');
-  const p=parseFloat(document.getElementById('price').value)||0,dp=parseFloat(document.getElementById('downPmt').value)||0,loan=Math.max(0,p-dp);
-  if(lt==='commercial') document.getElementById('commAmt').value=loan>0?loan:'';else if(lt==='fund') document.getElementById('fundAmt').value=loan>0?loan:'';else if(lt==='combined')onCombinedChange();calc()
-}
-function onCombinedChange(){
-  const p=parseFloat(document.getElementById('price').value)||0,dp=parseFloat(document.getElementById('downPmt').value)||0,totalLoan=Math.max(0,p-dp);
-  const fa=parseFloat(document.getElementById('combFundAmt').value)||0,ca=parseFloat(document.getElementById('combCommAmt').value)||0,sum=fa+ca;
-  const st=document.getElementById('combStats');
-  if(totalLoan>0&&sum!==totalLoan) st.innerHTML='⚠️ 公积金+商贷合计 <b>'+sum.toFixed(2)+'万</b>，应等于贷款总额 <b>'+totalLoan.toFixed(2)+'万</b>，差额 <b style="color:var(--negative)">'+Math.abs(sum-totalLoan).toFixed(2)+'万</b>';
-  else if(totalLoan>0) st.innerHTML='✅ 合计 <b>'+sum.toFixed(2)+'万</b>，匹配贷款总额';else st.innerHTML='';calc()
-}
+function updateLoanDisplay(){const p=parseFloat(document.getElementById('price').value)||0,dp=parseFloat(document.getElementById('downPmt').value)||0,loan=Math.max(0,p-dp);document.getElementById('totalLoanDisplay').textContent=loan.toFixed(2)+'万元';document.getElementById('loanTag').textContent='自动';const lt=document.getElementById('loanType').value;if(lt==='commercial')document.getElementById('commAmt').value=loan>0?loan:'';else if(lt==='fund')document.getElementById('fundAmt').value=loan>0?loan:'';else if(lt==='combined')onCombinedChange()}
+function onLoanTypeChange(){const lt=document.getElementById('loanType').value;document.getElementById('lgCommercial').className='lg'+(lt==='commercial'?' show':'');document.getElementById('lgFund').className='lg'+(lt==='fund'?' show':'');document.getElementById('lgCombined').className='lg'+(lt==='combined'?' show':'');const p=parseFloat(document.getElementById('price').value)||0,dp=parseFloat(document.getElementById('downPmt').value)||0,loan=Math.max(0,p-dp);if(lt==='commercial')document.getElementById('commAmt').value=loan>0?loan:'';else if(lt==='fund')document.getElementById('fundAmt').value=loan>0?loan:'';else if(lt==='combined')onCombinedChange();calc()}
+function onCombinedChange(){const p=parseFloat(document.getElementById('price').value)||0,dp=parseFloat(document.getElementById('downPmt').value)||0,tl=Math.max(0,p-dp),fa=parseFloat(document.getElementById('combFundAmt').value)||0,ca=parseFloat(document.getElementById('combCommAmt').value)||0,sum=fa+ca,st=document.getElementById('combStats');if(tl>0&&sum!==tl)st.innerHTML='⚠️ 公积金+商贷合计 <b>'+sum.toFixed(2)+'万</b>，应等于贷款总额 <b>'+tl.toFixed(2)+'万</b>，差额 <b style="color:var(--negative)">'+Math.abs(sum-tl).toFixed(2)+'万</b>';else if(tl>0)st.innerHTML='✅ 合计 <b>'+sum.toFixed(2)+'万</b>，匹配贷款总额';else st.innerHTML='';calc()}
 
 // ═══ Core Calc ═══
 function calc(){
-  const priceW=parseFloat(document.getElementById('price').value)||0,dpW=parseFloat(document.getElementById('downPmt').value)||0,loanW=Math.max(0,priceW-dpW);
-  const taxW=parseFloat(document.getElementById('tax').value)||0,renovW=parseFloat(document.getElementById('renov').value)||0,agencyW=parseFloat(document.getElementById('agency').value)||0,otherW=parseFloat(document.getElementById('otherCost').value)||0;
+  const pw=parseFloat(document.getElementById('price').value)||0,dpW=parseFloat(document.getElementById('downPmt').value)||0,lw=Math.max(0,pw-dpW);
+  const tw=parseFloat(document.getElementById('tax').value)||0,rw=parseFloat(document.getElementById('renov').value)||0,aw=parseFloat(document.getElementById('agency').value)||0,ow=parseFloat(document.getElementById('otherCost').value)||0;
   const rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0,area=parseFloat(document.getElementById('area').value)||0;
   const hy=document.getElementById('houseYears').value,pc=document.getElementById('purchaseCount').value,method=document.getElementById('repayMethod').value,lt=document.getElementById('loanType').value,ly=parseInt(document.getElementById('loanYears').value)||0;
-  const price=priceW*10000,dp=dpW*10000,tax=taxW*10000,initialInv=(dpW+taxW+renovW+agencyW+otherW)*10000;
-  const annualNetRent=(rent-mgmt)*12;
-  const staticROI=price>0?(annualNetRent/price)*100:0;
-  const rentSaleRatio=price>0?rent/price:0;
-  const paybackYears=annualNetRent>0?price/annualNetRent:0;
-  const unitPrice=area>0?price/area:0;
-  const amort=getTotalAmort();
-  let monthlyPmt=0,monthlyInt=0,monthlyPrin=0,firstPayment=0,lastPayment=0,monthlyDec=0;const annualIntArray=[];
+  const price=pw*10000,dp=dpW*10000,tax=tw*10000,initInv=(dpW+tw+rw+aw+ow)*10000;
+  const annNetRent=(rent-mgmt)*12,staticROI=price>0?(annNetRent/price)*100:0;
+  const rentSaleRatio=price>0?rent/price:0,paybackYrs=annNetRent>0?price/annNetRent:0,unitPrice=area>0?price/area:0;
+
+  const amData=getAmortCombined();
+  const amort=amData?amData.combined:null;
+  const fundAmort=amData?amData.fundPart:null;
+  const commAmort=amData?amData.commPart:null;
+  const isCombined=lt==='combined'&&fundAmort&&commAmort;
+
+  let monthlyPmt=0,monthlyInt=0,monthlyPrin=0,firstPayment=0,lastPayment=0,monthlyDec=0;const annIntArr=[];
+  let fundMonthlyPmt=0,commMonthlyPmt=0;
   if(amort&&amort.rows&&amort.rows.length>0){
     monthlyPmt=amort.rows[0].payment;monthlyInt=amort.rows[0].interest;monthlyPrin=amort.rows[0].principal;firstPayment=amort.rows[0].payment;lastPayment=amort.rows[amort.rows.length-1].payment;
-    if(amort.rows.length>1&&method==='equalPrincipal') monthlyDec=amort.rows[0].payment-amort.rows[1].payment;
-    const years=Math.ceil(amort.rows.length/12);
-    for(let y=0;y<years;y++){let intSum=0;for(let m=y*12;m<Math.min((y+1)*12,amort.rows.length);m++) intSum+=amort.rows[m].interest;annualIntArray.push(intSum)}
+    if(amort.rows.length>1&&method==='equalPrincipal')monthlyDec=amort.rows[0].payment-amort.rows[1].payment;
+    const yrs=Math.ceil(amort.rows.length/12);for(let y=0;y<yrs;y++){let is=0;for(let m=y*12;m<Math.min((y+1)*12,amort.rows.length);m++)is+=amort.rows[m].interest;annIntArr.push(is)}
   }
+  if(isCombined){fundMonthlyPmt=fundAmort.rows[0]?.payment||0;commMonthlyPmt=commAmort.rows[0]?.payment||0}
+
   const holdY=parseInt(document.getElementById('holdYears').value)||10;
-  const trueMonthlyCashflow=rent-mgmt-monthlyInt;
-  const trueAnnualCashflow=trueMonthlyCashflow*12;
-  const cfs=[-initialInv/10000];
-  for(let y=0;y<holdY;y++){const annualIntThisYear=annualIntArray.length>y?annualIntArray[y]:0;const annualCF=(rent-mgmt)*12-annualIntThisYear;cfs.push(y===holdY-1?(annualCF+initialInv)/10000:annualCF/10000)}
-  const irr=calcIRR(cfs);const irrPct=irr!==null?irr*100:null;
-  const leverage=dp>0?loanW*10000/dp:0;
-  const debtRatio=price>0?loanW*10000/price*100:0;
-  const annualPaymentTotal=amort?amort.totalPmt:0;
-  const coverage=annualPaymentTotal>0?annualNetRent/annualPaymentTotal:0;
+  const salePriceW=parseFloat(document.getElementById('salePrice').value)||0;
+  const trueMonCF=rent-mgmt-monthlyInt,trueAnnCF=trueMonCF*12;
 
-  document.getElementById('totalLoanDisplay').textContent=loanW.toFixed(2)+'万元';
+  const cfs=[-initInv/10000];
+  for(let y=0;y<holdY;y++){const ai=annIntArr.length>y?annIntArr[y]:0;const acf=(rent-mgmt)*12-ai;let tcf=acf;if(y===holdY-1){if(salePriceW>0)tcf+=salePriceW*10000;else tcf+=initInv}cfs.push(tcf/10000)}
+  const irr=calcIRR(cfs),irrPct=irr!==null?irr*100:null;
+  const leverage=dp>0?lw*10000/dp:0,debtRatio=price>0?lw*10000/price*100:0;
+  const annPmtTotal=amort?amort.totalPmt:0,coverage=annPmtTotal>0?annNetRent/annPmtTotal:0;
+
+  // ROI display
+  const totalROI=initInv>0?((salePriceW>0?salePriceW*10000:initInv)+trueAnnCF*holdY-initInv)/initInv*100:0;
+
+  document.getElementById('totalLoanDisplay').textContent=lw.toFixed(2)+'万元';
   const ls=document.getElementById('loanSummary');
-  if(method && lt && ly){const mn=method==='equalPayment'?'等额本息':'等额本金';const ln={commercial:'纯商贷',fund:'纯公积金',combined:'组合贷'}[lt]||lt;let p=[mn+' · '+ln+' · '+ly+'年'];if(monthlyPmt>0){p.push('月供 <b>¥'+fmt(monthlyPmt)+'</b>');if(method==='equalPrincipal') p.push('首月<b>¥'+fmt(firstPayment)+'</b> · 月递减<b>¥'+fmt(monthlyDec)+'</b>')}ls.innerHTML=p.join(' · ')}else ls.innerHTML='选好还款方式+贷款类型+年限后自动算月供';
+  if(method&<ly){const mn=method==='equalPayment'?'等额本息':'等额本金';const ln={commercial:'纯商贷',fund:'纯公积金',combined:'组合贷'}[lt]||lt;let p=[mn+' · '+ln+' · '+ly+'年'];if(monthlyPmt>0){p.push('月供 <b>¥'+fmt(monthlyPmt)+'</b>');if(method==='equalPrincipal')p.push('首月<b>¥'+fmt(firstPayment)+'</b> · 月递减<b>¥'+fmt(monthlyDec)+'</b>');if(isCombined)p.push('· 公积金<b>¥'+fmt(fundMonthlyPmt)+'</b> + 商贷<b>¥'+fmt(commMonthlyPmt)+'</b>')}ls.innerHTML=p.join(' · ')}else ls.innerHTML='选好还款方式+贷款类型+年限后自动算月供';
 
+  // Amort display
   const as=document.getElementById('amortSection');
   if(amort&&amort.annual){as.style.display='block';
-    document.getElementById('amortSummary').innerHTML='<div class="dg"><div class="di"><div class="l">月供金额</div><div class="v">¥'+fmt(firstPayment)+'</div></div><div class="di"><div class="l">月还本金<span class="tag" style="background:#d1fae5;color:#059669">强制储蓄</span></div><div class="v g">¥'+fmt(monthlyPrin)+'</div></div><div class="di"><div class="l">月还利息<span class="tag" style="background:#fee2e2;color:#dc2626">资金成本</span></div><div class="v r">¥'+fmt(monthlyInt)+'</div></div><div class="di"><div class="l">'+(method==='equalPrincipal'?'首月月供':'月供金额')+'</div><div class="v">¥'+fmt(firstPayment)+'</div></div></div>'+(method==='equalPrincipal'?'<div class="stats" style="margin-top:6px">📌 等额本金：每月月供递减 <b>¥'+fmt(monthlyDec)+'</b>，第'+ly+'年12月月供 <b>¥'+fmt(lastPayment)+'</b></div>':'<div class="stats" style="margin-top:6px">📌 等额本息：每月月供固定 <b>¥'+fmt(firstPayment)+'</b></div>');
-    let ht='<tr><th>年份</th><th>年还款</th><th>年还本</th><th>年还息</th><th>剩余本金</th></tr>';
-    for(const a of amort.annual) ht+='<tr><td>第'+a.year+'年</td><td>¥'+fmt(a.payment)+'</td><td style="color:var(--positive)">¥'+fmt(a.principal)+'</td><td style="color:var(--negative)">¥'+fmt(a.interest)+'</td><td>¥'+fmt(a.balance)+'</td></tr>';
+    let summ='<div class="dg">'+'<div class="di"><div class="l">月供金额</div><div class="v">¥'+fmt(firstPayment)+'</div></div>'+'<div class="di"><div class="l">月还本金<span class="tag" style="background:#d1fae5;color:#059669">强制储蓄</span></div><div class="v g">¥'+fmt(monthlyPrin)+'</div></div>'+'<div class="di"><div class="l">月还利息<span class="tag" style="background:#fee2e2;color:#dc2626">资金成本</span></div><div class="v r">¥'+fmt(monthlyInt)+'</div></div>'+'<div class="di"><div class="l">'+(method==='equalPrincipal'?'首月月供':'月供金额')+'</div><div class="v">¥'+fmt(firstPayment)+'</div></div>';
+    if(isCombined){summ+='<div class="di"><div class="l">公积金月供</div><div class="v">¥'+fmt(fundMonthlyPmt)+'</div></div>'+'<div class="di"><div class="l">商贷月供</div><div class="v">¥'+fmt(commMonthlyPmt)+'</div></div>'}
+    summ+='</div>';if(method==='equalPrincipal')summ+='<div class="stats" style="margin-top:6px">📌 等额本金：每月月供递减 <b>¥'+fmt(monthlyDec)+'</b>，末月月供 <b>¥'+fmt(lastPayment)+'</b></div>';else summ+='<div class="stats" style="margin-top:6px">📌 等额本息：每月月供固定 <b>¥'+fmt(firstPayment)+'</b></div>';
+    document.getElementById('amortSummary').innerHTML=summ;
+
+    // Annual table
+    let ht='<tr><th>年份</th>'+'<th>年还款</th><th>年还本</th><th>年还息</th><th>剩余本金</th></tr>';
+    for(const a of amort.annual){ht+='<tr><td>第'+a.year+'年</td><td>¥'+fmt(a.payment)+'</td><td style="color:var(--positive)">¥'+fmt(a.principal)+'</td><td style="color:var(--negative)">¥'+fmt(a.interest)+'</td><td>¥'+fmt(a.balance)+'</td></tr>'}
     ht+='<tr class="tot"><td>总计</td><td>¥'+fmt(amort.totalPmt)+'</td><td style="color:var(--positive)">¥'+fmt(amort.totalPrin)+'</td><td style="color:var(--negative)">¥'+fmt(amort.totalInt)+'</td><td>—</td></tr>';
     document.getElementById('amortTable').innerHTML=ht;
-    document.getElementById('termTotals').innerHTML='<div class="di fw"><div class="l">贷款总额</div><div class="v">¥'+fmt(loanW*10000)+'</div></div><div class="di"><div class="l">总还款金额</div><div class="v">¥'+fmt(amort.totalPmt)+'</div></div><div class="di"><div class="l">总偿还利息</div><div class="v r">¥'+fmt(amort.totalInt)+'</div></div><div class="di"><div class="l">总偿还本金</div><div class="v g">¥'+fmt(amort.totalPrin)+'</div></div>';
+
+    // Term totals
+    let ttHTML='<div class="di fw"><div class="l">贷款总额</div><div class="v">¥'+fmt(lw*10000)+'</div></div>'+'<div class="di"><div class="l">总还款金额</div><div class="v">¥'+fmt(amort.totalPmt)+'</div></div>'+'<div class="di"><div class="l">总偿还利息</div><div class="v r">¥'+fmt(amort.totalInt)+'</div></div>'+'<div class="di"><div class="l">总偿还本金</div><div class="v g">¥'+fmt(amort.totalPrin)+'</div></div>';
+    if(isCombined){
+      ttHTML+='<div class="di fw" style="margin-top:8px;background:#f0f7ff;border:1px solid #dbeafe"><div class="l">🧧 公积金部分</div><div class="v" style="font-size:13px">总还款 ¥'+fmt(fundAmort.totalPmt)+' · 利息 ¥'+fmt(fundAmort.totalInt)+' · 本金 ¥'+fmt(fundAmort.totalPrin)+'</div></div>'+'<div class="di fw" style="background:#fefce8;border:1px solid #fef08a"><div class="l">🏦 商贷部分</div><div class="v" style="font-size:13px">总还款 ¥'+fmt(commAmort.totalPmt)+' · 利息 ¥'+fmt(commAmort.totalInt)+' · 本金 ¥'+fmt(commAmort.totalPrin)+'</div></div>';
+    }
+    document.getElementById('termTotals').innerHTML=ttHTML;
+    // Add annual split table for combined loans
+    if(isCombined){
+      document.getElementById('amortTable').insertAdjacentHTML('afterend','<div class="split-label">🧧 公积金年度明细</div><div class="at-wrap"><table class="at"><tr><th>年份</th><th>年还款</th><th>年还本</th><th>年还息</th><th>剩余本金</th></tr>'+
+        fundAmort.annual.map(a=>'<tr><td>第'+a.year+'年</td><td>¥'+fmt(a.payment)+'</td><td style="color:var(--positive)">¥'+fmt(a.principal)+'</td><td style="color:var(--negative)">¥'+fmt(a.interest)+'</td><td>¥'+fmt(a.balance)+'</td></tr>').join('')+'<tr class="tot"><td>总计</td><td>¥'+fmt(fundAmort.totalPmt)+'</td><td style="color:var(--positive)">¥'+fmt(fundAmort.totalPrin)+'</td><td style="color:var(--negative)">¥'+fmt(fundAmort.totalInt)+'</td><td>—</td></tr></table></div>'+'<div class="split-label" style="margin-top:8px">🏦 商贷年度明细</div><div class="at-wrap"><table class="at"><tr><th>年份</th><th>年还款</th><th>年还本</th><th>年还息</th><th>剩余本金</th></tr>'+
+        commAmort.annual.map(a=>'<tr><td>第'+a.year+'年</td><td>¥'+fmt(a.payment)+'</td><td style="color:var(--positive)">¥'+fmt(a.principal)+'</td><td style="color:var(--negative)">¥'+fmt(a.interest)+'</td><td>¥'+fmt(a.balance)+'</td></tr>').join('')+'<tr class="tot"><td>总计</td><td>¥'+fmt(commAmort.totalPmt)+'</td><td style="color:var(--positive)">¥'+fmt(commAmort.totalPrin)+'</td><td style="color:var(--negative)">¥'+fmt(commAmort.totalInt)+'</td><td>—</td></tr></table></div>');
+    }
   }else as.style.display='none';
 
+  // Static ROI
   const sDiv=document.getElementById('staticROI');
-  sDiv.innerHTML='<div class="di fw"><div class="l">年净租金收入</div><div class="v'+(annualNetRent>=0?' g':' r')+'">¥'+fmt(annualNetRent)+'</div></div><div class="di"><div class="l">静态年化租金回报率</div><div class="v'+(staticROI>=0?' g':' r')+'">'+(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%</div></div><div class="di"><div class="l">租售比</div><div class="v">1:'+(rentSaleRatio>0?Math.round(1/rentSaleRatio):'—')+'</div></div><div class="di"><div class="l">静态回本周期</div><div class="v">'+(paybackYears>0?paybackYears.toFixed(1)+'年':'—')+'</div></div><div class="di"><div class="l">单位面积价格</div><div class="v">'+(unitPrice>0?fmt(unitPrice)+'/㎡':'—')+'</div></div>';
-  document.getElementById('staticNote').innerHTML='🌍 国际租售比参考：1:200~1:300合理 · 1:300+偏低（房价偏高）<br>📌 静态回报率只看房子本身赚不赚钱，和贷款方式无关';
+  sDiv.innerHTML='<div class="di fw"><div class="l">年净租金收入</div><div class="v'+(annNetRent>=0?' g':' r')+'">¥'+fmt(annNetRent)+'</div></div>'+'<div class="di"><div class="l">静态年化租金回报率</div><div class="v'+(staticROI>=0?' g':' r')+'">'+(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%</div></div>'+'<div class="di"><div class="l">租售比</div><div class="v">1:'+(rentSaleRatio>0?Math.round(1/rentSaleRatio):'—')+'</div></div>'+'<div class="di"><div class="l">静态回本周期</div><div class="v">'+(paybackYrs>0?paybackYrs.toFixed(1)+'年':'—')+'</div></div>'+'<div class="di"><div class="l">单位面积价格</div><div class="v">'+(unitPrice>0?fmt(unitPrice)+'/㎡':'—')+'</div></div>';
+  document.getElementById('staticNote').innerHTML='🌍 国际租售比参考：1:200~1:300合理 · 1:300+偏低（房价偏高）';
 
+  // Dynamic ROI
   const dDiv=document.getElementById('dynamicROI');
-  dDiv.innerHTML='<div class="di fw"><div class="l">真实初始自有资金总投入</div><div class="v">¥'+fmt(initialInv)+'</div></div><div class="di fw"><div class="l">每月真实净现金流<span class="tag" style="background:#e8f0fe;color:#2563eb">租金-物业-利息</span></div><div class="v'+(trueMonthlyCashflow>=0?' g':' r')+'">¥'+fmt(trueMonthlyCashflow)+'</div></div><div class="di"><div class="l">持有'+holdY+'年IRR<span class="tag" style="background:#d1fae5;color:#059669">核心指标</span></div><div class="v'+(irrPct!==null&&irrPct>=0?' g':' r')+'">'+(irrPct!==null?(irrPct>=0?'+':'')+irrPct.toFixed(2)+'%':'—')+'</div></div><div class="di"><div class="l">年化现金回报率</div><div class="v'+(initialInv>0?(trueAnnualCashflow/initialInv*100>=0?' g':' r'):'')+'">'+(initialInv>0?((trueAnnualCashflow/initialInv*100)>=0?'+':'')+(trueAnnualCashflow/initialInv*100).toFixed(2)+'%':'—')+'</div></div><div class="di"><div class="l">首付杠杆率</div><div class="v">'+(leverage>0?leverage.toFixed(2)+'倍':'—')+'</div></div><div class="di"><div class="l">资产负债率</div><div class="v'+(debtRatio>70?' r':'')+'">'+debtRatio.toFixed(1)+'%</div></div><div class="di fw"><div class="l">年现金流覆盖倍数</div><div class="v'+(coverage>=1?' g':' r')+'">'+(coverage>0?coverage.toFixed(2)+'倍':'—')+'</div></div>';
-  document.getElementById('dynamicNote').innerHTML=(annualIntArray.length>0?'📌 第1年还息¥'+fmt(annualIntArray[0])+' · ':'')+'IRR基于持有'+holdY+'年、期末回收初始投入测算<br>📌 IRR'+(irrPct!==null?'≥'+irrPct.toFixed(1):'…')+'%，代表你的钱每年有'+(irrPct!==null?irrPct.toFixed(1)+'%':'…')+'的真实回报';
+  const irrClass=irrPct!==null&&irrPct>=0?' g':' r';
+  const roiClass=initInv>0?(totalROI>=0?' g':' r'):'';
+  dDiv.innerHTML='<div class="di fw"><div class="l">真实初始自有资金总投入</div><div class="v">¥'+fmt(initInv)+'<div style="font-size:10px;color:var(--note-c);font-weight:400;margin-top:2px">* 买这套房时，你一次性自掏腰包的全部资金——首付、契税、中介费、装修费、家具家电等所有前期花费</div></div></div>'+'<div class="di fw"><div class="l">每月真实净现金流<span class="tag" style="background:#e8f0fe;color:#2563eb">租金-还贷-物业</span></div><div class="v'+(trueMonCF>=0?' g':' r')+'">¥'+fmt(trueMonCF)+'<div style="font-size:10px;color:var(--note-c);font-weight:400;margin-top:2px">* 每月实际收支差额 = 月租金 − 月还贷 − 物业费等持有成本。正数每月赚钱，负数每月贴钱</div></div></div>'+'<div class="di"><div class="l">自有资金最终总回报率</div><div class="v'+roiClass+'">'+(initInv>0?(totalROI>=0?'+':'')+totalROI.toFixed(2)+'%':'—')+'<div style="font-size:10px;color:var(--note-c);font-weight:400;margin-top:2px">* 总盈利 ÷ 初始投入本金，得出这笔投资的总回报率</div></div></div>'+'<div class="di"><div class="l">年化IRR（内部收益率）<span class="tag" style="background:#d1fae5;color:#059669">核心指标</span></div><div class="v'+irrClass+'">'+(irrPct!==null?(irrPct>=0?'+':'')+irrPct.toFixed(2)+'%':'—')+'<div style="font-size:10px;color:var(--note-c);font-weight:400;margin-top:2px">* 考虑资金时间成本的真实年化收益，可直接对比银行理财、基金年化</div></div></div>'+'<div class="di"><div class="l">首付杠杆率</div><div class="v">'+(leverage>0?leverage.toFixed(2)+'倍':'—')+'</div></div>'+'<div class="di"><div class="l">资产负债率</div><div class="v'+(debtRatio>70?' r':'')+'">'+debtRatio.toFixed(1)+'%</div></div>'+'<div class="di fw"><div class="l">年现金流覆盖倍数</div><div class="v'+(coverage>=1?' g':' r')+'">'+(coverage>0?coverage.toFixed(2)+'倍':'—')+'</div></div>';
+  const saleNote=salePriceW>0?'（基于你输入的出售到手价 '+salePriceW.toFixed(0)+'万）':'（按原价卖出、还清贷款计算）';
+  document.getElementById('dynamicNote').innerHTML=(annIntArr.length>0?'📌 第1年还息¥'+fmt(annIntArr[0])+' · ':'')+'IRR基于持有'+holdY+'年计算'+saleNote;
 
+  // ROI display card
   const roiEl=document.getElementById('roiDisplay');
-  if(!roiEl){const rcDiv=document.createElement('div');rcDiv.className='rc';rcDiv.innerHTML='<div class="rl">房产静态年化租金回报率</div><div class="rn" id="roiDisplay">—</div><div class="rs">年净租金 ÷ 房屋总价 · 和贷款无关</div>';const holdEl=document.getElementById('holdYears');const secRef=holdEl?holdEl.closest('.sec'):null;if(secRef){const stEl=secRef.querySelector('.st');if(stEl) stEl.after(rcDiv)}}
-  const roiEl2=document.getElementById('roiDisplay');
-  if(roiEl2){if(price>0||rent>0){const sg=staticROI>=0?'+':'';roiEl2.textContent=sg+staticROI.toFixed(2)+'%';roiEl2.className='rn'+(staticROI>=0?' g':' r')}else{roiEl2.textContent='—';roiEl2.className='rn'}}
+  if(!roiEl){const rcDiv=document.createElement('div');rcDiv.className='rc';rcDiv.innerHTML='<div class="rl">静态年化租金回报率</div><div class="rn" id="roiDisplay">—</div><div class="rs">年净租金 ÷ 房屋总价</div>';const he=document.getElementById('holdYears');const sr=he?he.closest('.sec'):null;if(sr){const stEl=sr.querySelector('.st');if(stEl)stEl.after(rcDiv)}}
+  const roiEl2=document.getElementById('roiDisplay');if(roiEl2){if(price>0||rent>0){const sg=staticROI>=0?'+':'';roiEl2.textContent=sg+staticROI.toFixed(2)+'%';roiEl2.className='rn'+(staticROI>=0?' g':' r')}else{roiEl2.textContent='—';roiEl2.className='rn'}}
 
   try{calcScore()}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">请刷新页面后重试</div></div>'}
 }
 
-// ═══ Scoring System ═══
+// ═══ Scoring (unchanged) ═══
 function calcScore(){
 try{
-  const dp=parseFloat(document.getElementById('downPmt').value)||0;
-  const priceW=parseFloat(document.getElementById('price').value)||0;
-  const loanW=Math.max(0,priceW-dp);
-  const rent=parseFloat(document.getElementById('rent').value)||0;
-  const mgmt=parseFloat(document.getElementById('mgmt').value)||0;
-  const hy=document.getElementById('houseYears').value;
-  const pc=document.getElementById('purchaseCount').value;
-  const ow=document.getElementById('ownership').value;
-  const pt=document.getElementById('propertyType').value;
-  const ls=document.getElementById('legalStatus').value;
-  const sc=document.getElementById('schoolDistrict').value;
-  const md=document.getElementById('metroDist').value;
-  const lf=document.getElementById('lifeSupport').value;
-  const be=document.getElementById('buildEra').value;
-  const da=document.getElementById('dealActivity').value;
-  const pd=document.getElementById('priceTrend').value;
-  const lc=document.getElementById('listingCount').value;
+  const dp=parseFloat(document.getElementById('downPmt').value)||0,pw=parseFloat(document.getElementById('price').value)||0,lw=Math.max(0,pw-dp),rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0;
+  const hy=document.getElementById('houseYears').value,pc=document.getElementById('purchaseCount').value,ow=document.getElementById('ownership').value,pt=document.getElementById('propertyType').value,ls=document.getElementById('legalStatus').value,sc=document.getElementById('schoolDistrict').value,md=document.getElementById('metroDist').value,lf=document.getElementById('lifeSupport').value,be=document.getElementById('buildEra').value,da=document.getElementById('dealActivity').value,pd=document.getElementById('priceTrend').value,lc=document.getElementById('listingCount').value,dr=document.getElementById('downRatio').value;
   const defs=[document.getElementById('defNoise').checked,document.getElementById('defTop').checked,document.getElementById('defGround').checked,document.getElementById('defDark').checked,document.getElementById('defOther').checked];
-  const dr=document.getElementById('downRatio').value;
-
-  const isVeto=pt==='restricted'||ls==='dispute';
-  const vetoReason=[];
-  if(pt==='restricted') vetoReason.push('房产为限制交易类，无上市资格');
-  if(ls==='dispute') vetoReason.push('房产存在查封/抵押未解押/法律纠纷');
   const isVetoed=pt==='restricted'||ls==='dispute';
+  const vetoReason=[];if(pt==='restricted')vetoReason.push('限制交易类');if(ls==='dispute')vetoReason.push('查封/纠纷');
+  const lt=document.getElementById('loanType').value,ly=parseInt(document.getElementById('loanYears').value)||0,m=ly*12,method=document.getElementById('repayMethod').value;
+  let mpv=0;if(lt==='commercial'){const a=parseFloat(document.getElementById('commAmt').value)||0,r=parseFloat(document.getElementById('commRate').value)||0;mpv=calcMonthlyPmt(a,r,m)}else if(lt==='fund'){const a=parseFloat(document.getElementById('fundAmt').value)||0,r=parseFloat(document.getElementById('fundRate').value)||0;mpv=calcMonthlyPmt(a,r,m)}else if(lt==='combined'){const fa=parseFloat(document.getElementById('combFundAmt').value)||0,fr=parseFloat(document.getElementById('combFundRate').value)||0,ca=parseFloat(document.getElementById('combCommAmt').value)||0,cr=parseFloat(document.getElementById('combCommRate').value)||0;mpv=calcMonthlyPmt(fa,fr,m)+calcMonthlyPmt(ca,cr,m)}
 
-  const lt=document.getElementById('loanType').value,ly=parseInt(document.getElementById('loanYears').value)||0,m=ly*12;
-  const method=document.getElementById('repayMethod').value;
-  let monthlyPmtVal=0;
-  if(lt==='commercial'){const amt=parseFloat(document.getElementById('commAmt').value)||0;const rate=parseFloat(document.getElementById('commRate').value)||0;monthlyPmtVal=calcMonthlyPmt(amt,rate,m)}
-  else if(lt==='fund'){const amt=parseFloat(document.getElementById('fundAmt').value)||0;const rate=parseFloat(document.getElementById('fundRate').value)||0;monthlyPmtVal=calcMonthlyPmt(amt,rate,m)}
-  else if(lt==='combined'){const fa=parseFloat(document.getElementById('combFundAmt').value)||0,fr=parseFloat(document.getElementById('combFundRate').value)||0,ca=parseFloat(document.getElementById('combCommAmt').value)||0,cr=parseFloat(document.getElementById('combCommRate').value)||0;monthlyPmtVal=calcMonthlyPmt(fa,fr,m)+calcMonthlyPmt(ca,cr,m)}
+  const irrVal=irrRate();let s1a=0,s1aN='';if(irrVal!==null){if(irrVal>8){s1a=15;s1aN='IRR '+irrVal.toFixed(1)+'%，≥8%，满分'}else if(irrVal>=6){s1a=12;s1aN='IRR '+irrVal.toFixed(1)+'%，6-8%'}else if(irrVal>=4){s1a=9;s1aN='IRR '+irrVal.toFixed(1)+'%，4-6%'}else if(irrVal>=2){s1a=4;s1aN='IRR '+irrVal.toFixed(1)+'%，2-4%'}else{s1a=0;s1aN='IRR '+irrVal.toFixed(1)+'%，<2%'}}else s1aN='缺少贷款/租金数据';
+  let rv=0,s1b=0,s1bN='';if(mpv>0){rv=rent/mpv*100;if(rv>120){s1b=10;s1bN='覆盖比'+rv.toFixed(0)+'%，≥120%'}else if(rv>=100){s1b=8;s1bN='覆盖比'+rv.toFixed(0)+'%，100-120%'}else if(rv>=80){s1b=5;s1bN='覆盖比'+rv.toFixed(0)+'%，80-100%'}else{s1b=0;s1bN='覆盖比'+rv.toFixed(0)+'%，<80%'}}else s1bN='缺少月供或租金';
+  let s1c=0,s1cN='';const rn=parseFloat(dr)||0;if(dr&&pc){if(pc==='first'){if(rn>=20&&rn<=40){s1c=5;s1cN='首套首付'+rn+'%，合理'}else if((rn>=15&&rn<20)||(rn>40&&rn<=60)){s1c=3;s1cN='首套首付'+rn+'%，偏离'}else{s1c=0;s1cN='首套首付'+rn+'%，极端杠杆'}}else{if(rn>=40&&rn<=60){s1c=5;s1cN='二套首付'+rn+'%，合理'}else if((rn>=30&&rn<40)||(rn>60&&rn<=80)){s1c=3;s1cN='二套首付'+rn+'%，偏离'}else{s1c=0;s1cN='二套首付'+rn+'%，极端杠杆'}}}else s1cN='缺少首付比例或购房套数';const c1=s1a+s1b+s1c,c1M=30;
 
-  const irrVal=irrRate();let score1a=0;let score1aNote='';
-  if(irrVal!==null){
-    if(irrVal>8){score1a=15;score1aNote='IRR '+irrVal.toFixed(1)+'%，超过8%，满分'}
-    else if(irrVal>=6){score1a=12;score1aNote='IRR '+irrVal.toFixed(1)+'%，在6%-8%之间，12分'}
-    else if(irrVal>=4){score1a=9;score1aNote='IRR '+irrVal.toFixed(1)+'%，在4%-6%之间，9分'}
-    else if(irrVal>=2){score1a=4;score1aNote='IRR '+irrVal.toFixed(1)+'%，在2%-4%之间，4分'}
-    else{score1a=0;score1aNote='IRR '+irrVal.toFixed(1)+'%，低于2%，0分'}
-  }else{score1aNote='缺少贷款/租金数据，无法计算IRR'}
-  let ratioVal=0;let score1b=0;let score1bNote='';
-  if(monthlyPmtVal>0){ratioVal=rent/monthlyPmtVal*100;
-    if(ratioVal>120){score1b=10;score1bNote='覆盖比'+ratioVal.toFixed(0)+'%，超过120%，满分'}
-    else if(ratioVal>=100){score1b=8;score1bNote='覆盖比'+ratioVal.toFixed(0)+'%，在100%-120%之间，8分'}
-    else if(ratioVal>=80){score1b=5;score1bNote='覆盖比'+ratioVal.toFixed(0)+'%，在80%-100%之间，5分'}
-    else{score1b=0;score1bNote='覆盖比'+ratioVal.toFixed(0)+'%，低于80%，0分'}
-  }else{score1bNote='缺少月供或租金数据'}
-  let score1c=0;let score1cNote='';
-  const ratioNum=parseFloat(dr)||0;
-  if(dr&&pc){
-    if(pc==='first'){
-      if(ratioNum>=20&&ratioNum<=40){score1c=5;score1cNote='首套首付'+ratioNum+'%，在合理区间20%-40%'}
-      else if((ratioNum>=15&&ratioNum<20)||(ratioNum>40&&ratioNum<=60)){score1c=3;score1cNote='首套首付'+ratioNum+'%，偏离最佳区间'}
-      else{score1c=0;score1cNote='首套首付'+ratioNum+'%，极端高/低杠杆'}
-    }else{
-      if(ratioNum>=40&&ratioNum<=60){score1c=5;score1cNote='二套首付'+ratioNum+'%，在合理区间40%-60%'}
-      else if((ratioNum>=30&&ratioNum<40)||(ratioNum>60&&ratioNum<=80)){score1c=3;score1cNote='二套首付'+ratioNum+'%，偏离最佳区间'}
-      else{score1c=0;score1cNote='二套首付'+ratioNum+'%，极端高/低杠杆'}
-    }
-  }else{score1cNote='缺少首付比例或购房套数'}
-  const cat1=score1a+score1b+score1c;const cat1Max=30;
-
-  let score2a=0;let score2aNote='';
-  if(hy==='5only'){score2a=10;score2aNote='满5年唯一住房，税费最低，满分'}
-  else if(hy==='5notOnly'){score2a=7;score2aNote='满5年不唯一，需缴个税，7分'}
-  else if(hy==='2to5'){score2a=4;score2aNote='满2年不满5年，税费较高，4分'}
-  else if(hy==='lt2'){score2a=0;score2aNote='不满2年，增值税高，0分'}
-  else score2aNote='请选择房本年限';
-  let score2b=0;let score2bNote='';
-  if(pt==='commercial'){score2b=8;score2bNote='普通商品房，上市交易无障碍'}
-  else if(pt==='civic'){score2b=5;score2bNote='可正常上市央产房/公房，需补缴手续'}
-  else if(pt==='otherOK'){score2b=3;score2bNote='其他合规可交易类'}
-  else score2bNote='请选择产权性质';
-  let score2c=0;let score2cNote='';
-  const hasDispute=ls==='dispute';
-  if(hasDispute){score2c=0;score2cNote='存在产权纠纷/查封，0分'}
-  else if(ow==='sole'||ow==='joint'){score2c=7;score2cNote='单独所有或夫妻共有无纠纷，清晰'}
-  else if(ow==='multiple'){score2c=4;score2cNote='多人共有，需各方同意'}
-  else score2cNote='请选择产权情况';
-  const cat2=score2a+score2b+score2c;const cat2Max=25;
-
-  let score3a=0;let score3aNote='';
-  if(sc==='key'){score3a=8;score3aNote='东西海朝重点学区，稀缺资源'}
-  else if(sc==='normal'){score3a=5;score3aNote='普通公立学区'}
-  else if(sc==='none'){score3a=2;score3aNote='无明确划片学区'}
-  else score3aNote='请选择学区配套';
-  let score3b=0;let score3bNote='';
-  if(md==='near'){score3b=6;score3bNote='地铁1公里内，出行便利'}
-  else if(md==='mid'){score3b=3;score3bNote='地铁1-2公里，步行偏远'}
-  else if(md==='far'){score3b=0;score3bNote='地铁2公里以上，交通不便'}
-  else score3bNote='请选择地铁距离';
-  let score3c=0;let score3cNote='';
-  if(lf==='good'){score3c=6;score3cNote='1公里内成熟配套，生活便利'}
-  else if(lf==='poor'){score3c=3;score3cNote='配套不完善'}
-  else if(lf==='none'){score3c=0;score3cNote='无基础配套，生活不便'}
-  else score3cNote='请选择生活配套';
-  const cat3=score3a+score3b+score3c;const cat3Max=20;
-
-  let score4a=0;let score4aNote='';
-  if(da==='hot'){score4a=6;score4aNote='成交≥5套，活跃度高'}
-  else if(da==='warm'){score4a=4;score4aNote='成交3-4套'}
-  else if(da==='cold'){score4a=2;score4aNote='成交1-2套，流动性偏低'}
-  else if(da==='none'){score4a=0;score4aNote='0成交，很难出手'}
-  else score4aNote='请选择成交活跃度';
-  let score4b=0;let score4bNote='';
-  if(pd==='up'){score4b=5;score4bNote='片区价格上涨或持平'}
-  else if(pd==='down5'){score4b=3;score4bNote='下跌5%以内，小幅回调'}
-  else if(pd==='downMore'){score4b=0;score4bNote='下跌5%以上，风险较大'}
-  else score4bNote='请选择价格走势';
-  let score4c=0;let score4cNote='';
-  if(lc==='low'){score4c=4;score4cNote='挂牌少于5套，竞争少'}
-  else if(lc==='mid'){score4c=2;score4cNote='挂牌5-10套，竞争适中'}
-  else if(lc==='high'){score4c=0;score4cNote='挂牌多于10套，竞品多'}
-  else score4cNote='请选择挂牌量';
-  const cat4=score4a+score4b+score4c;const cat4Max=15;
-
-  let score5a=0;let score5aNote='';
-  if(be==='new'){score5a=4;score5aNote='2000年后建成，楼龄新'}
-  else if(be==='mid'){score5a=2;score5aNote='1990-2000年建成，楼龄偏老'}
-  else if(be==='old'){score5a=0;score5aNote='1990年前建成，楼龄很老'}
-  else score5aNote='请选择建筑楼龄';
-  let defCount=defs.filter(Boolean).length;
-  let score5b=Math.max(0,6-defCount*2);let score5bNote='';
-  if(defCount===0) score5bNote='无硬伤，满分';
-  else score5bNote='存在'+defCount+'项硬伤（每项扣2分），得'+score5b+'分';
-  if(!be&&!defs.some(Boolean)){score5bNote='';score5b=0}
-  const cat5=score5a+score5b;const cat5Max=10;
-
-  const totalScore=cat1+cat2+cat3+cat4+cat5;
-
-  const debtRatioVal=priceW>0?loanW/priceW*100:0;
-  const coverageVal=monthlyPmtVal>0?(rent-mgmt)*12/(monthlyPmtVal*12):0;
-
-  let grade='',gradeClass='';
-  if(isVetoed){grade='⚠️ 不建议入手（一票否决）';gradeClass='sc-veto'}
-  else if(totalScore>=85){grade='🏆 强烈推荐';gradeClass='sc-s'}
-  else if(totalScore>=70){grade='✅ 可入手';gradeClass='sc-a'}
-  else if(totalScore>=50){grade='⚠️ 谨慎购买';gradeClass='sc-b'}
-  else{grade='❌ 不建议入手';gradeClass='sc-c'}
-
-  const advantages=[],risks=[],hints=[];
-  if(cat1>=24) advantages.push('财务健康度高，自有资金收益好');
-  if(score2a===10) advantages.push('满五唯一税费低，交易成本控制得好');
-  if(cat3>=16) advantages.push('地段配套好，生活品质有保障');
-  if(cat4>=12) advantages.push('资产流动性好，未来出手方便');
-  if(score5a===4&&defCount===0) advantages.push('楼龄新且无硬伤，居住品质好');
-  if(irrVal!==null&&irrVal>6) advantages.push('持有'+document.getElementById('holdYears').value+'年IRR达'+irrVal.toFixed(1)+'%，投资收益不错');
-
-  if(hy==='lt2') risks.push('不满2年增值税高（达5.3%），建议协商税费承担方式');
-  if(score2a<=4) risks.push('房本年限较短，税费偏高，增加购房成本');
-  if(cat4<8) risks.push('流动性较差，未来转手可能不太顺利');
-  if(debtRatioVal>70) risks.push('资产负债率'+debtRatioVal.toFixed(0)+'%，财务杠杆偏高');
-  if(coverageVal<1) risks.push('现金流覆盖倍数'+coverageVal.toFixed(2)+'倍，租金不够还月供');
-  if(score3b<=0) risks.push('距地铁较远，出行需要依赖其他交通方式');
-  if(ratioVal>0&&ratioVal<80) risks.push('租金覆盖月供不足80%，每月需要贴钱还贷');
-  if(defCount>0) risks.push('存在'+defCount+'项房源硬伤，影响居住体验和转手价值');
-
-  if(hy==='lt2') hints.push('⚠️ 不满2年税费高：增值税5.3%+个税1%+契税，建议和卖家协商税费承担');
-  if(score1a===0&&irrVal!==null) hints.push('💡 自有资金回报率偏低，建议重新评估贷款方案或租金预期');
-  if(ratioVal>0&&ratioVal<100) hints.push('💡 月供覆盖比'+ratioVal.toFixed(0)+'%，租金<月供，建议提高首付降低月供');
-  if(lc==='high') hints.push('💡 同户型挂牌多于10套，竞品较多，议价空间可能较大');
-  if(!advantages.length) hints.push('📌 该房源各项指标较普通，建议多对比同片区其他房源');
-
-  const scDiv=document.getElementById('scoreContent');
-  let vetoHTML='';
-  if(isVetoed){
-    vetoHTML='<div class="va"><div class="vat">🚫 一票否决</div><div class="vad">'+vetoReason.join('；')+'，该房源无法正常交易，强制0分</div></div>';
-  }
-  const gradeName={commercial:'普通商品房',civic:'可上市央产房/公房',otherOK:'其他合规可交易',restricted:'限制交易类'}[pt]||'未选';
-  const scNamePl={key:'东西海朝重点学区',normal:'普通公立学区',none:'无明确划片'}[sc]||'未选';
-
-  scDiv.innerHTML=(isVetoed?vetoHTML:'')+
-    '<div class="sc '+gradeClass+'"><div class="slabel">房源综合评分</div><div class="snum">'+(isVetoed?0:totalScore)+'</div><div class="sgrade">'+grade+'</div>'+(isVetoed?'<div class="sveto">一票否决 · 总分0分</div>':'')+'</div>'+
-    '<div style="margin-top:12px">'+
-    '<div class="sd"><div class="sdt"><span class="sdn">① 财务健康度（满分'+cat1Max+'分）</span><span class="sdv'+(cat1>=24?' g':cat1>=18?' y':' r')+'">'+cat1+'分</span></div><div class="sdb"><div class="sdf" style="width:'+(cat1/cat1Max*100)+'%;background:'+(cat1>=24?'#059669':cat1>=18?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• IRR回报率：'+score1a+'/15分 — '+score1aNote+'</div><div class="sdnote">• 现金流覆盖比：'+score1b+'/10分 — '+score1bNote+'</div><div class="sdnote">• 首付杠杆：'+score1c+'/5分 — '+score1cNote+'</div></div>'+
-    '<div class="sd"><div class="sdt"><span class="sdn">② 产权与交易合规性（满分'+cat2Max+'分）</span><span class="sdv'+(cat2>=20?' g':cat2>=15?' y':' r')+'">'+cat2+'分</span></div><div class="sdb"><div class="sdf" style="width:'+(cat2/cat2Max*100)+'%;background:'+(cat2>=20?'#059669':cat2>=15?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 房本年限：'+score2a+'/10分 — '+score2aNote+'</div><div class="sdnote">• 产权性质（'+gradeName+'）：'+score2b+'/8分 — '+score2bNote+'</div><div class="sdnote">• 产权清晰度：'+score2c+'/7分 — '+score2cNote+'</div></div>'+
-    '<div class="sd"><div class="sdt"><span class="sdn">③ 配套与稀缺性（满分'+cat3Max+'分）</span><span class="sdv'+(cat3>=16?' g':cat3>=12?' y':' r')+'">'+cat3+'分</span></div><div class="sdb"><div class="sdf" style="width:'+(cat3/cat3Max*100)+'%;background:'+(cat3>=16?'#059669':cat3>=12?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 学区（'+scNamePl+'）：'+score3a+'/8分 — '+score3aNote+'</div><div class="sdnote">• 交通：'+score3b+'/6分 — '+score3bNote+'</div><div class="sdnote">• 生活配套：'+score3c+'/6分 — '+score3cNote+'</div></div>'+
-    '<div class="sd"><div class="sdt"><span class="sdn">④ 资产流动性（满分'+cat4Max+'分）</span><span class="sdv'+(cat4>=12?' g':cat4>=8?' y':' r')+'">'+cat4+'分</span></div><div class="sdb"><div class="sdf" style="width:'+(cat4/cat4Max*100)+'%;background:'+(cat4>=12?'#059669':cat4>=8?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 成交活跃度：'+score4a+'/6分 — '+score4aNote+'</div><div class="sdnote">• 价格走势：'+score4b+'/5分 — '+score4bNote+'</div><div class="sdnote">• 同户型挂牌量：'+score4c+'/4分 — '+score4cNote+'</div></div>'+
-    '<div class="sd"><div class="sdt"><span class="sdn">⑤ 房源硬伤与风险（满分'+cat5Max+'分）</span><span class="sdv'+(cat5>=8?' g':cat5>=5?' y':' r')+'">'+cat5+'分</span></div><div class="sdb"><div class="sdf" style="width:'+(cat5/cat5Max*100)+'%;background:'+(cat5>=8?'#059669':cat5>=5?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 楼龄：'+score5a+'/4分 — '+score5aNote+'</div><div class="sdnote">• 硬伤：'+score5b+'/6分 — '+score5bNote+'</div></div></div>'+
-    (advantages.length>0||risks.length>0||hints.length>0?'<div class="stips">':'')+
-    (advantages.length>0?'<div class="tip tip-adv"><div class="tt">✅ 核心优势</div>'+advantages.map(a=>'<div class="td">• '+a+'</div>').join('')+'</div>':'')+
-    (risks.length>0?'<div class="tip tip-risk"><div class="tt">⚠️ 核心风险</div>'+risks.map(r=>'<div class="td">• '+r+'</div>').join('')+'</div>':'')+
-    (hints.length>0?'<div class="tip tip-hint"><div class="tt">💡 基础提醒</div>'+hints.map(h=>'<div class="td">• '+h+'</div>').join('')+'</div>':'')+
-    (advantages.length>0||risks.length>0||hints.length>0?'</div>':'');
-}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">请刷新页面后重试</div></div>'}
-}
+  let s2a=0,s2aN='';if(hy==='5only'){s2a=10;s2aN='满五唯一'}else if(hy==='5notOnly'){s2a=7;s2aN='满五不唯一'}else if(hy==='2to5'){s2a=4;s2aN='满2不满5'}else if(hy==='lt2'){s2a=0;s2aN='不满2年'}else s2aN='请选房本年限';
+  let s2b=0,s2bN='';if(pt==='commercial'){s2b=8;s2bN='普通商品房'}else if(pt==='civic'){s2b=5;s2bN='央产/公房'}else if(pt==='otherOK'){s2b=3;s2bN='其他合规'}else s2bN='请选产权性质';
+  let s2c=0,s2cN='';if(ls==='dispute'){s2c=0;s2cN='有纠纷'}else if(ow==='sole'||ow==='joint'){s2c=7;s2cN='产权清晰'}else if(ow==='multiple'){s2c=4;s2cN='多人共有'}else s2cN='请选产权情况';const c2=s2a+s2b+s2c,c2M=25;
+  let s3a=0,s3aN='';if(sc==='key'){s3a=8;s3aN='重点学区'}else if(sc==='normal'){s3a=5;s3aN='普通学区'}else if(sc==='none'){s3a=2;s3aN='无划片'}else s3aN='请选学区';
+  let s3b=0,s3bN='';if(md==='near'){s3b=6;s3bN='地铁1km内'}else if(md==='mid'){s3b=3;s3bN='1-2km'}else if(md==='far'){s3b=0;s3bN='>2km'}else s3bN='请选地铁';
+  let s3c=0,s3cN='';if(lf==='good'){s3c=6;s3cN='配套成熟'}else if(lf==='poor'){s3c=3;s3cN='不完善'}else if(lf==='none'){s3c=0;s3cN='无配套'}else s3cN='请选配套';const c3=s3a+s3b+s3c,c3M=20;
+  let s4a=0,s4aN='';if(da==='hot'){s4a=6;s4aN='成交≥5套'}else if(da==='warm'){s4a=4;s4aN='3-4套'}else if(da==='cold'){s4a=2;s4aN='1-2套'}else if(da==='none'){s4a=0;s4aN='0成交'}else s4aN='请选成交';
+  let s4b=0,s4bN='';if(pd==='up'){s4b=5;s4bN='上涨/持平'}else if(pd==='down5'){s4b=3;s4bN='跌≤5%'}else if(pd==='downMore'){s4b=0;s4bN='跌>5%'}else s4bN='请选走势';
+  let s4c=0,s4cN='';if(lc==='low'){s4c=4;s4cN='<5套'}else if(lc==='mid'){s4c=2;s4cN='5-10套'}else if(lc==='high'){s4c=0;s4cN='>10套'}else s4cN='请选挂牌';const c4=s4a+s4b+s4c,c4M=15;
+  let s5a=0,s5aN='';if(be==='new'){s5a=4;s5aN='2000年后'}else if(be==='mid'){s5a=2;s5aN='1990-2000'}else if(be==='old'){s5a=0;s5aN='1990年前'}else s5aN='请选楼龄';
+  let dc=defs.filter(Boolean).length,s5b=Math.max(0,6-dc*2),s5bN='';if(dc===0)s5bN='无硬伤';else s5bN=dc+'项硬伤';if(!be&&!defs.some(Boolean)){s5bN='';s5b=0}const c5=s5a+s5b,c5M=10;
+  const totalScore=c1+c2+c3+c4+c5,drv=pw>0?lw/pw*100:0,cv=mpv>0?(rent-mgmt)*12/(mpv*12):0;
+  let grade='',gc='';if(isVetoed){grade='⚠️ 不建议入手（一票否决）';gc='sc-veto'}else if(totalScore>=85){grade='🏆 强烈推荐';gc='sc-s'}else if(totalScore>=70){grade='✅ 可入手';gc='sc-a'}else if(totalScore>=50){grade='⚠️ 谨慎购买';gc='sc-b'}else{grade='❌ 不建议入手';gc='sc-c'}
+  const adv=[],risks=[],hints=[];if(c1>=24)adv.push('财务健康度高');if(s2a===10)adv.push('满五唯一税费低');if(c3>=16)adv.push('地段配套好');if(c4>=12)adv.push('流动性好');if(s5a===4&&dc===0)adv.push('楼龄新且无硬伤');if(irrVal!==null&&irrVal>6)adv.push('IRR达'+irrVal.toFixed(1)+'%');
+  if(hy==='lt2')risks.push('不满2年增值税高(5.3%)');if(s2a<=4)risks.push('房本年限短、税费高');if(c4<8)risks.push('流动性差');if(drv>70)risks.push('资产负债率'+drv.toFixed(0)+'%');if(cv<1)risks.push('租金不够还月供');if(s3b<=0)risks.push('地铁远');if(rv>0&&rv<80)risks.push('覆盖月供不足80%');if(dc>0)risks.push(dc+'项硬伤');
+  if(hy==='lt2')hints.push('税费高，建议协商税费承担');if(s1a===0&&irrVal!==null)hints.push('回报率低，建议重估');if(rv>0&&rv<100)hints.push('月供覆盖比'+rv.toFixed(0)+'%');if(lc==='high')hints.push('竞品多，议价空间大');if(!adv.length)hints.push('指标较普通');
+  const scDiv=document.getElementById('scoreContent'),gradeName={commercial:'普通商品房',civic:'央产/公房',otherOK:'其他合规',restricted:'限制交易'}[pt]||'未选',scNm={key:'重点学区',normal:'普通学区',none:'无划片'}[sc]||'未选';
+  let vH='';if(isVetoed)vH='<div class="va"><div class="vat">🚫 一票否决</div><div class="vad">'+vetoReason.join('；')+'</div></div>';
+  scDiv.innerHTML=vH+'<div class="sc '+gc+'"><div class="slabel">房源综合评分</div><div class="snum">'+(isVetoed?0:totalScore)+'</div><div class="sgrade">'+grade+'</div>'+(isVetoed?'<div class="sveto">一票否决 · 总分0分</div>':'')+'</div><div style="margin-top:10px">'+
+    '<div class="sd"><div class="sdt"><span class="sdn">① 财务健康度（'+c1M+'分）</span><span class="sdv'+(c1>=24?' g':c1>=18?' y':' r')+'">'+c1+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c1/c1M*100)+'%;background:'+(c1>=24?'#059669':c1>=18?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• IRR回报率：'+s1a+'/15 — '+s1aN+'</div><div class="sdnote">• 现金流覆盖：'+s1b+'/10 — '+s1bN+'</div><div class="sdnote">• 首付杠杆：'+s1c+'/5 — '+s1cN+'</div></div>'+
+    '<div class="sd"><div class="sdt"><span class="sdn">② 产权合规（'+c2M+'分）</span><span class="sdv'+(c2>=20?' g':c2>=15?' y':' r')+'">'+c2+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c2/c2M*100)+'%;background:'+(c2>=20?'#059669':c2>=15?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 房本年限：'+s2a+'/10 — '+s2aN+'</div><div class="sdnote">• 产权性质（'+gradeName+'）：'+s2b+'/8 — '+s2bN+'</div><div class="sdnote">• 产权清晰度：'+s2c+'/7 — '+s2cN+'</div></div>'+
+    '<div class="sd"><div class="sdt"><span class="sdn">③ 配套稀缺（'+c3M+'分）</span><span class="sdv'+(c3>=16?' g':c3>=12?' y':' r')+'">'+c3+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c3/c3M*100)+'%;background:'+(c3>=16?'#059669':c3>=12?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 学区（'+scNm+'）：'+s3a+'/8 — '+s3aN+'</div><div class="sdnote">• 交通：'+s3b+'/6 — '+s3bN+'</div><div class="sdnote">• 生活配套：'+s3c+'/6 — '+s3cN+'</div></div>'+
+    '<div class="sd"><div class="sdt"><span class="sdn">④ 资产流动性（'+c4M+'分）</span><span class="sdv'+(c4>=12?' g':c4>=8?' y':' r')+'">'+c4+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c4/c4M*100)+'%;background:'+(c4>=12?'#059669':c4>=8?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 成交活跃度：'+s4a+'/6 — '+s4aN+'</div><div class="sdnote">• 价格走势：'+s4b+'/5 — '+s4bN+'</div><div class="sdnote">• 同户型挂牌：'+s4c+'/4 — '+s4cN+'</div></div>'+
+    '<div class="sd"><div class="sdt"><span class="sdn">⑤ 硬伤风险（'+c5M+'分）</span><span class="sdv'+(c5>=8?' g':c5>=5?' y':' r')+'">'+c5+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c5/c5M*100)+'%;background:'+(c5>=8?'#059669':c5>=5?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 楼龄：'+s5a+'/4 — '+s5aN+'</div><div class="sdnote">• 硬伤：'+s5b+'/6 — '+s5bN+'</div></div></div>'+
+    (adv.length||risks.length||hints.length?'<div class="stips">':'')+(adv.length?'<div class="tip tip-adv"><div class="tt">✅ 核心优势</div>'+adv.map(a=>'<div class="td">• '+a+'</div>').join('')+'</div>':'')+(risks.length?'<div class="tip tip-risk"><div class="tt">⚠️ 核心风险</div>'+risks.map(r=>'<div class="td">• '+r+'</div>').join('')+'</div>':'')+(hints.length?'<div class="tip tip-hint"><div class="tt">💡 基础提醒</div>'+hints.map(h=>'<div class="td">• '+h+'</div>').join('')+'</div>':'')+(adv.length||risks.length||hints.length?'</div>':'');
+}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">请刷新页面后重试</div></div>'}}
 
 function irrRate(){
-  const priceW=parseFloat(document.getElementById('price').value)||0,dpW=parseFloat(document.getElementById('downPmt').value)||0;
-  const taxW=parseFloat(document.getElementById('tax').value)||0,renovW=parseFloat(document.getElementById('renov').value)||0,agencyW=parseFloat(document.getElementById('agency').value)||0,otherW=parseFloat(document.getElementById('otherCost').value)||0;
-  const rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0;
-  const amort=getTotalAmort();const holdY=parseInt(document.getElementById('holdYears').value)||10;
-  let annualIntArray=[];const initialInv=(dpW+taxW+renovW+agencyW+otherW)*10000;
-  if(amort&&amort.rows){const years=Math.ceil(amort.rows.length/12);for(let y=0;y<years;y++){let intSum=0;for(let m=y*12;m<Math.min((y+1)*12,amort.rows.length);m++) intSum+=amort.rows[m].interest;annualIntArray.push(intSum)}}
-  const cfs=[-initialInv/10000];let hasData=false;
-  for(let y=0;y<holdY;y++){const annualIntThisYear=annualIntArray.length>y?annualIntArray[y]:0;const annualCF=(rent-mgmt)*12-annualIntThisYear;cfs.push(y===holdY-1?(annualCF+initialInv)/10000:annualCF/10000);if(annualCF!==0) hasData=true}
-  if(!hasData||!priceW) return null;
-  const irr=calcIRR(cfs);return irr!==null?irr*100:null;
-}
+  const pw=parseFloat(document.getElementById('price').value)||0,dpW=parseFloat(document.getElementById('downPmt').value)||0,tw=parseFloat(document.getElementById('tax').value)||0,rw=parseFloat(document.getElementById('renov').value)||0,aw=parseFloat(document.getElementById('agency').value)||0,ow=parseFloat(document.getElementById('otherCost').value)||0,rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0,spw=parseFloat(document.getElementById('salePrice').value)||0;
+  const amData=getAmortCombined(),amort=amData?amData.combined:null;const holdY=parseInt(document.getElementById('holdYears').value)||10;
+  let annIA=[];const initInv=(dpW+tw+rw+aw+ow)*10000;
+  if(amort&&amort.rows){const yrs=Math.ceil(amort.rows.length/12);for(let y=0;y<yrs;y++){let is=0;for(let m=y*12;m<Math.min((y+1)*12,amort.rows.length);m++)is+=amort.rows[m].interest;annIA.push(is)}}
+  const cfs=[-initInv/10000];let hd=false;for(let y=0;y<holdY;y++){const ai=annIA.length>y?annIA[y]:0;const acf=(rent-mgmt)*12-ai;let tcf=acf;if(y===holdY-1){if(spw>0)tcf+=spw*10000;else tcf+=initInv}cfs.push(tcf/10000);if(acf!==0)hd=true}
+  if(!hd||!pw)return null;const ir=calcIRR(cfs);return ir!==null?ir*100:null}
 
-// ═══ Save / Load (Cloud) ═══
+// ═══ Save/Load ═══
 function gatherData(){
-  return {
+  const ev=document.querySelector('input[name=\"elevator\"]:checked');return{
     addr:document.getElementById('addr').value||'',price:parseFloat(document.getElementById('price').value)||0,area:parseFloat(document.getElementById('area').value)||0,
+    layout:document.getElementById('layout').value,floor:parseFloat(document.getElementById('floor').value)||0,elevator:ev?ev.value:'',
     houseYears:document.getElementById('houseYears').value,purchaseCount:document.getElementById('purchaseCount').value,ownership:document.getElementById('ownership').value,
     downPmt:parseFloat(document.getElementById('downPmt').value)||0,downRatio:document.getElementById('downRatio').value,
     tax:parseFloat(document.getElementById('tax').value)||0,taxIsAuto,
@@ -781,6 +504,7 @@ function gatherData(){
     combFundAmt:parseFloat(document.getElementById('combFundAmt').value)||0,combFundRate:parseFloat(document.getElementById('combFundRate').value)||0,
     combCommAmt:parseFloat(document.getElementById('combCommAmt').value)||0,combCommRate:parseFloat(document.getElementById('combCommRate').value)||0,
     loanYears:parseInt(document.getElementById('loanYears').value)||0,holdYears:parseInt(document.getElementById('holdYears').value)||10,
+    salePrice:parseFloat(document.getElementById('salePrice').value)||0,
     ratioIsApplied,downPmtIsManual,
     propertyType:document.getElementById('propertyType').value,legalStatus:document.getElementById('legalStatus').value,
     schoolDistrict:document.getElementById('schoolDistrict').value,metroDist:document.getElementById('metroDist').value,
@@ -790,10 +514,11 @@ function gatherData(){
     defNoise:document.getElementById('defNoise').checked,defTop:document.getElementById('defTop').checked,
     defGround:document.getElementById('defGround').checked,defDark:document.getElementById('defDark').checked,defOther:document.getElementById('defOther').checked,
     updatedAt:new Date().toLocaleString('zh-CN')
-  };
-}
+  }}
 function fillData(d){
   document.getElementById('addr').value=d.addr||'';document.getElementById('price').value=d.price||'';document.getElementById('area').value=d.area||'';
+  document.getElementById('layout').value=d.layout||'';document.getElementById('floor').value=d.floor||'';
+  if(d.elevator){const r=d.elevator==='yes'?document.getElementById('elevYes'):document.getElementById('elevNo');if(r)r.checked=true}
   document.getElementById('houseYears').value=d.houseYears||'';document.getElementById('purchaseCount').value=d.purchaseCount||'';document.getElementById('ownership').value=d.ownership||'';
   document.getElementById('downPmt').value=d.downPmt||'';document.getElementById('downRatio').value=d.downRatio||'';
   document.getElementById('tax').value=d.tax||'';document.getElementById('renov').value=d.renov||0;document.getElementById('agency').value=d.agency||0;document.getElementById('otherCost').value=d.otherCost||0;
@@ -803,6 +528,7 @@ function fillData(d){
   document.getElementById('combFundAmt').value=d.combFundAmt||'';document.getElementById('combFundRate').value=d.combFundRate||'';
   document.getElementById('combCommAmt').value=d.combCommAmt||'';document.getElementById('combCommRate').value=d.combCommRate||'';
   document.getElementById('loanYears').value=d.loanYears||'';document.getElementById('holdYears').value=d.holdYears||10;
+  document.getElementById('salePrice').value=d.salePrice||0;
   taxIsAuto=d.taxIsAuto||false;ratioIsApplied=d.ratioIsApplied||false;downPmtIsManual=d.downPmtIsManual||false;
   const tag=document.getElementById('taxTag');if(taxIsAuto){tag.textContent='自动';tag.className='tag tag-auto'}else{tag.textContent='手动';tag.className='tag tag-manual'}
   const dpt=document.getElementById('dpTag');if(ratioIsApplied&&d.downRatio){dpt.textContent='自动'+d.downRatio+'%';dpt.className='tag tag-auto'}else{dpt.textContent='手动';dpt.className='tag tag-manual'}
@@ -813,109 +539,29 @@ function fillData(d){
   document.getElementById('listingCount').value=d.listingCount||'';
   document.getElementById('defNoise').checked=d.defNoise||false;document.getElementById('defTop').checked=d.defTop||false;
   document.getElementById('defGround').checked=d.defGround||false;document.getElementById('defDark').checked=d.defDark||false;document.getElementById('defOther').checked=d.defOther||false;
-  onLoanTypeChange();onTaxChange();updateLoanDisplay();calc()
-}
-function handleSave(){
-  const d=gatherData();if(!d.addr){showToast('⚠️ 请先填写房源名称/地址');return}
-  const all=allProperties;
-  if(editingId&&all[editingId]){d.createdAt=all[editingId].createdAt;all[editingId]=d}
-  else{editingId=genId();d.createdAt=new Date().toLocaleString('zh-CN');all[editingId]=d}
-  allProperties=all;
-  cloudSave(editingId,d);
-  renderPropList();updateCnt();showToast('✅ 已保存：'+(d.addr||'未命名'))
-}
-function loadProp(id){
-  const d=allProperties[id];if(!d)return;editingId=id;fillData(d);window.scrollTo({top:0,behavior:'smooth'})
-}
-async function deleteProp(id){
-  const n=allProperties[id]?.addr||'未命名';
-  if(!confirm('确定删除「'+n+'」吗？'))return;
-  delete allProperties[id];
-  await cloudDelete(id);
-  if(editingId===id){editingId=null;resetForm()}
-  renderPropList();updateCnt();showToast('🗑️ 已删除：'+n)
-}
-function resetForm(){
-  editingId=null;
-  ['addr','price','area','houseYears','purchaseCount','ownership','downPmt','downRatio','tax','rent','repayMethod','loanType','commRate','fundRate','combFundAmt','combFundRate','combCommAmt','combCommRate','loanYears','propertyType','legalStatus','schoolDistrict','metroDist','lifeSupport','buildEra','dealActivity','priceTrend','listingCount'].forEach(id=>document.getElementById(id).value='');
-  ['renov','agency','otherCost','mgmt','holdYears'].forEach(id=>{const el=document.getElementById(id);if(id==='holdYears')el.value=10;else el.value=0});
-  ['defNoise','defTop','defGround','defDark','defOther'].forEach(id=>document.getElementById(id).checked=false);
-  taxIsAuto=false;ratioIsApplied=false;downPmtIsManual=false;
-  document.getElementById('taxTag').textContent='手动';document.getElementById('taxTag').className='tag tag-manual';
-  document.getElementById('dpTag').textContent='自动';document.getElementById('dpTag').className='tag tag-auto';
-  document.getElementById('dpHint').textContent='选首付比例后自动算';document.getElementById('taxHint').innerHTML='选房本年限+套数+面积后自动算';
-  document.getElementById('totalLoanDisplay').textContent='—';document.getElementById('loanSummary').innerHTML='选好还款方式+贷款类型+年限后自动算月供';
-  document.getElementById('amortSection').style.display='none';document.getElementById('combStats').innerHTML='';
-  document.getElementById('lgCommercial').className='lg';document.getElementById('lgFund').className='lg';document.getElementById('lgCombined').className='lg';
-  calc();updateCnt();showToast('🧹 已清空，可录入新房源')
-}
-function renderPropList(){
-  const list=document.getElementById('propList');const keys=Object.keys(allProperties);
-  if(!keys.length){list.innerHTML='<div class="pe">你还没有保存任何房源<br>填好信息，点「保存当前房源」</div>';return}
-  keys.sort((a,b)=>(allProperties[b].updatedAt||'').localeCompare(allProperties[a].updatedAt||''));
-  let h='';
-  for(const id of keys){const p=allProperties[id];const r=calcROI(p);const rc=r>=0?'g':'r';const rt=r!==null?(r>=0?'+':'')+r.toFixed(1)+'%':'—';const ie=editingId===id;
-  h+='<div class="pi"'+(ie?' style="border:2px solid var(--accent);background:var(--accent-bg)"':'')+' onclick="loadProp(\''+id+'\')"><div class="i"><div class="n">'+esc(p.addr||'未命名')+(ie?' <span style="font-size:10px;color:var(--accent)">编辑中</span>':'')+'</div><div class="m">总价'+fmtWan(p.price||0)+'万 · '+(p.updatedAt||'')+'</div></div><div class="r '+rc+'">'+rt+'</div><button class="btn btn-d" onclick="event.stopPropagation();deleteProp(\''+id+'\')">✕</button></div>'}
-  list.innerHTML=h
-}
-function calcROI(p){if(!p||!p.price)return null;const annual=((p.rent||0)-(p.mgmt||0))*12;return p.price>0?(annual/(p.price*10000))*100:null}
-function updateCnt(){const c=Object.keys(allProperties).length;document.getElementById('hdCnt').textContent='已保存 '+c+' 套房源'}
+  onLoanTypeChange();onTaxChange();updateLoanDisplay();calc()}
+function handleSave(){const d=gatherData();if(!d.addr){showToast('⚠️ 请先填写房源名称');return}const all=allProperties;if(editingId&&all[editingId]){d.createdAt=all[editingId].createdAt;all[editingId]=d}else{editingId=genId();d.createdAt=new Date().toLocaleString('zh-CN');all[editingId]=d}allProperties=all;cloudSave(editingId,d);renderPropList();updateCnt();showToast('✅ 已保存：'+(d.addr||'未命名'))}
+function loadProp(id){const d=allProperties[id];if(!d)return;editingId=id;fillData(d);window.scrollTo({top:0,behavior:'smooth'})}
+async function deleteProp(id){const n=allProperties[id]?.addr||'未命名';if(!confirm('确定删除「'+n+'」？'))return;delete allProperties[id];await cloudDelete(id);if(editingId===id){editingId=null;resetForm()}renderPropList();updateCnt();showToast('🗑️ 已删除：'+n)}
+function resetForm(){editingId=null;['addr','price','area','layout','floor','houseYears','purchaseCount','ownership','downPmt','downRatio','tax','rent','repayMethod','loanType','commRate','fundRate','combFundAmt','combFundRate','combCommAmt','combCommRate','loanYears','salePrice','propertyType','legalStatus','schoolDistrict','metroDist','lifeSupport','buildEra','dealActivity','priceTrend','listingCount'].forEach(id=>document.getElementById(id).value='');['renov','agency','otherCost','mgmt','holdYears'].forEach(id=>{const el=document.getElementById(id);if(id==='holdYears')el.value=10;else el.value=0});['defNoise','defTop','defGround','defDark','defOther'].forEach(id=>document.getElementById(id).checked=false);const evYes=document.getElementById('elevYes'),evNo=document.getElementById('elevNo');if(evYes)evYes.checked=false;if(evNo)evNo.checked=false;taxIsAuto=false;ratioIsApplied=false;downPmtIsManual=false;document.getElementById('taxTag').textContent='手动';document.getElementById('taxTag').className='tag tag-manual';document.getElementById('dpTag').textContent='自动';document.getElementById('dpTag').className='tag tag-auto';document.getElementById('dpHint').textContent='选首付比例后自动算';document.getElementById('taxHint').innerHTML='选房本年限+套数+面积后自动算';document.getElementById('totalLoanDisplay').textContent='—';document.getElementById('loanSummary').innerHTML='选好还款方式+贷款类型+年限后自动算月供';document.getElementById('amortSection').style.display='none';document.getElementById('combStats').innerHTML='';document.getElementById('lgCommercial').className='lg';document.getElementById('lgFund').className='lg';document.getElementById('lgCombined').className='lg';calc();updateCnt();showToast('🧹 已清空')}
+function renderPropList(){const list=document.getElementById('propList'),keys=Object.keys(allProperties);if(!keys.length){list.innerHTML='<div class="pe">还没有保存任何房源<br>填好信息，点「保存当前房源」</div>';return}keys.sort((a,b)=>(allProperties[b].updatedAt||'').localeCompare(allProperties[a].updatedAt||''));let h='';for(const id of keys){const p=allProperties[id],r=calcROI(p),rc=r>=0?'g':'r',rt=r!==null?(r>=0?'+':'')+r.toFixed(1)+'%':'—',ie=editingId===id;h+='<div class="pi"'+(ie?' style="border:2px solid var(--accent);background:var(--accent-bg)"':'')+' onclick="loadProp(\''+id+'\')"><div class="i"><div class="n">'+esc(p.addr||'未命名')+(ie?' <span style="font-size:10px;color:var(--accent)">编辑中</span>':'')+'</div><div class="m">总价'+fmtWan(p.price||0)+'万 · '+(p.updatedAt||'')+'</div></div><div class="r '+rc+'">'+rt+'</div><button class="btn btn-d" onclick="event.stopPropagation();deleteProp(\''+id+'\')">✕</button></div>'}list.innerHTML=h}
+function calcROI(p){if(!p||!p.price)return null;const a=((p.rent||0)-(p.mgmt||0))*12;return p.price>0?(a/(p.price*10000))*100:null}
+function updateCnt(){document.getElementById('hdCnt').textContent='已保存 '+Object.keys(allProperties).length+' 套房源'}
+function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
 
-// ═══ Export / Import ═══
-function exportData(){
-  const all=allProperties;if(!Object.keys(all).length){showToast('⚠️ 没有数据可导出');return}
-  const blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='房产数据备份_'+new Date().toISOString().slice(0,10)+'.json';
-  a.click();showToast('📤 备份已下载')
-}
-function importData(e){
-  const file=e.target.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=async function(ev){
-    try{
-      const data=JSON.parse(ev.target.result);
-      if(typeof data!=='object'||Array.isArray(data)) throw new Error();
-      // Import each property to cloud
-      let count=0;
-      for(const[id,prop] of Object.entries(data)){
-        allProperties[id]=prop;
-        await cloudSave(id,prop);
-        count++;
-      }
-      renderPropList();updateCnt();
-      showToast('📥 已导入 '+count+' 条数据到云端');
-    }catch(err){showToast('⚠️ 文件格式不对，请选择备份导出的.json文件')}
-  };
-  reader.readAsText(file);e.target.value=''
-}
+// ═══ Export/Import ═══
+function exportData(){const all=allProperties;if(!Object.keys(all).length){showToast('⚠️ 没有数据可导出');return}const blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='房产数据备份_'+new Date().toISOString().slice(0,10)+'.json';a.click();showToast('📤 备份已下载')}
+async function importData(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=async function(ev){try{const data=JSON.parse(ev.target.result);if(typeof data!=='object'||Array.isArray(data))throw new Error();let c=0;for(const[id,p]of Object.entries(data)){allProperties[id]=p;await cloudSave(id,p);c++}renderPropList();updateCnt();showToast('📥 已导入 '+c+' 条')}catch(err){showToast('⚠️ 文件格式不对')}};reader.readAsText(file);e.target.value=''}
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function fmt(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')}
 function fmtWan(n){return n.toFixed(2)}
-
-// ═══ Toast ═══
-let tt=null;
 function showToast(m){const e=document.getElementById('toast');e.textContent=m;e.className='toast show';clearTimeout(tt);tt=setTimeout(()=>e.className='toast',2500)}
 
-// ═══ Init: Check auth state ═══
+// ═══ Init ═══
 (async function init(){
-  // Check if there's an existing session
-  try{
-    const{data,error}=await sb.auth.getSession();
-    if(data&&data.session&&data.session.user){
-      currentUser=data.session.user;
-      document.getElementById('authOverlay').style.display='none';
-      document.getElementById('mainApp').style.display='block';
-      document.getElementById('userEmail').textContent=currentUser.email;
-      await loadCloudData();
-      return;
-    }
-  }catch(e){}
-  // No session: show login
-  document.getElementById('authOverlay').style.display='flex';
-  document.getElementById('mainApp').style.display='none';
-  // Also listen for Enter key
-  document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter') handleAuth()});
+  try{const{data}=await sb.auth.getSession();if(data&&data.session&&data.session.user){currentUser=data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
+  document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';
+  document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
 })();
 </script>
 </body>
