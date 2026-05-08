@@ -166,7 +166,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 专业房产投资计算器</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.0</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.1</span>
 </div>
 <div class="c">
 
@@ -306,9 +306,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 // ═══ Supabase Init ═══
 const SUPABASE_URL='https://webvtoarwrulkynixank.supabase.co';
 const SUPABASE_KEY='sb_publishable_a01uqLOBkjBCcYrwQNtlhg_vQzWIygW';
-if(typeof supabase==='undefined'){document.getElementById('authErr').textContent='网络加载失败，请刷新页面';document.getElementById('authOverlay').style.display='flex';throw new Error('Supabase not loaded')}
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-let currentUser=null,allProperties={},editingId=null;
+let sb=null,currentUser=null,allProperties={},editingId=null;
 let taxIsAuto=false,ratioIsApplied=false,downPmtIsManual=false;
 let authMode='login',tt=null;
 
@@ -327,7 +325,7 @@ async function handleAuth(){
   }catch(x){er.textContent='网络异常，请检查网络后重试';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false}
 }
 function onLoginSuccess(){document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;loadCloudData()}
-async function handleLogout(){await sb.auth.signOut();currentUser=null;allProperties={};document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';document.getElementById('authBtn').innerHTML='登 录';document.getElementById('authBtn').disabled=false;renderPropList();updateCnt()}
+async function handleLogout(){if(!sb)return;await sb.auth.signOut();currentUser=null;allProperties={};document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';document.getElementById('authBtn').innerHTML='登 录';document.getElementById('authBtn').disabled=false;renderPropList();updateCnt()}
 
 // ═══ Cloud ═══
 async function loadCloudData(){try{const{data,error}=await sb.from('properties').select('*').eq('user_id',currentUser.id).order('updated_at',{ascending:false});if(error){showToast('⚠️ 加载云端数据失败');return}const m={};for(const r of data||[])m[r.id]=typeof r.property_data==='string'?JSON.parse(r.property_data):r.property_data;allProperties=m}catch(x){showToast('⚠️ 加载云端数据失败')}renderPropList();updateCnt();calc()}
