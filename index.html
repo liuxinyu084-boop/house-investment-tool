@@ -6,17 +6,15 @@
 <title>房产投资回报率计算器</title>
 <link rel="dns-prefetch" href="https://webvtoarwrulkynixank.supabase.co">
 <link rel="preconnect" href="https://webvtoarwrulkynixank.supabase.co">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-(function(){
-  if(typeof supabase!=='undefined')return;
-  var s=document.createElement('script');
-  s.src='https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-  s.onerror=function(){document.addEventListener('DOMContentLoaded',function(){var e=document.getElementById('authErr');if(e)e.textContent='网络加载失败，请刷新页面'});};
-  document.head.appendChild(s);
+// Supabase JS loader - tries CDNs sequentially, no race conditions
+function _loadScript(u){return new Promise(function(ok,err){var s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=err;document.head.appendChild(s)})}
+async function _ensureSupabase(){
+  if(typeof supabase!=='undefined')return true;
+  var urls=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js','https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js'];
+  for(var i=0;i<urls.length;i++){try{await _loadScript(urls[i]);if(typeof supabase!=='undefined')return true}catch(x){}}
+  return false
 }
-  checkSupabase();
-})();
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -567,20 +565,17 @@ function fmtWan(n){return n.toFixed(2)}
 function showToast(m){const e=document.getElementById('toast');e.textContent=m;e.className='toast show';clearTimeout(tt);tt=setTimeout(()=>e.className='toast',2500)}
 
 // ═══ Init ═══
-(function init(){
-  var maxWait=20,waited=0;
-  function checkSupabase(){
-    if(typeof supabase!=='undefined'&&typeof sb!=='undefined'){doInit();return}
-    waited++;if(waited>maxWait){var e=document.getElementById('authErr');if(e)e.textContent='网络加载失败，请刷新页面';document.getElementById('authOverlay').style.display='flex';return}
-    setTimeout(checkSupabase,300);
-  }
-  async function doInit(){
-
-  try{const{data}=await sb.auth.getSession();if(data&&data.session&&data.session.user){currentUser=data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
-  document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';
+(async function init(){
+  document.getElementById('authOverlay').style.display='flex';
+  document.getElementById('mainApp').style.display='none';
+  
+  var loaded=await _ensureSupabase();
+  if(!loaded){document.getElementById('authErr').textContent='⚠️ 网络异常，请检查网络后刷新';return}
+  sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  
+  try{var r=await sb.auth.getSession();if(r&&r.data&&r.data.session&&r.data.session.user){currentUser=r.data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
+  document.getElementById('authOverlay').style.display='flex';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
-}
-  checkSupabase();
 })();
 </script>
 </body>
