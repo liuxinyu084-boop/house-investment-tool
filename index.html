@@ -6,16 +6,8 @@
 <title>房产投资回报率计算器</title>
 <link rel="dns-prefetch" href="https://webvtoarwrulkynixank.supabase.co">
 <link rel="preconnect" href="https://webvtoarwrulkynixank.supabase.co">
-<script>
-// Supabase JS loader - tries CDNs sequentially, no race conditions
-function _loadScript(u){return new Promise(function(ok,err){var s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=err;document.head.appendChild(s)})}
-async function _ensureSupabase(){
-  if(typeof supabase!=='undefined')return true;
-  var urls=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js','https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js'];
-  for(var i=0;i<urls.length;i++){try{await _loadScript(urls[i]);if(typeof supabase!=='undefined')return true}catch(x){}}
-  return false
-}
-</script>
+<script src="supabase.min.js"></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#1a1a2e;--primary-light:#16213e;--accent:#2563eb;--accent-bg:#e8f0fe;--positive:#059669;--negative:#dc2626;--bg:#f1f3f6;--card:#fff;--border:#d1d5db;--text:#111827;--text2:#6b7280;--text3:#9ca3af;--tag:#e5e7eb;--r:12px;--note-c:#9ca3af}
@@ -164,7 +156,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 专业房产投资计算器</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.2</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.3</span>
 </div>
 <div class="c">
 
@@ -567,21 +559,14 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
 
 // ═══ Init ═══
 (async function init(){
-  // Show loading overlay
-  var errEl=document.getElementById('authErr');
   var overlay=document.getElementById('authOverlay');
   overlay.style.display='flex';
   document.getElementById('mainApp').style.display='none';
-  errEl.textContent='⏳ 正在连接服务器...';
-  errEl.style.color='#6b7280';
   
-  var loaded=await _ensureSupabase();
-  if(!loaded){errEl.textContent='⚠️ 网络异常，请检查网络后刷新';errEl.style.color='#dc2626';return}
+  if(typeof supabase==='undefined'){document.getElementById('authErr').textContent='⚠️ 脚本加载失败，请刷新页面';return}
   sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-  errEl.textContent='';
-  errEl.style.color='';
   
-  try{var r=await sb.auth.getSession();if(r&&r.data&&r.data.session&&r.data.session.user){currentUser=r.data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
+  try{var r=await sb.auth.getSession();if(r&&r.data&&r.data.session&&r.data.session.user){currentUser=r.data.session.user;overlay.style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
 })();
 </script>
