@@ -11,7 +11,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#1a1a2e;--primary-light:#16213e;--accent:#2563eb;--accent-bg:#e8f0fe;--positive:#059669;--negative:#dc2626;--bg:#f1f3f6;--card:#fff;--border:#d1d5db;--text:#111827;--text2:#6b7280;--text3:#9ca3af;--tag:#e5e7eb;--r:12px;--note-c:#9ca3af}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding:0 0 40px;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding:0 0 40px;min-height:100vh;display:flex;flex-direction:column;align-items:center}
 .c{max-width:640px;width:100%;padding:0 14px}
 .hd{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:20px 16px 18px;text-align:center;margin:0 -14px 14px;position:relative}
 .hd h1{font-size:20px;font-weight:700;letter-spacing:.5px}
@@ -130,7 +130,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 .at{font-size:10px}.at td,.at th{padding:3px 2px}.sc .snum{font-size:38px}
 .auth-box{padding:24px 18px}
 }
-</style>
+
+/* ── 悬浮注释 ── */
+.tip-term{position:relative;cursor:pointer;border-bottom:1px dashed var(--text3);color:var(--accent);transition:.15s}
+.tip-term:hover{color:#1d4ed8}
+.tip-term:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:11px;font-weight:400;padding:7px 11px;border-radius:8px;white-space:nowrap;max-width:280px;white-space:normal;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,.2);line-height:1.4;text-align:left;pointer-events:none}
+.tip-term:hover::before{content:'';position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--primary);z-index:101}
+/* ── 行业参考标准 ── */
+.ref-std{margin-top:3px;font-size:10px;color:var(--note-c);line-height:1.5;padding:4px 6px;background:#fafbfc;border-radius:6px}
+.ref-std b{color:var(--text2);font-weight:600}
+/* ── 风险提示模块 ── */
+.risk-sec{background:#f8f9fb;border:1px solid #e5e7eb;border-radius:var(--r);padding:14px;margin-bottom:10px}
+.risk-sec .rst{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #eef1f5}
+.risk-item{font-size:12px;line-height:1.6;padding:6px 8px;margin-bottom:5px;border-radius:6px}
+.risk-item:last-child{margin-bottom:0}
+.risk-item .ri{display:flex;gap:6px;align-items:flex-start}
+.risk-item .ri-icon{flex-shrink:0;font-size:14px;line-height:1.4}
+.risk-item .ri-body{flex:1}
+.risk-item .ri-t{font-weight:600;color:var(--text)}
+.risk-item .ri-d{font-size:11px;color:var(--text2);margin-top:1px;line-height:1.5}
+.risk-high{background:#fef2f2;border-left:3px solid var(--negative)}
+.risk-mid{background:#fffbeb;border-left:3px solid #d97706}
+.risk-low{background:#ecfdf5;border-left:3px solid var(--positive)}
+.risk-ok{background:#f0fdf4;border-left:3px solid var(--positive)}
+
+.cw{margin-bottom:10px}.ch{background:#f8fafc;border-radius:8px;padding:0 16px;height:48px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}.ch:hover{background:#f1f5f9}.ch .ar{font-size:14px;color:#64748b;margin-right:6px}.ch .ct{font-size:16px;font-weight:700;color:#1e293b}.cb{display:none;border:1px solid #e2e8f0;border-radius:0 0 8px 8px;padding:12px 16px}.cb.o{display:block}.sh{font-size:14px;font-weight:600;color:#3b82f6;padding:10px 14px;cursor:pointer;background:#f0f7ff;border-radius:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px}.sh:hover{background:#e0efff}.sb{display:none;border:1px solid #dbeafe;border-radius:0 0 6px 6px;padding:12px 16px;margin-bottom:12px}.sb.o{display:block}.rf{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 16px;background:linear-gradient(transparent,#f3f4f6 40%);display:flex;justify-content:center}.rf .btn{max-width:640px;width:100%;height:50px;font-size:16px;font-weight:700;border-radius:10px;background:#3b82f6;color:#fff;border:none;cursor:pointer}</style>
 </head>
 <body>
 <div class="auth-overlay" id="authOverlay">
@@ -156,7 +180,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 专业房产投资计算器</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.8</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.0</span>
 </div>
 <div class="c">
 
@@ -174,8 +198,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="fg"><label>电梯配置</label><div class="rg"><label><input type="radio" name="elevator" value="yes" id="elevYes"> 有电梯</label><label><input type="radio" name="elevator" value="no" id="elevNo"> 无电梯</label></div></div>
 </div>
 <div class="fgr">
-<div class="fg"><label>房本年限</label><select id="houseYears" onchange="onTaxChange()"><option value="">— 请选择 —</option><option value="lt2">不满2年</option><option value="2to5">满2年不满5年</option><option value="5only">满5年唯一住房</option><option value="5notOnly">满5年不唯一住房</option></select></div>
+<div class="fg"><label>房本年限<span class="tip-term" data-tip="指这套房子从房主拿到房本到现在过了多少年。满2、满5年限到了能省增值税、个人所得税">ⓘ</span></label><select id="houseYears" onchange="onTaxChange()"><option value="">— 请选择 —</option><option value="lt2">不满2年</option><option value="2to5">满2年不满5年</option><option value="5only">满5年唯一住房</option><option value="5notOnly">满5年不唯一住房</option></select></div>
 <div class="fg"><label>购房套数</label><select id="purchaseCount" onchange="onTaxChange()"><option value="">— 请选择 —</option><option value="first">首套</option><option value="second">二套</option></select></div>
+</div>
+<div class="fgr">
+<div class="fgr3">
+<div class="fg"><label>建成年代</label><select id="buildDecade" onchange="calc();calcScore()"><option value="">— 请选择 —</option><option value="2020s">2020年以后</option><option value="2010s">2010-2019年</option><option value="2000s">2000-2009年</option><option value="1990s">1990-1999年</option><option value="before1990">1990年以前</option></select></div>
+<div class="fg"><label>产权性质<span class="tip-term" data-tip="房子的土地性质和使用年限。70年=普通住宅，40年=商住公寓（不能落户、税费高），50年=商办项目">ⓘ</span></label><select id="propertyRight" onchange="calc()"><option value="">— 请选择 —</option><option value="70">70年住宅</option><option value="40">40年商住公寓</option><option value="50">50年商办</option></select></div>
+<div class="fg"><label>装修情况</label><select id="decoration" onchange="calc()"><option value="">— 请选择 —</option><option value="rough">毛坯</option><option value="simple">简装</option><option value="fine">精装</option><option value="luxury">豪装</option></select></div>
+</div>
+<div class="fgr">
+<div class="fg"><label>学区划分（选填）</label><input type="text" id="schoolDistrict" placeholder="例如：中关村一小" oninput="calc()"></div>
+<div class="fg"><label>是否唯一住房<span class="tip-term" data-tip="房产局系统里业主名下唯一的一套住宅。唯一住房出售时，满五年可免个人所得税">ⓘ</span></label><select id="onlyResidence"><option value="">— 请选择 —</option><option value="yes">是（名下唯一住房）</option><option value="no">否（有多套住房）</option></select></div>
 </div>
 <div class="fgr">
 <div class="fg"><label>产权情况</label><select id="ownership"><option value="">— 请选择 —</option><option value="sole">单独所有</option><option value="joint">夫妻共有</option><option value="multiple">多人共有</option></select></div>
@@ -209,11 +243,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="pl" id="propList"><div class="pe">你还没有保存任何房源<br>填好信息，点「保存当前房源」</div></div>
 </div>
 
+<div class="cw"><div class="ch" onclick="T(this)"><span><span class="ar">▶</span><span class="ct">💰 ② 贷款 &amp; 税费自动测算</span></span></div><div class="cb">
 <!-- ═══ 二、贷款测算 ═══ -->
 <div class="sec">
 <div class="st">💰 ② 贷款 &amp; 税费自动测算</div>
 <div class="fgr">
-<div class="fg"><label>还款方式</label><select id="repayMethod" onchange="calc()"><option value="">— 请选择 —</option><option value="equalPayment">等额本息</option><option value="equalPrincipal">等额本金</option></select></div>
+<div class="fg"><label>还款方式<span class="tip-term" data-tip="决定你每个月还多少钱。等额本息：每月还一样多，前期利息多；等额本金：每月越还越少，总利息少">ⓘ</span></label><select id="repayMethod" onchange="calc()"><option value="">— 请选择 —</option><option value="equalPayment">等额本息</option><option value="equalPrincipal">等额本金</option></select></div>
 <div class="fg"><label>贷款类型</label><select id="loanType" onchange="onLoanTypeChange()"><option value="">— 请选择 —</option><option value="commercial">纯商业贷款</option><option value="fund">纯公积金贷款</option><option value="combined">组合贷款</option></select></div>
 </div>
 <div class="lg" id="lgCommercial"><div class="fg"><label>商业贷款额度（万元）<span class="tag tag-auto">自动填写</span></label><input type="number" id="commAmt" step="any" readonly></div><div class="fg"><label>商业贷款年利率（%）</label><input type="number" id="commRate" step="any" placeholder="如 3.85" oninput="calc()"></div></div>
@@ -225,26 +260,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 </div>
 <div class="fgr"><div class="fg"><label>贷款年限（年）</label><input type="number" id="loanYears" placeholder="如 30" oninput="calc()"></div></div>
 <div class="stats" id="loanSummary">选好贷款信息后自动显示月供</div>
+<div class="ref-std" id="pmtRef"></div>
 </div>
 
-<!-- ═══ 三、还款明细 ═══ -->
-<div class="sec" id="amortSection" style="display:none">
+</div></div>
+<div class="cw"><div class="ch" onclick="T(this)"><span><span class="ar">▶</span><span class="ct">📈 ③ 全维度投资财务分析</span></span></div><div class="cb">
+<div class="sh" onclick="T(this)"><span><span class="ar">▶</span>📅 月供明细</span></div><div class="sb"><!-- ═══ 三、还款明细 ═══ -->
+<div class="sec" id="amortSection" >
 <div class="st">📅 ③ 月度还款明细</div>
 <div id="amortSummary"></div>
 <div class="subs"><div class="subs-title">📊 年度汇总</div><div class="at-wrap"><table class="at" id="amortTable"></table></div></div>
 <div class="subs"><div class="subs-title">📌 全周期总汇</div><div class="dg" id="termTotals"></div></div>
 </div>
 
-<!-- ═══ 四、投资回报财务分析 ═══ -->
-<div class="sec">
-<div class="st">📈 ④ 投资回报财务分析</div>
-<div class="subs">
+</div>
+<div class="sh" onclick="T(this)"><span><span class="ar">▶</span>一、静态投资回报率</span></div><div class="sb"><div class="subs">
 <div class="subs-title">一、房产静态投资回报率（纸面收益测算）</div>
 <div class="meta-note">* 本测算仅看房产本身的租金收益与总价，不计算贷款、首付、持有成本，适合快速判断房产的基础投资价值</div>
 <div class="dg" id="staticROI"></div>
+<div class="ref-std" id="staticRef"></div>
 <div class="stats" id="staticNote" style="margin-top:6px"></div>
 </div>
-<div class="subs">
+</div>
+<div class="sh" onclick="T(this)"><span><span class="ar">▶</span>二、动态IRR测算</span></div><div class="sb"><div class="subs">
 <div class="subs-title">二、自有资金真实投资回报率（动态IRR测算）</div>
 <div class="meta-note">* 本测算以你实际自掏的本金为基数，结合贷款月供、租金现金流、持有周期、最终卖房回款，算出这笔投资的真实年化收益，可直接对比银行理财、基金等其他投资产品的收益</div>
 <div class="fgr" style="margin-bottom:8px">
@@ -252,43 +290,75 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC
 <div class="fg"><label>预计出售时到手总价（万元）<span class="tag">IRR输入</span></label><input type="number" id="salePrice" step="any" placeholder="留空默认原价卖出" oninput="calc()" value="0"><div class="unit-hint">* 持有到期卖掉房子、还清银行剩余贷款后，最终能拿到手的净资金。留空则按原价卖出、还清贷款计算</div></div>
 </div>
 <div class="dg" id="dynamicROI"></div>
+<div class="ref-std" id="irrRef"></div>
+<div class="ref-std" id="cfRef"></div>
 <div class="stats" id="dynamicNote" style="margin-top:6px"></div>
 </div>
 </div>
-
+<div class="sh" onclick="T(this)"><span><span class="ar">▶</span>三、盈亏平衡测算</span></div><div class="sb"><div class="subs">
+<div class="subs-title">三、全周期盈亏平衡测算</div>
+<div class="meta-note">* 算一笔账：买这套房到底多少钱才能保本？房价涨多少才不亏？持有几年能回本？</div>
+<div class="dg" id="breakEvenGrid"></div>
+<div class="ref-std" id="breakEvenRef"></div>
+</div>
+</div>
+<div class="sh" onclick="T(this)"><span><span class="ar">▶</span>四、杠杆收益对比</span></div><div class="sb"><div class="subs">
+<div class="subs-title">四、杠杆收益对比分析<span class="tip-term" data-tip="同样的房子，全款买和贷款买，最终谁赚得多？借钱买房的收益放大效应和风险">ⓘ</span></div>
+<div class="meta-note">* 对比同一套房：如果全款买 vs 贷款买，总收益差多少。帮助理解杠杆的收益和风险</div>
+<div class="dg" id="leverageGrid"></div>
+<div class="ref-std" id="leverageRef"></div>
+</div>
+</div>
+<div class="sh" onclick="T(this)"><span><span class="ar">▶</span>五、税费明细</span></div><div class="sb"><div class="subs">
+<div class="subs-title">五、全周期税费明细</div>
+<div class="meta-note">* 一套房子从买到持有到卖出，每个环节要交哪些钱、交多少、什么条件下能免</div>
+<div id="taxDetailContent"></div>
+</div>
+</div>
+</div></div>
+<div class="cw"><div class="ch" onclick="T(this)"><span><span class="ar">▶</span><span class="ct">⭐ ④ 配套与市场评估</span></span></div><div class="cb">
 <!-- ═══ 五、配套与市场评估 ═══ -->
 <div class="sec">
-<div class="st">🔍 ⑤ 配套与市场评估（用于评分）</div>
+<div class="st">🔍 ⑤ 配套与市场评估（量化评分）</div>
+<div class="meta-note">* 以下信息自动生成客观配套评分，地铁、商业、医疗配套按距离打分，教育按等级打分</div>
 <div class="fgr">
 <div class="fg"><label>产权性质 <span class="tag tag-veto">⚠️ 影响评分</span></label><select id="propertyType" onchange="calcScore()"><option value="">— 请选择 —</option><option value="commercial">普通商品房</option><option value="civic">可正常上市央产房/公房</option><option value="otherOK">其他合规可交易类</option><option value="restricted">限制交易类房产（无上市资格）</option></select></div>
 <div class="fg"><label>法律状态 <span class="tag tag-veto">⚠️ 影响评分</span></label><select id="legalStatus" onchange="calcScore()"><option value="">— 请选择 —</option><option value="normal">正常无纠纷</option><option value="dispute">存在查封/抵押未解押/法律纠纷</option></select></div>
 </div>
 <div class="fgr">
-<div class="fg"><label>学区与教育配套</label><select id="schoolDistrict" onchange="calcScore()"><option value="">— 请选择 —</option><option value="key">东西海朝重点学区</option><option value="normal">普通公立学区</option><option value="none">无明确划片学区</option></select></div>
-<div class="fg"><label>距最近地铁站</label><select id="metroDist" onchange="calcScore()"><option value="">— 请选择 —</option><option value="near">1公里以内</option><option value="mid">1-2公里</option><option value="far">2公里以上</option></select></div>
+<div class="fg"><label>距最近地铁站直线距离（米）<span class="tip-term" data-tip="从房源步行到最近地铁站的直线距离，大概估一下。500米以内算地铁房">ⓘ</span></label><input type="number" id="metroDist" placeholder="如 500" oninput="calcScore()"><div class="unit-hint">输入数字，如500表示500米</div></div>
+<div class="fg"><label>学校等级<span class="tip-term" data-tip="房子对应划片学校的等级。省重点是最好的，普通学校一般">ⓘ</span></label><select id="schoolLevel" onchange="calcScore()"><option value="">— 请选择 —</option><option value="province">省重点学校</option><option value="city">市重点学校</option><option value="district">区重点学校</option><option value="normal">普通学校</option></select></div>
 </div>
 <div class="fgr">
-<div class="fg"><label>生活商业医疗配套</label><select id="lifeSupport" onchange="calcScore()"><option value="">— 请选择 —</option><option value="good">1公里内有成熟配套</option><option value="poor">配套不完善</option><option value="none">无基础配套</option></select></div>
-<div class="fg"><label>建筑楼龄</label><select id="buildEra" onchange="calcScore()"><option value="">— 请选择 —</option><option value="new">2000年以后建成</option><option value="mid">1990-2000年建成</option><option value="old">1990年以前建成</option></select></div>
+<div class="fg"><label>距最近大型商业体（米）<span class="tip-term" data-tip="从房子步行到最近的商场、购物中心的距离，越近生活越方便">ⓘ</span></label><input type="number" id="mallDist" placeholder="如 1000" oninput="calcScore()"></div>
+<div class="fg"><label>距最近三甲医院（米）<span class="tip-term" data-tip="到最近三甲医院的距离。三甲是最高等级医院">ⓘ</span></label><input type="number" id="hospitalDist" placeholder="如 2000" oninput="calcScore()"></div>
 </div>
-<div class="fgr">
-<div class="fg"><label>小区近6月成交活跃度</label><select id="dealActivity" onchange="calcScore()"><option value="">— 请选择 —</option><option value="hot">成交≥5套</option><option value="warm">成交3-4套</option><option value="cold">成交1-2套</option><option value="none">0成交</option></select></div>
-<div class="fg"><label>片区近1年价格走势</label><select id="priceTrend" onchange="calcScore()"><option value="">— 请选择 —</option><option value="up">上涨或持平</option><option value="down5">下跌5%以内</option><option value="downMore">下跌5%以上</option></select></div>
-</div>
-<div class="fgr">
-<div class="fg"><label>同户型挂牌量</label><select id="listingCount" onchange="calcScore()"><option value="">— 请选择 —</option><option value="low">少于5套</option><option value="mid">5-10套</option><option value="high">多于10套</option></select></div>
-<div class="fg"><label style="display:block;margin-bottom:4px">房源硬伤（可多选）</label><div class="cbg"><label><input type="checkbox" id="defNoise" onchange="calcScore()"> 临街/噪音</label><label><input type="checkbox" id="defTop" onchange="calcScore()"> 顶层</label><label><input type="checkbox" id="defGround" onchange="calcScore()"> 底层</label><label><input type="checkbox" id="defDark" onchange="calcScore()"> 暗卫</label><label><input type="checkbox" id="defOther" onchange="calcScore()"> 其他硬伤</label></div></div>
-</div>
+<div class="fgr"><div class="fg"><label>同户型挂牌量<span class="tip-term" data-tip="小区里和你看的这套户型差不多的房子，正在挂网上卖的有多少套。越多竞争越大，议价空间越大">ⓘ</span></label><select id="listingCount" onchange="calcScore()"><option value="">— 请选择 —</option><option value="low">少于5套</option><option value="mid">5-10套</option><option value="high">多于10套</option></select></div><div class="fg"><label>小区近6月成交</label><select id="dealActivity" onchange="calcScore()"><option value="">— 请选择 —</option><option value="hot">≥5套（活跃）</option><option value="warm">3-4套（一般）</option><option value="cold">1-2套（清淡）</option><option value="none">0套（无成交）</option></select></div></div>
+<div class="fgr"><div class="fg"><label>片区近1年价格走势</label><select id="priceTrend" onchange="calcScore()"><option value="">— 请选择 —</option><option value="up">上涨或持平</option><option value="down5">下跌5%以内</option><option value="downMore">下跌5%以上</option></select></div><div class="fg"><label>建筑楼龄</label><select id="buildEra" onchange="calcScore()"><option value="">— 请选择 —</option><option value="new">2000年后</option><option value="mid">1990-2000年</option><option value="old">1990年前</option></select></div></div>
+<div class="fgr"><div class="fg"><label style="display:block;margin-bottom:4px">房源硬伤（可多选）</label><div class="cbg"><label><input type="checkbox" id="defNoise" onchange="calcScore()"> 临街/噪音</label><label><input type="checkbox" id="defTop" onchange="calcScore()"> 顶层</label><label><input type="checkbox" id="defGround" onchange="calcScore()"> 底层</label><label><input type="checkbox" id="defDark" onchange="calcScore()"> 暗卫</label><label><input type="checkbox" id="defOther" onchange="calcScore()"> 其他硬伤</label></div></div></div>
+<div class="stats" id="envScoreDisplay">填完配套信息后自动生成综合配套评分</div>
+<div class="dg" id="envScoreGrid" style="display:none;margin-top:6px"></div>
 </div>
 
+</div></div>
+<div class="cw"><div class="ch" onclick="T(this)"><span><span class="ar">▶</span><span class="ct">📊 ⑤ 房源评分与专业评估</span></span></div><div class="cb">
 <!-- ═══ 六、房源评分 ═══ -->
 <div class="sec" id="scoreSection">
 <div class="st">⭐ ⑥ 房源评分与专业评估</div>
 <div id="scoreContent"><div class="pe" style="padding:20px">填完房源所有信息后自动算出评分<br>包括基础信息、贷款、配套、市场数据</div></div>
+
+</div>
+</div></div>
+<div class="cw"><div class="ch" onclick="T(this)"><span><span class="ar">▶</span><span class="ct">⚠️ ⑥ 投资风险提示</span></span></div><div class="cb">
+<!-- ═══ 七、投资风险提示 ═══ -->
+<div class="sec" id="riskSection" style="display:none">
+<div class="st">⚠️ ⑦ 投资风险提示（客观参考）</div>
+<div class="meta-note">* 以下提示基于你填写的房源信息和测算结果自动生成，仅供参考，不构成任何投资建议。</div>
+<div id="riskContent"></div>
 </div>
 
+</div></div>
 <div class="ft">数据自动同步到云端 · 同一账号登录数据不丢<br>税费按2026年北京二手房政策自动计算</div>
-</div>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -388,7 +458,7 @@ function calc(){
 
   document.getElementById('totalLoanDisplay').textContent=lw.toFixed(2)+'万元';
   const ls=document.getElementById('loanSummary');
-  if(method&<ly){const mn=method==='equalPayment'?'等额本息':'等额本金';const ln={commercial:'纯商贷',fund:'纯公积金',combined:'组合贷'}[lt]||lt;let p=[mn+' · '+ln+' · '+ly+'年'];if(monthlyPmt>0){p.push('月供 <b>¥'+fmt(monthlyPmt)+'</b>');if(method==='equalPrincipal')p.push('首月<b>¥'+fmt(firstPayment)+'</b> · 月递减<b>¥'+fmt(monthlyDec)+'</b>');if(isCombined)p.push('· 公积金<b>¥'+fmt(fundMonthlyPmt)+'</b> + 商贷<b>¥'+fmt(commMonthlyPmt)+'</b>')}ls.innerHTML=p.join(' · ')}else ls.innerHTML='选好还款方式+贷款类型+年限后自动算月供';
+  if(method&&ly){const mn=method==='equalPayment'?'等额本息':'等额本金';const ln={commercial:'纯商贷',fund:'纯公积金',combined:'组合贷'}[lt]||lt;let p=[mn+' · '+ln+' · '+ly+'年'];if(monthlyPmt>0){p.push('月供 <b>¥'+fmt(monthlyPmt)+'</b>');if(method==='equalPrincipal')p.push('首月<b>¥'+fmt(firstPayment)+'</b> · 月递减<b>¥'+fmt(monthlyDec)+'</b>');if(isCombined)p.push('· 公积金<b>¥'+fmt(fundMonthlyPmt)+'</b> + 商贷<b>¥'+fmt(commMonthlyPmt)+'</b>')}ls.innerHTML=p.join(' · ')}else ls.innerHTML='选好还款方式+贷款类型+年限后自动算月供';
 
   // Amort display
   const as=document.getElementById('amortSection');
@@ -422,6 +492,11 @@ function calc(){
   const sDiv=document.getElementById('staticROI');
   sDiv.innerHTML='<div class="di fw"><div class="l">年净租金收入</div><div class="v'+(annNetRent>=0?' g':' r')+'">¥'+fmt(annNetRent)+'</div></div>'+'<div class="di"><div class="l">静态年化租金回报率</div><div class="v'+(staticROI>=0?' g':' r')+'">'+(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%</div></div>'+'<div class="di"><div class="l">租售比</div><div class="v">1:'+(rentSaleRatio>0?Math.round(1/rentSaleRatio):'—')+'</div></div>'+'<div class="di"><div class="l">静态回本周期</div><div class="v">'+(paybackYrs>0?paybackYrs.toFixed(1)+'年':'—')+'</div></div>'+'<div class="di"><div class="l">单位面积价格</div><div class="v">'+(unitPrice>0?fmt(unitPrice)+'/㎡':'—')+'</div></div>';
   document.getElementById('staticNote').innerHTML='🌍 国际租售比参考：1:200~1:300合理 · 1:300+偏低（房价偏高）';
+  // Reference standards
+  document.getElementById('staticRef').innerHTML=staticROI>0?'行业参考：静态租金回报率≥3%为<b>合格</b>，≥4%为<b>优质</b>，低于2%则覆盖能力较弱':'';
+  document.getElementById('irrRef').innerHTML=irrPct!==null?'行业参考：年化IRR≥3%跑赢<b>银行定存</b>，≥4%跑赢<b>大额理财</b>，≥6%为<b>优质</b>，低于2%则性价比偏低':'';
+  document.getElementById('cfRef').innerHTML=trueMonCF!==0?'参考提示：月净现金流为正 → 租金可覆盖月供，无需额外贴钱；为负 → 每月需补贴资金，需评估长期还款压力':'';
+  document.getElementById('pmtRef').innerHTML=monthlyPmt>0?'银行风控参考：月供不超过家庭月收入<b>50%</b>，否则还款压力大':'';
 
   // Dynamic ROI
   const dDiv=document.getElementById('dynamicROI');
@@ -436,14 +511,139 @@ function calc(){
   if(!roiEl){const rcDiv=document.createElement('div');rcDiv.className='rc';rcDiv.innerHTML='<div class="rl">静态年化租金回报率</div><div class="rn" id="roiDisplay">—</div><div class="rs">年净租金 ÷ 房屋总价</div>';const he=document.getElementById('holdYears');const sr=he?he.closest('.sec'):null;if(sr){const stEl=sr.querySelector('.st');if(stEl)stEl.after(rcDiv)}}
   const roiEl2=document.getElementById('roiDisplay');if(roiEl2){if(price>0||rent>0){const sg=staticROI>=0?'+':'';roiEl2.textContent=sg+staticROI.toFixed(2)+'%';roiEl2.className='rn'+(staticROI>=0?' g':' r')}else{roiEl2.textContent='—';roiEl2.className='rn'}}
 
-  try{calcScore()}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">请刷新页面后重试</div></div>'}
+  try{calcScore()}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">'+e.message+'</div></div>'}
+
+  // ═══ 盈亏平衡测算 ═══
+  const buyCostTotal = pw*10000 + tw*10000 + rw*10000 + aw*10000 + ow*10000;
+  const annualHoldCost = mgmt*12;
+  const saleCostRate = 0.01;
+  const totalInvest = initInv;
+  const totalLoan = lw*10000;
+  const breakEvenPrice = (totalInvest + totalLoan + annualHoldCost*holdY) / (1 - saleCostRate);
+  const breakEvenRate = pw>0 ? ((breakEvenPrice/(pw*10000))-1)*100 : 0;
+  const annualNetSave = annNetRent > 0 ? annNetRent : 0;
+  const staticPayback = annNetRent > 0 ? (pw*10000)/annNetRent : 0;
+  const dynamicPayback = initInv > 0 && trueAnnCF > 0 ? initInv/trueAnnCF : 0;
+
+  const beGrid = document.getElementById('breakEvenGrid');
+  if(beGrid){
+    beGrid.innerHTML = '<div class="di fw"><div class="l">买入总成本（含税费+装修+中介）</div><div class="v">¥'+fmt(buyCostTotal)+'</div></div>' +
+      '<div class="di fw"><div class="l">持有成本合计（'+holdY+'年）</div><div class="v">¥'+fmt(annualHoldCost*holdY)+'</div></div>' +
+      '<div class="di"><div class="l">需达到的盈亏平衡售价</div><div class="v'+(breakEvenRate>=0?' g':' r')+'">¥'+fmt(breakEvenPrice)+'</div></div>' +
+      '<div class="di"><div class="l">对应房价涨幅</div><div class="v'+(breakEvenRate>=0?' g':' r')+'">'+(breakEvenRate>=0?'+':'')+breakEvenRate.toFixed(2)+'%</div></div>' +
+      '<div class="di"><div class="l">静态回本年限</div><div class="v">'+(staticPayback>0?staticPayback.toFixed(1)+'年':'—')+'</div></div>' +
+      '<div class="di"><div class="l">动态回本年限</div><div class="v">'+(dynamicPayback>0?dynamicPayback.toFixed(1)+'年':'—')+'</div></div>';
+
+    const beRef = document.getElementById('breakEvenRef');
+    if(beRef){
+      let beStd = '';
+      if(breakEvenRate > 0) {
+        if(breakEvenRate <= 5) beStd = '参考：房价仅上涨'+breakEvenRate.toFixed(1)+'%即可保本，属于低风险区间';
+        else if(breakEvenRate <= 15) beStd = '参考：房价需上涨'+breakEvenRate.toFixed(1)+'%才能保本，属于中等风险，需留意市场走势';
+        else beStd = '参考：房价需上涨'+breakEvenRate.toFixed(1)+'%才能保本，风险较高，建议审慎评估';
+      } else {
+        beStd = '参考：当前租金、税费和成本结构下，买入即可实现盈利（前提是房价不跌）';
+      }
+      beRef.innerHTML = beStd;
+    }
+  }
+
+  // ═══ 杠杆分析 ═══
+  const totalAllCash = pw*10000 + tw*10000 + rw*10000 + aw*10000 + ow*10000;
+  const saleProceeds = salePriceW>0 ? salePriceW*10000 : pw*10000;
+  const rentIncomeTotal = (rent-mgmt)*12*holdY;
+  const allCashReturn = rentIncomeTotal + (saleProceeds - totalAllCash);
+  const allCashROI = totalAllCash>0 ? (allCashReturn/totalAllCash)*100 : 0;
+  const allCashIRR = calcIRR([-totalAllCash/10000, ...Array(holdY-1).fill((rent-mgmt)*12/10000), ((rent-mgmt)*12 + (saleProceeds - pw*10000))/10000]);
+  const allCashIRRPct = allCashIRR!==null ? allCashIRR*100 : null;
+
+  const loanReturn = rentIncomeTotal + (saleProceeds - totalInvest - (amort?amort.totalPmt - lw*10000 : 0));
+  const totalInterest = amort ? amort.totalInt : 0;
+  const loanROI = initInv>0 ? (loanReturn/initInv)*100 : 0;
+  const leverageRatio = totalAllCash>0 && initInv>0 ? totalAllCash/initInv : 0;
+
+  const lGrid = document.getElementById('leverageGrid');
+  if(lGrid){
+    lGrid.innerHTML = '<div class="di fw" style="background:#f0f7ff;border:1px solid #dbeafe"><div class="l">🔵 全款买房</div>' +
+      '<div class="v" style="font-size:13px">总投入 ¥'+fmt(totalAllCash)+' · 最终总回报率 '+(totalAllCash>0?(allCashROI>=0?'+':'')+allCashROI.toFixed(2)+'%':'—')+'</div></div>' +
+      '<div class="di fw" style="background:#fefce8;border:1px solid #fef08a"><div class="l">🟡 贷款买房</div>' +
+      '<div class="v" style="font-size:13px">自掏腰包 ¥'+fmt(initInv)+' · 最终总回报率 '+(initInv>0?(loanROI>=0?'+':'')+loanROI.toFixed(2)+'%':'—')+'</div></div>' +
+      '<div class="di fw"><div class="l">杠杆放大倍数</div><div class="v g">'+(leverageRatio>0?leverageRatio.toFixed(2)+'倍':'—')+'</div></div>' +
+      '<div class="di"><div class="l">全款年化IRR</div><div class="v'+(allCashIRRPct!==null&&allCashIRRPct>=0?' g':' r')+'">'+(allCashIRRPct!==null?(allCashIRRPct>=0?'+':'')+allCashIRRPct.toFixed(2)+'%':'—')+'</div></div>' +
+      '<div class="di"><div class="l">贷款年化IRR</div><div class="v'+(irrPct!==null&&irrPct>=0?' g':' r')+'">'+(irrPct!==null?(irrPct>=0?'+':'')+irrPct.toFixed(2)+'%':'—')+'</div></div>';
+
+    const lRef = document.getElementById('leverageRef');
+    if(lRef){
+      lRef.innerHTML = '杠杆说明：用贷款可以少出本金，提高自有资金的回报率。但风险在于：如果房价下跌或租金下降，亏损也会被放大。杠杆越高，风险越大。客观建议：首付低于30%需谨慎。';
+    }
+  }
+
+  // ═══ 全周期税费明细 ═══
+  const taxDetailDiv = document.getElementById('taxDetailContent');
+  if(taxDetailDiv){
+    let taxHTML = '<div class="subs"><div class="subs-title">📥 买入环节税费</div><div class="dg">';
+    const txDetail = calcTax(pw, area, hy, pc);
+    taxHTML += '<div class="di"><div class="l">契税<span class="tip-term" data-tip="买房时要交的税，按房价比例算。首套房税率低，面积超90平税率高一点">ⓘ</span></div><div class="v">¥'+fmt(txDetail.deedTax)+'</div></div>' +
+      '<div class="di"><div class="l">个人所得税（个税）<span class="tip-term" data-tip="卖房人卖房盈利后要交的税，满五唯一可免征">ⓘ</span></div><div class="v">¥'+fmt(txDetail.incomeTax)+'</div></div>' +
+      '<div class="di"><div class="l">增值税<span class="tip-term" data-tip="房子增值部分交的税，不满2年要交，满2年免">ⓘ</span></div><div class="v">¥'+fmt(txDetail.vat)+'</div></div>';
+    taxHTML += '</div>';
+    let exempt = [];
+    if(hy==='5only' || hy==='5notOnly') exempt.push('✅ 增值税已免征（满2年）');
+    if(hy==='5only') exempt.push('✅ 个税已免征（满五唯一）');
+    else if(hy==='5notOnly') exempt.push('⚠️ 非唯一住房，个税不免');
+    else if(hy==='lt2') exempt.push('⚠️ 不满2年，增值税+个税全额征收');
+    else if(hy==='2to5') exempt.push('⚠️ 满2不满5，增值税免但个税不免（非唯一）');
+    if(exempt.length) taxHTML += '<div class="stats" style="margin-top:6px">'+exempt.join('<br>')+'</div>';
+    taxHTML += '</div><div class="subs"><div class="subs-title">📋 持有环节年度成本</div><div class="dg">' +
+      '<div class="di"><div class="l">物业费</div><div class="v">¥'+fmt(mgmt*12)+'/年</div></div>' +
+      '<div class="di"><div class="l">供暖费（估算）</div><div class="v">¥'+fmt(Math.round(area*30))+'/年</div></div>' +
+      '<div class="di fw"><div style="font-size:10px;color:var(--note-c);margin-top:2px">* 持有成本指每年必须固定支出的费用，无论房子是否出租。供暖费按建筑面积估算（北京约30元/㎡/年）</div></div>' +
+      '</div></div><div class="subs"><div class="subs-title">📤 卖出环节税费（估算）</div><div class="dg">' +
+      '<div class="di fw"><div class="l">中介费（约1%）</div><div class="v">~¥'+fmt(Math.round(saleProceeds*0.01))+'</div></div>' +
+      '<div class="di fw"><div style="font-size:10px;color:var(--note-c);margin-top:2px">* 卖房时需支付中介费（通常1-2%），此处按1%估算。实际费用因城市、中介而异</div></div>' +
+      '</div></div>';
+    taxDetailDiv.innerHTML = taxHTML;
+  }
+
+  renderRiskTips();
 }
 
-// ═══ Scoring (unchanged) ═══
+// ═══ 配套评分 ═══
+function calcEnvScore(){
+  const mDist=parseFloat(document.getElementById('metroDist').value)||0;
+  const sLevel=document.getElementById('schoolLevel').value;
+  const mallD=parseFloat(document.getElementById('mallDist').value)||0;
+  const hospD=parseFloat(document.getElementById('hospitalDist').value)||0;
+  const lc=document.getElementById('listingCount').value;
+  const da=document.getElementById('dealActivity').value;
+  const pt=document.getElementById('priceTrend').value;
+  const be=document.getElementById('buildEra').value;
+  const defs=[document.getElementById('defNoise').checked,document.getElementById('defTop').checked,document.getElementById('defGround').checked,document.getElementById('defDark').checked,document.getElementById('defOther').checked];
+  let score=0,maxScore=100;
+  // 地铁评分（满分30）
+  if(mDist>0&&mDist<=300)score+=30;else if(mDist<=500)score+=25;else if(mDist<=800)score+=20;else if(mDist<=1200)score+=12;else if(mDist<=2000)score+=6;
+  // 教育评分（满分25）
+  if(sLevel==='province')score+=25;else if(sLevel==='city')score+=20;else if(sLevel==='district')score+=14;else if(sLevel==='normal')score+=8;
+  // 商业评分（满分20）
+  if(mallD>0&&mallD<=500)score+=20;else if(mallD<=1000)score+=15;else if(mallD<=2000)score+=10;else if(mallD>2000)score+=5;
+  // 医疗评分（满分15）
+  if(hospD>0&&hospD<=1000)score+=15;else if(hospD<=2000)score+=12;else if(hospD<=5000)score+=8;else if(hospD>5000)score+=5;
+  // 挂牌量（满分5）
+  if(lc==='low')score+=5;else if(lc==='mid')score+=3;else if(lc==='high')score+=1;
+  // 成交活跃度（满分5）
+  if(da==='hot')score+=5;else if(da==='warm')score+=3;else if(da==='cold')score+=1;
+  // 硬伤扣分
+  score-=defs.filter(Boolean).length*4;
+  score=Math.max(0,Math.min(100,score));
+  return {score,maxScore};
+}
+
+// ═══ Scoring ═══
 function calcScore(){
 try{
   const dp=parseFloat(document.getElementById('downPmt').value)||0,pw=parseFloat(document.getElementById('price').value)||0,lw=Math.max(0,pw-dp),rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0;
-  const hy=document.getElementById('houseYears').value,pc=document.getElementById('purchaseCount').value,ow=document.getElementById('ownership').value,pt=document.getElementById('propertyType').value,ls=document.getElementById('legalStatus').value,sc=document.getElementById('schoolDistrict').value,md=document.getElementById('metroDist').value,lf=document.getElementById('lifeSupport').value,be=document.getElementById('buildEra').value,da=document.getElementById('dealActivity').value,pd=document.getElementById('priceTrend').value,lc=document.getElementById('listingCount').value,dr=document.getElementById('downRatio').value;
+  const hy=document.getElementById('houseYears').value,pc=document.getElementById('purchaseCount').value,ow=document.getElementById('ownership').value,pt=document.getElementById('propertyType').value,ls=document.getElementById('legalStatus').value,sl=document.getElementById('schoolLevel').value,be=document.getElementById('buildEra').value,da=document.getElementById('dealActivity').value,pd=document.getElementById('priceTrend').value,lc=document.getElementById('listingCount').value,dr=document.getElementById('downRatio').value;
+  const mDist=parseFloat(document.getElementById('metroDist').value)||0,mallD=parseFloat(document.getElementById('mallDist').value)||0,hospD=parseFloat(document.getElementById('hospitalDist').value)||0;
   const defs=[document.getElementById('defNoise').checked,document.getElementById('defTop').checked,document.getElementById('defGround').checked,document.getElementById('defDark').checked,document.getElementById('defOther').checked];
   const isVetoed=pt==='restricted'||ls==='dispute';
   const vetoReason=[];if(pt==='restricted')vetoReason.push('限制交易类');if(ls==='dispute')vetoReason.push('查封/纠纷');
@@ -457,9 +657,34 @@ try{
   let s2a=0,s2aN='';if(hy==='5only'){s2a=10;s2aN='满五唯一'}else if(hy==='5notOnly'){s2a=7;s2aN='满五不唯一'}else if(hy==='2to5'){s2a=4;s2aN='满2不满5'}else if(hy==='lt2'){s2a=0;s2aN='不满2年'}else s2aN='请选房本年限';
   let s2b=0,s2bN='';if(pt==='commercial'){s2b=8;s2bN='普通商品房'}else if(pt==='civic'){s2b=5;s2bN='央产/公房'}else if(pt==='otherOK'){s2b=3;s2bN='其他合规'}else s2bN='请选产权性质';
   let s2c=0,s2cN='';if(ls==='dispute'){s2c=0;s2cN='有纠纷'}else if(ow==='sole'||ow==='joint'){s2c=7;s2cN='产权清晰'}else if(ow==='multiple'){s2c=4;s2cN='多人共有'}else s2cN='请选产权情况';const c2=s2a+s2b+s2c,c2M=25;
-  let s3a=0,s3aN='';if(sc==='key'){s3a=8;s3aN='重点学区'}else if(sc==='normal'){s3a=5;s3aN='普通学区'}else if(sc==='none'){s3a=2;s3aN='无划片'}else s3aN='请选学区';
-  let s3b=0,s3bN='';if(md==='near'){s3b=6;s3bN='地铁1km内'}else if(md==='mid'){s3b=3;s3bN='1-2km'}else if(md==='far'){s3b=0;s3bN='>2km'}else s3bN='请选地铁';
-  let s3c=0,s3cN='';if(lf==='good'){s3c=6;s3cN='配套成熟'}else if(lf==='poor'){s3c=3;s3cN='不完善'}else if(lf==='none'){s3c=0;s3cN='无配套'}else s3cN='请选配套';const c3=s3a+s3b+s3c,c3M=20;
+
+  // 调用环境评分
+  const envS=calcEnvScore();
+  // 根据envScore比例映射到配套稀缺（满分20分）
+  const c3M=20;
+  let c3=Math.round(envS.score/100*c3M);
+  let c3Display=c3; // 用于显示
+  c3=Math.max(0,Math.min(c3M,c3));
+  
+  // 更新环境评分显示
+  let envGrade='较差',envColor='var(--negative)';
+  const esDiv=document.getElementById('envScoreDisplay');
+  if(esDiv&&envS.score>0){
+    esDiv.innerHTML='综合配套评分：<b>'+envS.score+'分</b>/'+envS.maxScore+'分';
+    if(envS.score>=80){envGrade='优秀';envColor='var(--positive)'}
+    else if(envS.score>=60){envGrade='良好';envColor='var(--accent)'}
+    else if(envS.score>=40){envGrade='合格';envColor='#d97706'}
+    esDiv.innerHTML+=' · <b style="color:'+envColor+'">'+envGrade+'</b>';
+  }
+  const egDiv=document.getElementById('envScoreGrid');
+  if(egDiv){
+    if(envS.score>0){
+      egDiv.style.display='grid';
+      const mClr=mDist>0&&mDist<=1200?'var(--positive)':'var(--negative)';
+      egDiv.innerHTML='<div class="di fw"><div class="l">综合配套评分</div><div class="v" style="color:'+envColor+'">'+envS.score+'分 · '+envGrade+'</div></div>'+'<div class="di"><div class="l">🚇 地铁</div><div class="v" style="color:'+mClr+'">'+(mDist>0?mDist+'m':'—')+'</div></div>'+'<div class="di"><div class="l">🏫 教育</div><div class="v">'+{province:'省重点',city:'市重点',district:'区重点',normal:'普通学校','':'—'}[sl]+'</div></div>'+'<div class="di"><div class="l">🏪 商业</div><div class="v" style="color:'+(mallD>0&&mallD<=2000?'var(--positive)':'var(--negative)')+'">'+(mallD>0?mallD+'m':'—')+'</div></div>'+'<div class="di"><div class="l">🏥 医疗</div><div class="v" style="color:'+(hospD>0&&hospD<=5000?'var(--positive)':'var(--negative)')+'">'+(hospD>0?hospD+'m':'—')+'</div></div>';
+    }else{egDiv.style.display='none'}
+  }
+
   let s4a=0,s4aN='';if(da==='hot'){s4a=6;s4aN='成交≥5套'}else if(da==='warm'){s4a=4;s4aN='3-4套'}else if(da==='cold'){s4a=2;s4aN='1-2套'}else if(da==='none'){s4a=0;s4aN='0成交'}else s4aN='请选成交';
   let s4b=0,s4bN='';if(pd==='up'){s4b=5;s4bN='上涨/持平'}else if(pd==='down5'){s4b=3;s4bN='跌≤5%'}else if(pd==='downMore'){s4b=0;s4bN='跌>5%'}else s4bN='请选走势';
   let s4c=0,s4cN='';if(lc==='low'){s4c=4;s4cN='<5套'}else if(lc==='mid'){s4c=2;s4cN='5-10套'}else if(lc==='high'){s4c=0;s4cN='>10套'}else s4cN='请选挂牌';const c4=s4a+s4b+s4c,c4M=15;
@@ -468,18 +693,47 @@ try{
   const totalScore=c1+c2+c3+c4+c5,drv=pw>0?lw/pw*100:0,cv=mpv>0?(rent-mgmt)*12/(mpv*12):0;
   let grade='',gc='';if(isVetoed){grade='⚠️ 不建议入手（一票否决）';gc='sc-veto'}else if(totalScore>=85){grade='🏆 强烈推荐';gc='sc-s'}else if(totalScore>=70){grade='✅ 可入手';gc='sc-a'}else if(totalScore>=50){grade='⚠️ 谨慎购买';gc='sc-b'}else{grade='❌ 不建议入手';gc='sc-c'}
   const adv=[],risks=[],hints=[];if(c1>=24)adv.push('财务健康度高');if(s2a===10)adv.push('满五唯一税费低');if(c3>=16)adv.push('地段配套好');if(c4>=12)adv.push('流动性好');if(s5a===4&&dc===0)adv.push('楼龄新且无硬伤');if(irrVal!==null&&irrVal>6)adv.push('IRR达'+irrVal.toFixed(1)+'%');
-  if(hy==='lt2')risks.push('不满2年增值税高(5.3%)');if(s2a<=4)risks.push('房本年限短、税费高');if(c4<8)risks.push('流动性差');if(drv>70)risks.push('资产负债率'+drv.toFixed(0)+'%');if(cv<1)risks.push('租金不够还月供');if(s3b<=0)risks.push('地铁远');if(rv>0&&rv<80)risks.push('覆盖月供不足80%');if(dc>0)risks.push(dc+'项硬伤');
+  if(hy==='lt2')risks.push('不满2年增值税高(5.3%)');if(s2a<=4)risks.push('房本年限短、税费高');if(c4<8)risks.push('流动性差');if(drv>70)risks.push('资产负债率'+drv.toFixed(0)+'%');if(cv<1)risks.push('租金不够还月供');if(mDist>0&&mDist>1200)risks.push('地铁远('+mDist+'m)');if(rv>0&&rv<80)risks.push('覆盖月供不足80%');if(dc>0)risks.push(dc+'项硬伤');
   if(hy==='lt2')hints.push('税费高，建议协商税费承担');if(s1a===0&&irrVal!==null)hints.push('回报率低，建议重估');if(rv>0&&rv<100)hints.push('月供覆盖比'+rv.toFixed(0)+'%');if(lc==='high')hints.push('竞品多，议价空间大');if(!adv.length)hints.push('指标较普通');
-  const scDiv=document.getElementById('scoreContent'),gradeName={commercial:'普通商品房',civic:'央产/公房',otherOK:'其他合规',restricted:'限制交易'}[pt]||'未选',scNm={key:'重点学区',normal:'普通学区',none:'无划片'}[sc]||'未选';
+  const scDiv=document.getElementById('scoreContent'),gradeName={commercial:'普通商品房',civic:'央产/公房',otherOK:'其他合规',restricted:'限制交易'}[pt]||'未选';
   let vH='';if(isVetoed)vH='<div class="va"><div class="vat">🚫 一票否决</div><div class="vad">'+vetoReason.join('；')+'</div></div>';
   scDiv.innerHTML=vH+'<div class="sc '+gc+'"><div class="slabel">房源综合评分</div><div class="snum">'+(isVetoed?0:totalScore)+'</div><div class="sgrade">'+grade+'</div>'+(isVetoed?'<div class="sveto">一票否决 · 总分0分</div>':'')+'</div><div style="margin-top:10px">'+
     '<div class="sd"><div class="sdt"><span class="sdn">① 财务健康度（'+c1M+'分）</span><span class="sdv'+(c1>=24?' g':c1>=18?' y':' r')+'">'+c1+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c1/c1M*100)+'%;background:'+(c1>=24?'#059669':c1>=18?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• IRR回报率：'+s1a+'/15 — '+s1aN+'</div><div class="sdnote">• 现金流覆盖：'+s1b+'/10 — '+s1bN+'</div><div class="sdnote">• 首付杠杆：'+s1c+'/5 — '+s1cN+'</div></div>'+
     '<div class="sd"><div class="sdt"><span class="sdn">② 产权合规（'+c2M+'分）</span><span class="sdv'+(c2>=20?' g':c2>=15?' y':' r')+'">'+c2+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c2/c2M*100)+'%;background:'+(c2>=20?'#059669':c2>=15?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 房本年限：'+s2a+'/10 — '+s2aN+'</div><div class="sdnote">• 产权性质（'+gradeName+'）：'+s2b+'/8 — '+s2bN+'</div><div class="sdnote">• 产权清晰度：'+s2c+'/7 — '+s2cN+'</div></div>'+
-    '<div class="sd"><div class="sdt"><span class="sdn">③ 配套稀缺（'+c3M+'分）</span><span class="sdv'+(c3>=16?' g':c3>=12?' y':' r')+'">'+c3+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c3/c3M*100)+'%;background:'+(c3>=16?'#059669':c3>=12?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 学区（'+scNm+'）：'+s3a+'/8 — '+s3aN+'</div><div class="sdnote">• 交通：'+s3b+'/6 — '+s3bN+'</div><div class="sdnote">• 生活配套：'+s3c+'/6 — '+s3cN+'</div></div>'+
+    '<div class="sd"><div class="sdt"><span class="sdn">③ 配套稀缺（'+c3M+'分）</span><span class="sdv'+(c3>=16?' g':c3>=12?' y':' r')+'">'+c3+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c3/c3M*100)+'%;background:'+(c3>=16?'#059669':c3>=12?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 综合配套评分：'+envS.score+'/100</div><div class="sdnote">• 映射到本项：'+c3+'/'+c3M+'</div></div>'+
     '<div class="sd"><div class="sdt"><span class="sdn">④ 资产流动性（'+c4M+'分）</span><span class="sdv'+(c4>=12?' g':c4>=8?' y':' r')+'">'+c4+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c4/c4M*100)+'%;background:'+(c4>=12?'#059669':c4>=8?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 成交活跃度：'+s4a+'/6 — '+s4aN+'</div><div class="sdnote">• 价格走势：'+s4b+'/5 — '+s4bN+'</div><div class="sdnote">• 同户型挂牌：'+s4c+'/4 — '+s4cN+'</div></div>'+
     '<div class="sd"><div class="sdt"><span class="sdn">⑤ 硬伤风险（'+c5M+'分）</span><span class="sdv'+(c5>=8?' g':c5>=5?' y':' r')+'">'+c5+'</span></div><div class="sdb"><div class="sdf" style="width:'+(c5/c5M*100)+'%;background:'+(c5>=8?'#059669':c5>=5?'#d97706':'#dc2626')+'"></div></div><div class="sdnote">• 楼龄：'+s5a+'/4 — '+s5aN+'</div><div class="sdnote">• 硬伤：'+s5b+'/6 — '+s5bN+'</div></div></div>'+
     (adv.length||risks.length||hints.length?'<div class="stips">':'')+(adv.length?'<div class="tip tip-adv"><div class="tt">✅ 核心优势</div>'+adv.map(a=>'<div class="td">• '+a+'</div>').join('')+'</div>':'')+(risks.length?'<div class="tip tip-risk"><div class="tt">⚠️ 核心风险</div>'+risks.map(r=>'<div class="td">• '+r+'</div>').join('')+'</div>':'')+(hints.length?'<div class="tip tip-hint"><div class="tt">💡 基础提醒</div>'+hints.map(h=>'<div class="td">• '+h+'</div>').join('')+'</div>':'')+(adv.length||risks.length||hints.length?'</div>':'');
-}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">请刷新页面后重试</div></div>'}}
+}catch(e){const sd=document.getElementById('scoreContent');if(sd)sd.innerHTML='<div class="va"><div class="vat">⚠️ 评分异常</div><div class="vad">'+e.message+'</div></div>'}}
+
+
+// ═══ Risk Tips ═══
+function renderRiskTips(){
+  const pw=parseFloat(document.getElementById('price').value)||0,dpW=parseFloat(document.getElementById('downPmt').value)||0,lw=Math.max(0,pw-dpW);
+  const tw=parseFloat(document.getElementById('tax').value)||0,rw=parseFloat(document.getElementById('renov').value)||0,aw=parseFloat(document.getElementById('agency').value)||0,ow=parseFloat(document.getElementById('otherCost').value)||0;
+  const rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0;
+  const dr=parseFloat(document.getElementById('downRatio').value)||(pw>0?dpW/pw*100:0);
+  const amData=getAmortCombined(),amort=amData?amData.combined:null;
+  let monthlyPmt=0;if(amort&&amort.rows&&amort.rows.length>0)monthlyPmt=amort.rows[0].payment;
+  const trueMonCF=rent-mgmt-monthlyPmt;
+  const holdY=parseInt(document.getElementById('holdYears').value)||10;
+  const rs=document.getElementById('riskSection'),rc=document.getElementById('riskContent');
+  const items=[];
+  // 高杠杆风险
+  if(dr>0&&dr<30){items.push({level:'high',icon:'📊',title:'高杠杆风险',desc:'首付比例仅'+dr.toFixed(0)+'%，低于30%的安全线。房价下跌时，你的自有资金可能面临较大损失风险。建议预留6个月以上的月供资金作为安全垫。'})}
+  // 现金流风险
+  if(trueMonCF<0){const deficit=Math.abs(trueMonCF);items.push({level:'high',icon:'💸',title:'现金流风险',desc:'每月净现金流为负（-¥'+fmt(deficit)+'），持有'+holdY+'年累计需额外补贴约¥'+fmt(deficit*holdY*12)+'。请评估自身长期现金流能否承受。'})}
+  // 流动性风险
+  items.push({level:'mid',icon:'🔒',title:'流动性风险',desc:'房产属于低流动性资产，从挂牌到成交通常需要3-6个月甚至更长。急售时可能需要折价5-15%才能快速变现。'})
+  // 政策风险
+  items.push({level:'mid',icon:'📋',title:'政策风险',desc:'房地产调控政策（限购、限贷、税费调整、利率变化）可能影响房产的买入成本和未来出手价格。建议关注当地政策动向。'})
+  // 利率风险
+  if(monthlyPmt>0){items.push({level:'low',icon:'📈',title:'利率波动风险',desc:'如果使用浮动利率贷款，市场利率上升将导致月供增加，增加还款压力。建议评估自身利率上浮承受能力。'})}
+  // 月供收入比风险
+  if(monthlyPmt>0&&dr>0){items.push({level:'low',icon:'💰',title:'月供压力参考',desc:'银行风控通常要求月供不超过家庭月收入的50%。如果超过，建议谨慎评估还款能力。'})}
+  
+  if(items.length>0){rs.style.display='block';let h='<div class="risk-sec">';for(const item of items){const cls={'high':'risk-high','mid':'risk-mid','low':'risk-low','ok':'risk-ok'}[item.level]||'risk-low';h+='<div class="risk-item '+cls+'"><div class="ri"><div class="ri-icon">'+item.icon+'</div><div class="ri-body"><div class="ri-t">'+item.title+'</div><div class="ri-d">'+item.desc+'</div></div></div></div>'}h+='</div>';rc.innerHTML=h}else{rs.style.display='none'}
+}
 
 function irrRate(){
   const pw=parseFloat(document.getElementById('price').value)||0,dpW=parseFloat(document.getElementById('downPmt').value)||0,tw=parseFloat(document.getElementById('tax').value)||0,rw=parseFloat(document.getElementById('renov').value)||0,aw=parseFloat(document.getElementById('agency').value)||0,ow=parseFloat(document.getElementById('otherCost').value)||0,rent=parseFloat(document.getElementById('rent').value)||0,mgmt=parseFloat(document.getElementById('mgmt').value)||0,spw=parseFloat(document.getElementById('salePrice').value)||0;
@@ -507,8 +761,16 @@ function gatherData(){
     salePrice:parseFloat(document.getElementById('salePrice').value)||0,
     ratioIsApplied,downPmtIsManual,
     propertyType:document.getElementById('propertyType').value,legalStatus:document.getElementById('legalStatus').value,
-    schoolDistrict:document.getElementById('schoolDistrict').value,metroDist:document.getElementById('metroDist').value,
-    lifeSupport:document.getElementById('lifeSupport').value,buildEra:document.getElementById('buildEra').value,
+    buildDecade:document.getElementById('buildDecade').value,
+    propertyRight:document.getElementById('propertyRight').value,
+    decoration:document.getElementById('decoration').value,
+    schoolText:document.getElementById('schoolDistrict').value,
+    onlyResidence:document.getElementById('onlyResidence').value,
+    metroDist:document.getElementById('metroDist').value,
+    schoolLevel:document.getElementById('schoolLevel').value,
+    mallDist:document.getElementById('mallDist').value,
+    hospitalDist:document.getElementById('hospitalDist').value,
+    buildEra:document.getElementById('buildEra').value,
     dealActivity:document.getElementById('dealActivity').value,priceTrend:document.getElementById('priceTrend').value,
     listingCount:document.getElementById('listingCount').value,
     defNoise:document.getElementById('defNoise').checked,defTop:document.getElementById('defTop').checked,
@@ -533,8 +795,16 @@ function fillData(d){
   const tag=document.getElementById('taxTag');if(taxIsAuto){tag.textContent='自动';tag.className='tag tag-auto'}else{tag.textContent='手动';tag.className='tag tag-manual'}
   const dpt=document.getElementById('dpTag');if(ratioIsApplied&&d.downRatio){dpt.textContent='自动'+d.downRatio+'%';dpt.className='tag tag-auto'}else{dpt.textContent='手动';dpt.className='tag tag-manual'}
   document.getElementById('propertyType').value=d.propertyType||'';document.getElementById('legalStatus').value=d.legalStatus||'';
-  document.getElementById('schoolDistrict').value=d.schoolDistrict||'';document.getElementById('metroDist').value=d.metroDist||'';
-  document.getElementById('lifeSupport').value=d.lifeSupport||'';document.getElementById('buildEra').value=d.buildEra||'';
+  document.getElementById('buildDecade').value=d.buildDecade||'';
+  document.getElementById('propertyRight').value=d.propertyRight||'';
+  document.getElementById('decoration').value=d.decoration||'';
+  document.getElementById('schoolDistrict').value=d.schoolText||'';
+  document.getElementById('onlyResidence').value=d.onlyResidence||'';
+  document.getElementById('metroDist').value=d.metroDist||'';
+  document.getElementById('schoolLevel').value=d.schoolLevel||'';
+  document.getElementById('mallDist').value=d.mallDist||'';
+  document.getElementById('hospitalDist').value=d.hospitalDist||'';
+  document.getElementById('buildEra').value=d.buildEra||'';
   document.getElementById('dealActivity').value=d.dealActivity||'';document.getElementById('priceTrend').value=d.priceTrend||'';
   document.getElementById('listingCount').value=d.listingCount||'';
   document.getElementById('defNoise').checked=d.defNoise||false;document.getElementById('defTop').checked=d.defTop||false;
@@ -543,7 +813,7 @@ function fillData(d){
 function handleSave(){const d=gatherData();if(!d.addr){showToast('⚠️ 请先填写房源名称');return}const all=allProperties;if(editingId&&all[editingId]){d.createdAt=all[editingId].createdAt;all[editingId]=d}else{editingId=genId();d.createdAt=new Date().toLocaleString('zh-CN');all[editingId]=d}allProperties=all;cloudSave(editingId,d);renderPropList();updateCnt();showToast('✅ 已保存：'+(d.addr||'未命名'))}
 function loadProp(id){const d=allProperties[id];if(!d)return;editingId=id;fillData(d);window.scrollTo({top:0,behavior:'smooth'})}
 async function deleteProp(id){const n=allProperties[id]?.addr||'未命名';if(!confirm('确定删除「'+n+'」？'))return;delete allProperties[id];await cloudDelete(id);if(editingId===id){editingId=null;resetForm()}renderPropList();updateCnt();showToast('🗑️ 已删除：'+n)}
-function resetForm(){editingId=null;['addr','price','area','layout','floor','houseYears','purchaseCount','ownership','downPmt','downRatio','tax','rent','repayMethod','loanType','commRate','fundRate','combFundAmt','combFundRate','combCommAmt','combCommRate','loanYears','salePrice','propertyType','legalStatus','schoolDistrict','metroDist','lifeSupport','buildEra','dealActivity','priceTrend','listingCount'].forEach(id=>document.getElementById(id).value='');['renov','agency','otherCost','mgmt','holdYears'].forEach(id=>{const el=document.getElementById(id);if(id==='holdYears')el.value=10;else el.value=0});['defNoise','defTop','defGround','defDark','defOther'].forEach(id=>document.getElementById(id).checked=false);const evYes=document.getElementById('elevYes'),evNo=document.getElementById('elevNo');if(evYes)evYes.checked=false;if(evNo)evNo.checked=false;taxIsAuto=false;ratioIsApplied=false;downPmtIsManual=false;document.getElementById('taxTag').textContent='手动';document.getElementById('taxTag').className='tag tag-manual';document.getElementById('dpTag').textContent='自动';document.getElementById('dpTag').className='tag tag-auto';document.getElementById('dpHint').textContent='选首付比例后自动算';document.getElementById('taxHint').innerHTML='选房本年限+套数+面积后自动算';document.getElementById('totalLoanDisplay').textContent='—';document.getElementById('loanSummary').innerHTML='选好还款方式+贷款类型+年限后自动算月供';document.getElementById('amortSection').style.display='none';document.getElementById('combStats').innerHTML='';document.getElementById('lgCommercial').className='lg';document.getElementById('lgFund').className='lg';document.getElementById('lgCombined').className='lg';calc();updateCnt();showToast('🧹 已清空')}
+function resetForm(){editingId=null;['addr','price','area','layout','floor','houseYears','purchaseCount','ownership','downPmt','downRatio','tax','rent','repayMethod','loanType','commRate','fundRate','combFundAmt','combFundRate','combCommAmt','combCommRate','loanYears','salePrice','propertyType','legalStatus','buildDecade','propertyRight','decoration','schoolDistrict','onlyResidence','metroDist','schoolLevel','mallDist','hospitalDist','buildEra','dealActivity','priceTrend','listingCount'].forEach(id=>document.getElementById(id).value='');['renov','agency','otherCost','mgmt','holdYears'].forEach(id=>{const el=document.getElementById(id);if(id==='holdYears')el.value=10;else el.value=0});['defNoise','defTop','defGround','defDark','defOther'].forEach(id=>document.getElementById(id).checked=false);const evYes=document.getElementById('elevYes'),evNo=document.getElementById('elevNo');if(evYes)evYes.checked=false;if(evNo)evNo.checked=false;taxIsAuto=false;ratioIsApplied=false;downPmtIsManual=false;document.getElementById('taxTag').textContent='手动';document.getElementById('taxTag').className='tag tag-manual';document.getElementById('dpTag').textContent='自动';document.getElementById('dpTag').className='tag tag-auto';document.getElementById('dpHint').textContent='选首付比例后自动算';document.getElementById('taxHint').innerHTML='选房本年限+套数+面积后自动算';document.getElementById('totalLoanDisplay').textContent='—';document.getElementById('loanSummary').innerHTML='选好还款方式+贷款类型+年限后自动算月供';document.getElementById('amortSection').style.display='none';document.getElementById('combStats').innerHTML='';document.getElementById('lgCommercial').className='lg';document.getElementById('lgFund').className='lg';document.getElementById('lgCombined').className='lg';calc();updateCnt();showToast('🧹 已清空')}
 function renderPropList(){const list=document.getElementById('propList'),keys=Object.keys(allProperties);if(!keys.length){list.innerHTML='<div class="pe">还没有保存任何房源<br>填好信息，点「保存当前房源」</div>';return}keys.sort((a,b)=>(allProperties[b].updatedAt||'').localeCompare(allProperties[a].updatedAt||''));let h='';for(const id of keys){const p=allProperties[id],r=calcROI(p),rc=r>=0?'g':'r',rt=r!==null?(r>=0?'+':'')+r.toFixed(1)+'%':'—',ie=editingId===id;h+='<div class="pi"'+(ie?' style="border:2px solid var(--accent);background:var(--accent-bg)"':'')+' onclick="loadProp(\''+id+'\')"><div class="i"><div class="n">'+esc(p.addr||'未命名')+(ie?' <span style="font-size:10px;color:var(--accent)">编辑中</span>':'')+'</div><div class="m">总价'+fmtWan(p.price||0)+'万 · '+(p.updatedAt||'')+'</div></div><div class="r '+rc+'">'+rt+'</div><button class="btn btn-d" onclick="event.stopPropagation();deleteProp(\''+id+'\')">✕</button></div>'}list.innerHTML=h}
 function calcROI(p){if(!p||!p.price)return null;const a=((p.rent||0)-(p.mgmt||0))*12;return p.price>0?(a/(p.price*10000))*100:null}
 function updateCnt(){document.getElementById('hdCnt').textContent='已保存 '+Object.keys(allProperties).length+' 套房源'}
@@ -562,7 +832,7 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
   try{const{data}=await sb.auth.getSession();if(data&&data.session&&data.session.user){currentUser=data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
   document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
-})();
+})();function T(e){var b=e.nextElementSibling,r=e.querySelector(".ar");if(!b||!r)return;var o=b.classList.toggle("o");r.textContent=o?"▼":"▶"}
 </script>
 </body>
 </html>
