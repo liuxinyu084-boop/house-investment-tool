@@ -20,19 +20,19 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .hd .user-bar{position:absolute;top:10px;right:16px;display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.7)}
 .hd .user-bar .uemail{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hd .user-bar button{background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer}
-.sec{background:var(--card);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
-.st{font-size:14px;font-weight:600;margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid #eef1f5;display:flex;align-items:center;gap:5px}
-.meta-note{font-size:11px;color:var(--note-c);line-height:1.5;margin-bottom:10px;padding:0 2px}
+.sec{background:var(--card);border-radius:var(--r);padding:16px;margin-bottom:20px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.st{font-size:18px;font-weight:700;margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid #eef1f5;display:flex;align-items:center;gap:5px}
+.meta-note{font-size:12px;color:var(--note-c);line-height:1.5;margin-bottom:10px;padding:0 2px}
 .fg{margin-bottom:9px}.fg:last-child{margin-bottom:0}
-.fg label{display:block;font-size:12px;color:var(--text2);margin-bottom:3px;font-weight:500}
-.fg input,.fg select,.fg .faux-input{width:100%;padding:9px 12px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:.2s;background:#fafbfc;color:var(--text);-webkit-appearance:none;appearance:none}
+.fg label{display:block;font-size:14px;color:var(--text2);margin-bottom:3px;font-weight:500}
+.fg input,.fg select,.fg .faux-input{width:100%;height:44px;padding:8px 12px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:.2s;background:#fafbfc;color:var(--text);-webkit-appearance:none;appearance:none}
 .fg select{background:#fafbfc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath fill='%23999' d='M5.5 7L0 0h11z'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px}
 .fg input:focus,.fg select:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .fg .faux-input{background:#f3f4f6;border-color:#e5e7eb;color:var(--text2);cursor:default}
 .fg input:disabled,.fg select:disabled{background:#f3f4f6;opacity:.7}
 .fgr{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fgr .fg{margin-bottom:0}
 .fgr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.fgr3 .fg{margin-bottom:0}
-.unit-hint{font-size:10px;color:var(--note-c);margin-top:2px;padding-left:2px}
+.unit-hint{font-size:12px;color:var(--note-c);margin-top:2px;padding-left:2px}
 .tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:6px;background:var(--tag);color:var(--text2);font-weight:500;margin-left:5px;white-space:nowrap}
 .tag-auto{background:#d1fae5;color:#059669}.tag-manual{background:#eef1f5;color:#666}
 .tag-veto{background:#fee2e2;color:#dc2626;font-weight:700}
@@ -41,10 +41,10 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .rg label{display:flex;align-items:center;gap:4px;font-size:13px;color:var(--text);cursor:pointer;padding:8px 14px;background:#f7f8fa;border-radius:8px;border:1.5px solid var(--border);transition:.15s;flex:1;justify-content:center;user-select:none}
 .rg label:has(input:checked){background:var(--accent-bg);border-color:var(--accent);color:var(--accent);font-weight:600}
 .rg input[type=radio]{accent-color:var(--accent)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:9px 16px;font-size:14px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;height:44px;padding:0 20px;font-size:14px;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:.2s;-webkit-tap-highlight-color:transparent}
 .btn-p{background:var(--accent);color:#fff;width:100%}.btn-p:active{background:#1d4ed8;transform:scale(.97)}
-.btn-d{background:#fee2e2;color:var(--negative);font-size:12px;padding:5px 10px;width:auto}.btn-d:active{background:#fecaca}
-.btn-o{background:transparent;border:1.5px solid var(--border);color:var(--text);font-size:12px;padding:7px 12px;width:auto}.btn-o:active{background:#f3f4f6}
+.btn-d{background:#fee2e2;color:var(--negative);font-size:14px;height:44px;padding:0 20px;width:auto}.btn-d:active{background:#fecaca}
+.btn-o{background:transparent;border:1.5px solid var(--border);color:var(--text);font-size:14px;height:44px;padding:0 20px;width:auto}.btn-o:active{background:#f3f4f6}
 .br{display:flex;gap:8px;margin-top:8px}.br .btn{flex:1}
 .pl{margin-top:10px}
 .pi{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f7f8fa;border-radius:8px;margin-bottom:6px;cursor:pointer;transition:.15s}
@@ -66,7 +66,8 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .di .v.g{color:var(--positive)}.di .v.r{color:var(--negative)}.fw{grid-column:span 2}
 .at{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}
 .at th{background:#f3f4f6;padding:5px 4px;text-align:center;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border)}
-.at td{padding:4px;text-align:center;border-bottom:1px solid #f3f4f6}
+.at td{padding:4px;text-align:right;border-bottom:1px solid #f3f4f6}
+.at td:first-child{text-align:left}
 .at tr:last-child td{border-bottom:none}.at .tot{background:#eef1f5;font-weight:700}
 .at .sub{background:#fafbfc;color:var(--text2)}
 .at-wrap{max-height:280px;overflow-y:auto;border-radius:8px;border:1px solid #eef1f5}
@@ -76,7 +77,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .subs{margin-top:10px;padding-top:8px;border-top:1px dashed #e5e7eb}
 .subs:first-child{border-top:none;margin-top:0;padding-top:0}
 .subs-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px}
-.tb{display:flex;gap:8px;margin-top:8px}.tb .btn{flex:1;font-size:12px;padding:7px 8px}
+.tb{display:flex;gap:8px;margin-top:8px}.tb .btn{flex:1;font-size:14px;height:44px;padding:0 20px}
 .cbg{display:flex;flex-wrap:wrap;gap:6px}
 .cbg label{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text);cursor:pointer;padding:5px 8px;background:#f7f8fa;border-radius:6px;border:1.5px solid var(--border);transition:.15s;user-select:none}
 .cbg label:has(input:checked){background:var(--accent-bg);border-color:var(--accent)}
@@ -112,12 +113,12 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .auth-box{background:var(--card);border-radius:var(--r);padding:30px 24px;max-width:400px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,.1);text-align:center}
 .auth-box h1{font-size:22px;color:var(--primary);margin-bottom:6px}
 .auth-box .sub{font-size:12px;color:var(--text3);margin-bottom:20px}
-.auth-box input{width:100%;padding:12px 14px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:.2s;background:#fafbfc;margin-bottom:10px}
+.auth-box input{width:100%;height:44px;padding:8px 12px;font-size:15px;border:1.5px solid var(--border);border-radius:8px;outline:none;transition:.2s;background:#fafbfc;margin-bottom:10px}
 .auth-box input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .auth-box .auth-tabs{display:flex;gap:0;margin-bottom:16px;border-radius:8px;overflow:hidden;border:1.5px solid var(--border)}
-.auth-box .auth-tab{flex:1;padding:10px;font-size:14px;font-weight:600;background:#f3f4f6;border:none;cursor:pointer;transition:.2s;color:var(--text2)}
+.auth-box .auth-tab{flex:1;height:44px;padding:0 20px;font-size:14px;font-weight:600;background:#f3f4f6;border:none;cursor:pointer;transition:.2s;color:var(--text2);display:inline-flex;align-items:center;justify-content:center}
 .auth-box .auth-tab.active{background:var(--accent);color:#fff}
-.auth-box .auth-btn{width:100%;padding:12px;font-size:15px;font-weight:600;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.2s;margin-top:4px}
+.auth-box .auth-btn{width:100%;height:44px;padding:0 20px;font-size:14px;font-weight:600;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.2s;margin-top:4px}
 .auth-box .auth-btn:active{background:#1d4ed8;transform:scale(.97)}
 .auth-err{color:var(--negative);font-size:12px;margin-top:8px;min-height:18px}
 .auth-ok{color:var(--positive);font-size:12px;margin-top:8px;min-height:18px}
@@ -154,13 +155,13 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .risk-low{background:#ecfdf5;border-left:3px solid var(--positive)}
 .risk-ok{background:#f0fdf4;border-left:3px solid var(--positive)}
 
-.cw{margin-bottom:10px}.ch{background:#f8fafc;border-radius:8px;padding:0 16px;height:48px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}.ch:hover{background:#f1f5f9}.ch .ar{font-size:14px;color:#64748b;margin-right:6px}.ch .ct{font-size:16px;font-weight:700;color:#1e293b}.cb{display:none;border:1px solid #e2e8f0;border-radius:0 0 8px 8px;padding:12px 16px}.cb.o{display:block}.sh{font-size:14px;font-weight:600;color:#3b82f6;padding:10px 14px;cursor:pointer;background:#f0f7ff;border-radius:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px}.sh:hover{background:#e0efff}.sb{display:none;border:1px solid #dbeafe;border-radius:0 0 6px 6px;padding:12px 16px;margin-bottom:12px}.sb.o{display:block}.rf{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 16px;background:linear-gradient(transparent,#f3f4f6 40%);display:flex;justify-content:center}.rf .btn{max-width:640px;width:100%;height:50px;font-size:16px;font-weight:700;border-radius:10px;background:#3b82f6;color:#fff;border:none;cursor:pointer}</style>
+.cw{margin-bottom:20px}.ch{background:#f8fafc;border-radius:8px;padding:0 16px;height:48px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;border:1px solid transparent}.ch:hover{background:#f1f5f9}.ch .ar{font-size:14px;color:#64748b;margin-right:6px;display:inline-block;transition:transform .3s ease}.ch .ct{font-size:16px;font-weight:700;color:#1e293b}.cb{overflow:hidden;max-height:0;border:0 solid #e2e8f0;border-radius:0 0 8px 8px;padding:0 16px;transition:max-height .35s ease,padding .35s ease}.cb.o{max-height:5000px;overflow:visible;border-width:1px;padding:12px 16px}.sh{font-size:14px;font-weight:600;color:#3b82f6;padding:9px 13px;cursor:pointer;background:#f0f7ff;border:1px solid transparent;border-radius:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px}.sh:hover{background:#e0efff}.sh .ar{display:inline-block;transition:transform .3s ease}.sb{overflow:hidden;max-height:0;border:0 solid #dbeafe;border-radius:0 0 6px 6px;padding:0 13px;margin-bottom:0;transition:max-height .35s ease,padding .35s ease,margin .35s ease}.sb.o{max-height:5000px;overflow:visible;border-width:1px;padding:11px 13px;margin-bottom:12px}.rf{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 16px;background:linear-gradient(transparent,#f3f4f6 40%);display:flex;justify-content:center}.rf .btn{max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#3b82f6;color:#fff;border:none;cursor:pointer}</style>
 </head>
 <body>
 <div class="auth-overlay" id="authOverlay">
 <div class="auth-box">
 <h1>🏠 看房 AI Book</h1>
-<p class="sub">登录后使用全部功能，数据云端同步</p><div style="font-size:10px;color:#9ca3af;margin-top:4px">v5.8</div>
+<p class="sub">登录后使用全部功能，数据云端同步</p><div style="font-size:10px;color:#9ca3af;margin-top:4px">v5.97</div>
 <div class="auth-tabs">
 <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">登录</button>
 <button class="auth-tab" id="tabReg" onclick="switchAuthTab('register')">注册</button>
@@ -180,7 +181,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 看房 AI Book</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.8</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.97</span>
 </div>
 <div class="c">
 
@@ -480,7 +481,7 @@ function calc(){
     }
     document.getElementById('termTotals').innerHTML=ttHTML;
     // Add annual split table for combined loans
-    if(isCombined){
+    var es=document.getElementById('amortTable');while(es.nextElementSibling){var n=es.nextElementSibling;if(n.classList.contains('split-label')||n.classList.contains('at-wrap')){n.remove()}else break};if(isCombined){
       document.getElementById('amortTable').insertAdjacentHTML('afterend','<div class="split-label">🧧 公积金年度明细</div><div class="at-wrap"><table class="at"><tr><th>年份</th><th>年还款</th><th>年还本</th><th>年还息</th><th>剩余本金</th></tr>'+
         fundAmort.annual.map(a=>'<tr><td>第'+a.year+'年</td><td>¥'+fmt(a.payment)+'</td><td style="color:var(--positive)">¥'+fmt(a.principal)+'</td><td style="color:var(--negative)">¥'+fmt(a.interest)+'</td><td>¥'+fmt(a.balance)+'</td></tr>').join('')+'<tr class="tot"><td>总计</td><td>¥'+fmt(fundAmort.totalPmt)+'</td><td style="color:var(--positive)">¥'+fmt(fundAmort.totalPrin)+'</td><td style="color:var(--negative)">¥'+fmt(fundAmort.totalInt)+'</td><td>—</td></tr></table></div>'+'<div class="split-label" style="margin-top:8px">🏦 商贷年度明细</div><div class="at-wrap"><table class="at"><tr><th>年份</th><th>年还款</th><th>年还本</th><th>年还息</th><th>剩余本金</th></tr>'+
         commAmort.annual.map(a=>'<tr><td>第'+a.year+'年</td><td>¥'+fmt(a.payment)+'</td><td style="color:var(--positive)">¥'+fmt(a.principal)+'</td><td style="color:var(--negative)">¥'+fmt(a.interest)+'</td><td>¥'+fmt(a.balance)+'</td></tr>').join('')+'<tr class="tot"><td>总计</td><td>¥'+fmt(commAmort.totalPmt)+'</td><td style="color:var(--positive)">¥'+fmt(commAmort.totalPrin)+'</td><td style="color:var(--negative)">¥'+fmt(commAmort.totalInt)+'</td><td>—</td></tr></table></div>');
@@ -831,8 +832,766 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
   try{const{data}=await sb.auth.getSession();if(data&&data.session&&data.session.user){currentUser=data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
   document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
-})();function T(e){var b=e.nextElementSibling,r=e.querySelector(".ar");if(!b||!r)return;var o=b.classList.toggle("o");r.textContent=o?"▼":"▶"}
+})();function T(e){var b=e.nextElementSibling,r=e.querySelector(".ar");if(!b||!r)return;var o=b.classList.toggle("o");r.style.transform=o?'rotate(90deg)':'rotate(0deg)'}
 </script>
 <script>setInterval(function(){var r=document.getElementById("roiDisplay");if(!r)return;var c=r.parentNode;if(!c||!c.classList.contains("rc"))return;var s=document.querySelector("#mainApp .c>.sec");if(!s)return;if(c.nextElementSibling!==s){s.parentNode.insertBefore(c,s.nextElementSibling);c.style.marginBottom="10px"}},200)</script>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+<script>
+(function(){
+var _bti=setInterval(function(){
+ if(document.querySelector('.report-bar'))return;
+ clearInterval(_bti);
+ var bar=document.createElement('div');bar.className='report-bar';
+ bar.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 16px;background:linear-gradient(transparent,#f3f4f6 40%);display:flex;flex-direction:column;gap:8px;justify-content:center;align-items:center';
+ var rbtn=document.createElement('button');rbtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#3b82f6;color:#fff;border:none;cursor:pointer';
+ rbtn.textContent='📋 生成专业购房报告';rbtn.onclick=function(){typeof showToast==='function'&&showToast('📋 报告生成功能开发中，敬请期待')};
+ var pbtn=document.createElement('button');pbtn.className='btn-poster';
+ pbtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#059669;color:#fff;border:none;cursor:pointer';
+ pbtn.textContent='🖨️ 生成分析海报';
+ bar.appendChild(rbtn);bar.appendChild(pbtn);
+ document.body.appendChild(bar);document.body.style.paddingBottom='130px';
+ pbtn.onclick=genPoster;
+ var abtn=document.createElement('button');abtn.className='btn-agent-poster';
+ abtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#059669;color:#fff;border:none;cursor:pointer;display:none';
+ abtn.textContent='📇 生成经纪人专属海报';
+ abtn.onclick=function(){if(typeof genAgentPoster==='function')genAgentPoster();else if(typeof showToast==='function')showToast('⚠️ 海报功能加载中，请稍后重试');};
+ bar.appendChild(abtn);
+},300);
+
+function genPoster(){
+ var btn=document.querySelector('.btn-poster');
+ if(!btn||btn.disabled)return;
+ var orig=btn.textContent;btn.textContent='⏳ 正在生成海报...';btn.disabled=true;
+
+ function v(id){var e=document.getElementById(id);return e?e.value||'':'—'}
+ function vs(id){var e=document.getElementById(id);if(!e)return'—';var s=e.options[e.selectedIndex];return s?s.text:'—'}
+ function vf(id,d){var x=parseFloat(v(id));return isNaN(x)?d:x}
+ function esc(s){var d=document.createElement('div');d.textContent=s||'—';return d.innerHTML}
+
+ var addr=esc(v('addr')||'未命名');
+ var price=vf('price',0);var area=vf('area',0);
+ var unitPrice=area>0?Math.round(price*10000/area):0;
+ var layout=vs('layout');var floor=v('floor')||'—';
+ var hasElev=document.getElementById('elevatorChk')?document.getElementById('elevatorChk').checked:true;
+ var hYears=vs('houseYears');var propRight=vs('propertyRight');
+ var decoration=vs('decoration');
+ var downRatio=v('downRatio')||'—';var downPmt=vf('downPmt',0);
+ var loanAmt=vf('totalLoanDisplay',0)||(price-downPmt);
+ var rent=vf('rent',0);var mgmt=vf('mgmt',0);
+ var tax=vf('tax',0);
+ var annNetRent=(rent-mgmt)*12;
+ var staticROI=price>0?(annNetRent/(price*10000)*100):0;
+
+ var irrEl=document.querySelector('#dynamicROI .v.g,#dynamicROI .v.r');
+ var irrText=irrEl?irrEl.textContent.trim():'—';
+
+ var ls=document.getElementById('loanSummary');
+ var pmtText='—';if(ls){var m=ls.textContent.match(/月供.*?¥([0-9,]+)/);if(m)pmtText='¥'+m[1]}
+
+ var levEl=document.querySelector('#dynamicROI .di:nth-child(5) .v');
+ var levText=levEl?levEl.textContent.trim():'—';
+
+ var beGrid=document.getElementById('breakEvenGrid');
+ var buyCost='—',bePrice='—',beRate='—',payback='—',staticPayback='—';
+ if(beGrid){
+  var ds=beGrid.querySelectorAll('.di .v');
+  var ls2=beGrid.querySelectorAll('.di .l');
+  for(var i=0;i<ls2.length;i++){
+   var L=ls2[i].textContent,V=ds[i]?ds[i].textContent:'—';
+   if(L.indexOf('买入总成本')>=0)buyCost=V;
+   if(L.indexOf('盈亏平衡售价')>=0)bePrice=V;
+   if(L.indexOf('房价涨幅')>=0)beRate=V;
+   if(L.indexOf('动态回本')>=0)payback=V;
+   if(L.indexOf('静态回本')>=0)staticPayback=V;
+  }
+ }
+
+ var scDiv=document.getElementById('scoreContent');
+ var scoreNum='—',scoreGrade='';
+ var s1='—',s2='—',s3='—',s4='—',s5='—';
+ if(scDiv){
+  var sn=scDiv.querySelector('.snum');if(sn)scoreNum=sn.textContent;
+  var sg=scDiv.querySelector('.sgrade');if(sg)scoreGrade=sg.textContent;
+  var sds=scDiv.querySelectorAll('.sd .sdt .sdv');
+  if(sds[0])s1=sds[0].textContent;
+  if(sds[1])s2=sds[1].textContent;
+  if(sds[2])s3=sds[2].textContent;
+  if(sds[3])s4=sds[3].textContent;
+  if(sds[4])s5=sds[4].textContent;
+ }
+
+ var advs=[],risks=[],rtips=[];
+ document.querySelectorAll('.tip-adv .td').forEach(function(t){advs.push(t.textContent.trim())});
+ document.querySelectorAll('.tip-risk .td').forEach(function(t){risks.push(t.textContent.trim())});
+ document.querySelectorAll('.risk-high .ri-d,.risk-mid .ri-d').forEach(function(t){if(rtips.length<1)rtips.push(t.textContent.trim())});
+ if(advs.length>3)advs=advs.slice(0,3);
+ if(risks.length>2)risks=risks.slice(0,2);
+ if(rtips.length>1)rtips=rtips.slice(0,1);
+
+ var pw=794,ph=1123;
+ var poster=document.createElement('div');poster.id='__poster__';
+ poster.style.cssText='position:fixed;left:-9999px;top:0;width:'+pw+'px;min-height:'+ph+'px;background:#fff;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#111827;padding:0;z-index:-1';
+
+ function card(t,v,c){
+  return '<div style="flex:1;background:linear-gradient(135deg,#f8fafc,#f1f5f9);border-radius:10px;padding:16px 10px;text-align:center;border:1px solid #e2e8f0"><div style="font-size:10px;color:#64748b;margin-bottom:6px">'+t+'</div><div style="font-size:22px;font-weight:800;color:'+c+'">'+v+'</div></div>';
+ }
+
+ var H='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:36px 40px 28px;text-align:center"><div style="font-size:30px;font-weight:800;letter-spacing:3px">看房AI Book</div><div style="font-size:14px;color:rgba(255,255,255,.55);margin-top:8px">房源投资分析报告</div></div>';
+
+ H+='<div style="padding:24px 36px"><div style="font-size:13px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📋 房源基础信息</div><table style="width:100%;font-size:12px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 房源：<b>'+addr+'</b></td><td style="padding:3px 0">▶ 总价：<b>'+(price>0?price+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 面积：<b>'+(area>0?area+'㎡':'—')+'</b></td><td style="padding:3px 0">▶ 单价：<b>'+(unitPrice>0?unitPrice.toLocaleString()+'元/㎡':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 户型：<b>'+layout+'</b></td><td style="padding:3px 0">▶ 楼层：<b>'+(floor!=='—'?floor+'层':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 电梯：<b>'+(hasElev?'有':'无')+'</b></td><td style="padding:3px 0">▶ 装修：<b>'+decoration+'</b></td></tr><tr><td style="padding:3px 0">▶ 房本：<b>'+hYears+'</b></td><td style="padding:3px 0">▶ 产权：<b>'+propRight+'</b></td></tr><tr><td style="padding:3px 0">▶ 首付：<b>'+(downRatio!=='—'?downRatio+'%':'—')+'</b></td><td style="padding:3px 0">▶ 首付额：<b>'+(downPmt>0?downPmt+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 贷款：<b>'+(loanAmt>0?loanAmt+'万元':'—')+'</b></td><td style="padding:3px 0">▶ 税费：<b>'+(tax>0?tax+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 月租金：<b>'+(rent>0?rent+'元':'—')+'</b></td><td style="padding:3px 0">▶ 月物业：<b>'+(mgmt>0?mgmt+'元':'—')+'</b></td></tr></table></div>';
+
+ H+='<div style="padding:16px 36px"><div style="font-size:13px;font-weight:700;color:#1e293b;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e5e7eb">📊 核心财务指标</div><div style="display:flex;gap:8px;margin-bottom:8px">'+card('静态回报率',(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%',staticROI>=0?'#059669':'#dc2626')+card('年化IRR',irrText,'#2563eb')+card('动态回本',payback,'#ca8a04')+'</div><div style="display:flex;gap:8px">'+card('月供金额',pmtText,'#7c3aed')+card('总税费',tax>0?tax+'万元':'—','#d97706')+card('杠杆倍数',levText,'#0891b2')+'</div></div>';
+
+ H+='<div style="padding:16px 36px"><div style="font-size:13px;font-weight:700;color:#1e293b;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e5e7eb">💰 全周期盈亏平衡</div><table style="width:100%;font-size:12px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 买入总成本：<b>'+buyCost+'</b></td><td style="padding:3px 0">▶ 盈亏平衡售价：<b>'+bePrice+'</b></td></tr><tr><td style="padding:3px 0">▶ 保本房价涨幅：<b>'+beRate+'</b></td><td style="padding:3px 0">▶ 静态回本：<b>'+staticPayback+'</b></td></tr></table></div>';
+
+ var scColor='#1e293b';
+ if(scoreGrade.indexOf('推荐')>=0)scColor='#059669';
+ else if(scoreGrade.indexOf('入手')>=0)scColor='#2563eb';
+ else if(scoreGrade.indexOf('谨慎')>=0)scColor='#d97706';
+ else if(scoreGrade.indexOf('不建议')>=0)scColor='#dc2626';
+ H+='<div style="padding:20px 36px"><div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:20px 24px;color:#fff;text-align:center"><div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:4px">房源综合评分</div><div style="font-size:48px;font-weight:800;line-height:1">'+scoreNum+'<span style="font-size:16px">分</span></div><div style="font-size:14px;margin-top:4px;color:rgba(255,255,255,.7)">'+scoreGrade+'</div><div style="margin-top:12px;display:flex;justify-content:center;gap:16px;font-size:10px;color:rgba(255,255,255,.55)"><span>财务'+s1+'</span><span>合规'+s2+'</span><span>配套'+s3+'</span><span>流动'+s4+'</span><span>硬伤'+s5+'</span></div></div></div>';
+
+ H+='<div style="padding:16px 36px;display:flex;gap:12px">';
+ if(advs.length)H+='<div style="flex:1;background:#f0fdf4;border-radius:10px;padding:14px"><div style="font-size:12px;font-weight:700;color:#059669;margin-bottom:6px">✅ 核心优势</div>'+advs.map(function(a){return'<div style="font-size:11px;color:#065f46;line-height:1.7">• '+a+'</div>'}).join('')+'</div>';
+ if(risks.length)H+='<div style="flex:1;background:#fef2f2;border-radius:10px;padding:14px"><div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:6px">⚠️ 核心风险</div>'+risks.map(function(r){return'<div style="font-size:11px;color:#991b1b;line-height:1.7">• '+r+'</div>'}).join('')+'</div>';
+ H+='</div>';
+ if(rtips.length)H+='<div style="padding:8px 36px 16px"><div style="background:#fefce8;border:1px solid #fde68a;border-radius:8px;padding:12px 16px;font-size:11px;color:#92400e;line-height:1.6">📊 '+rtips[0]+'</div></div>';
+
+ H+='<div style="padding:10px 36px;text-align:center"><div style="display:inline-block;padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:10px"><img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://liuxinyu084-boop.github.io/house-investment-tool/" width="120" height="120" style="display:block"></div><div style="font-size:10px;color:#9ca3af;margin-top:4px">扫码访问看房AI Book</div></div>';
+H+='<div style="padding:16px 36px 30px;text-align:center;border-top:1px solid #e5e7eb;margin:0 36px"><div style="font-size:10px;color:#9ca3af;line-height:1.8">生成时间：'+new Date().toLocaleString('zh-CN')+'<br>本报告由「看房AI Book」自动生成，客观中立，不构成任何投资建议</div></div>';
+
+ poster.innerHTML=H;
+ document.body.appendChild(poster);
+
+ if(typeof html2canvas==='undefined'){
+  btn.textContent='⚠️ html2canvas加载失败';btn.disabled=false;
+  document.getElementById('__poster__').remove();return;
+ }
+ setTimeout(function(){
+ html2canvas(poster,{scale:2,useCORS:true,allowTaint:true,logging:false}).then(function(canvas){
+  var link=document.createElement('a');
+  link.download='看房AI_'+addr+'_'+new Date().toISOString().slice(0,10)+'.png';
+  link.href=canvas.toDataURL('image/png');link.click();
+  document.getElementById('__poster__').remove();
+  btn.textContent=orig;btn.disabled=false;
+  if(typeof showToast==='function')showToast('✅ 海报生成成功，已保存到本地');
+ }).catch(function(e){
+  document.getElementById('__poster__').remove();
+  btn.textContent=orig;btn.disabled=false;
+  if(typeof showToast==='function')showToast('⚠️ 海报生成失败，请重试');
+ });
+ },2000);
+
+}
+})();
+</script><script>
+/* ═══════ 房币体系 · 个人中心 · 双身份 · 等级成长 v5.97 ═══════ */
+(function(){
+var COINS_KEY='hcb_coins',PROFILE_KEY='hcb_profile',REF_KEY='hcb_ref',LIMITS_KEY='hcb_limits';
+var AGENT_LEVELS=[{name:'实习经纪人',coin:0,invites:0},{name:'正式经纪人',coin:0,invites:10},{name:'资深经纪人',coin:0,invites:50},{name:'金牌经纪人',coin:0,invites:200},{name:'城市合伙人',coin:0,invites:1000}];
+var USER_LEVELS=[{name:'看房新手',coin:0},{name:'看房达人',coin:500},{name:'置业顾问',coin:2000},{name:'投资能手',coin:10000},{name:'房产专家',coin:50000}];
+
+function S(k,v){try{var d=JSON.parse(localStorage.getItem(k)||'null')||{};d=v(d);localStorage.setItem(k,JSON.stringify(d));return d}catch(e){return v({})}}
+function G(k){try{return JSON.parse(localStorage.getItem(k)||'null')||{}}catch(e){return{}}}
+
+function getCoins(){var d=G(COINS_KEY);return{total:d.total||0,history:d.history||[]}}
+function addCoins(amount,reason,cb){
+ var d=G(COINS_KEY);d.total=(d.total||0)+amount;if(!d.history)d.history=[];
+ d.history.unshift({a:amount,r:reason,t:new Date().toISOString()});
+ localStorage.setItem(COINS_KEY,JSON.stringify(d));
+ if(typeof showToast==='function')showToast('💰 +'+amount+'房币：'+reason);
+ if(cb)cb(d);
+}
+function getProfile(){var d=G(PROFILE_KEY);return d||{identity:'',level:1,displayName:'',phone:'',company:'',addr:'',wxQR:''}}
+function saveProfile(p){localStorage.setItem(PROFILE_KEY,JSON.stringify(p))}
+function getLimits(){
+ var d=G(LIMITS_KEY);var today=new Date().toDateString();
+ if(d.date!==today){d={date:today,loginDone:false,posterCount:0,shareCount:0,propCount:0};localStorage.setItem(LIMITS_KEY,JSON.stringify(d))}
+ return d;
+}
+function calcLevel(identity,totalCoins){
+ var list=identity==='agent'?AGENT_LEVELS:USER_LEVELS;
+ var lv=1;for(var i=list.length-1;i>=0;i--){if(totalCoins>=list[i].coin){lv=i+1;break}}
+ return lv;
+}
+function getRefCode(){var d=G(REF_KEY);if(!d.code){d.code='RF'+Date.now().toString(36).toUpperCase();d.invitees=[];localStorage.setItem(REF_KEY,JSON.stringify(d))}return d.code}
+
+// ── CSS ──
+var css=document.createElement('style');
+css.textContent='.hcb-avatar{position:fixed;top:12px;right:16px;z-index:200;width:36px;height:36px;border-radius:50%;background:#3b82f6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:transform .15s}.hcb-avatar:hover{transform:scale(1.1)}.hcb-avatar.no-login{background:#9ca3af;font-size:10px}.hcb-sidebar{position:fixed;top:0;right:-320px;width:300px;height:100%;background:#fff;z-index:300;box-shadow:-4px 0 20px rgba(0,0,0,.1);transition:right .3s ease;overflow-y:auto;padding:0}.hcb-sidebar.open{right:0}.hcb-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.3);z-index:299;display:none}.hcb-overlay.show{display:block}.hcb-sidebar .hcb-top{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:24px 20px 20px;text-align:center}.hcb-sidebar .hcb-av-big{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 10px}.hcb-sidebar .hcb-name{font-size:15px;font-weight:600}.hcb-sidebar .hcb-level{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}.hcb-sidebar .hcb-coins{font-size:20px;font-weight:800;margin-top:8px}.hcb-sidebar .hcb-coins span{font-size:11px;font-weight:400;opacity:.7}.hcb-sidebar .hcb-menu{padding:12px 0}.hcb-sidebar .hcb-item{display:flex;align-items:center;gap:10px;padding:12px 20px;cursor:pointer;font-size:13px;color:#374151;transition:.1s}.hcb-sidebar .hcb-item:hover{background:#f3f4f6}.hcb-sidebar .hcb-item .hcb-ic{font-size:16px;width:22px;text-align:center}.hcb-sidebar .hcb-divider{font-size:11px;color:#9ca3af;padding:8px 20px 4px;font-weight:600}.hcb-modal{position:fixed;top:0;left:0;width:100%;height:100%;z-index:400;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4)}.hcb-modal-box{background:#fff;border-radius:12px;padding:24px;max-width:380px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.15)}.hcb-modal-box h3{font-size:17px;font-weight:700;margin-bottom:6px;text-align:center}.hcb-modal-box .hcb-sub{font-size:12px;color:#9ca3af;text-align:center;margin-bottom:16px}.hcb-modal-box input,.hcb-modal-box textarea{width:100%;padding:10px 12px;font-size:14px;border:1.5px solid #d1d5db;border-radius:8px;outline:none;margin-bottom:10px}.hcb-modal-box input:focus{border-color:#3b82f6}.hcb-modal-box textarea{resize:vertical;min-height:60px}.hcb-modal-box .hcb-btn{width:100%;padding:10px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;margin-top:6px}.hcb-btn-p{background:#3b82f6;color:#fff}.hcb-btn-o{background:#fff;border:1.5px solid #d1d5db;color:#374151}.hcb-identity-opt{display:flex;gap:10px}.hcb-identity-opt div{flex:1;padding:16px 10px;border:2px solid #e5e7eb;border-radius:10px;text-align:center;cursor:pointer;transition:.15s}.hcb-identity-opt div.sel{border-color:#3b82f6;background:#eff6ff}.hcb-identity-opt .hcb-ic-lg{font-size:28px;display:block;margin-bottom:6px}.hcb-identity-opt .hcb-lb{font-size:13px;font-weight:600}.hcb-identity-opt .hcb-desc{font-size:10px;color:#9ca3af;margin-top:3px}.hcb-progress{height:6px;background:#e5e7eb;border-radius:3px;margin-top:4px;overflow:hidden}.hcb-progress div{height:100%;background:#3b82f6;border-radius:3px;transition:width .3s}.hcb-close{position:absolute;top:12px;right:16px;font-size:20px;cursor:pointer;color:#9ca3af}.wechat-qrcode-wrap{text-align:center;margin-top:8px}.wechat-qrcode-wrap .wechat-qrcode-label{display:block;text-align:left;font-size:14px;color:#6b7280;margin-bottom:6px;font-weight:500}.wechat-qrcode-wrap .wechat-qrcode-preview{margin:10px auto;text-align:center}.wechat-qrcode-wrap .wechat-qrcode-preview img{width:120px;height:120px;object-fit:cover;border-radius:8px;border:1px solid #e5e7eb}.wechat-qrcode-status{font-size:12px;color:#9ca3af;margin-top:4px}';
+document.head.appendChild(css);
+
+// ── Delayed init ──
+var _hcbTry=0,_hcbTid=setInterval(function(){
+ _hcbTry++;
+ if(typeof currentUser!=='undefined'&&currentUser){clearInterval(_hcbTid);initHCB();return}
+ if(_hcbTry>30){clearInterval(_hcbTid)}
+},300);
+
+function initHCB(){
+ // Avatar button
+ var av=document.createElement('div');av.className='hcb-avatar';av.id='hcbAv';
+ document.body.appendChild(av);
+ 
+ // Sidebar
+ var sb=document.createElement('div');sb.className='hcb-sidebar';sb.id='hcbSb';
+ var ov=document.createElement('div');ov.className='hcb-overlay';ov.id='hcbOv';
+ document.body.appendChild(sb);document.body.appendChild(ov);
+ ov.onclick=closeSidebar;
+
+ updateAvatar();
+ addAuthHooks();
+}
+
+function updateAvatar(){
+ var av=document.getElementById('hcbAv');if(!av)return;
+ if(typeof currentUser==='undefined'||!currentUser){
+  av.className='hcb-avatar no-login';av.textContent='?';av.onclick=function(){showToast('请先登录')};return;
+ }
+ av.className='hcb-avatar';
+ var email=currentUser.email||'';
+ av.textContent=email.charAt(0).toUpperCase();
+ av.onclick=openSidebar;
+ var ab=document.querySelector('.btn-agent-poster');if(ab)ab.style.display=getProfile().identity==='agent'?'block':'none';
+}
+
+function openSidebar(){
+ var sb=document.getElementById('hcbSb'),ov=document.getElementById('hcbOv');
+ if(!sb)return;
+ var p=getProfile();var c=getCoins();
+ var ab=document.querySelector('.btn-agent-poster');if(ab)ab.style.display=p.identity==='agent'?'block':'none';
+ var lv=calcLevel(p.identity||'user',c.total);
+ var list=p.identity==='agent'?AGENT_LEVELS:USER_LEVELS;
+ var lvName=list[lv-1]?list[lv-1].name:'未知';
+ var identity=p.identity==='agent'?'房产经纪人':'普通用户';
+
+ var h='<div class="hcb-top">'+
+  '<div class="hcb-av-big">'+(currentUser.email||'?').charAt(0).toUpperCase()+'</div>'+
+  '<div class="hcb-name">'+(p.displayName||currentUser.email||'用户')+'</div>'+
+  '<div class="hcb-level">'+identity+' · Lv'+lv+' '+lvName+'</div>'+
+  '<div class="hcb-coins">💰 '+(c.total||0)+' <span>房币</span></div>'+
+  '</div>';
+
+ h+='<div class="hcb-menu">'+
+  '<div class="hcb-item" onclick="hcbShowCoins()"><span class="hcb-ic">💰</span>房币明细</div>'+
+  '<div class="hcb-item" onclick="hcbShowInvite()"><span class="hcb-ic">📨</span>邀请好友</div>'+
+  '<div class="hcb-item" onclick="hcbShowShop()"><span class="hcb-ic">🛒</span>房币商城</div>';
+
+ if(p.identity==='agent'){
+  h+='<div class="hcb-divider">🔸 经纪人专属</div>'+
+   '<div class="hcb-item" onclick="hAgPoster()"><span class="hcb-ic">🖨️</span>生成专属海报</div>'+
+   '<div class="hcb-item" onclick="hcbShowClients()"><span class="hcb-ic">👥</span>我的客户</div>'+
+   '<div class="hcb-item" onclick="hcbShowWechatQrcode()"><span class="hcb-ic">📷</span>上传微信二维码</div>'+
+   '<div class="hcb-item" onclick="hcbShowCert()"><span class="hcb-ic">📝</span>修改认证信息</div>';
+ }else{
+  h+='<div class="hcb-item" onclick="hcbShowUpgrade()"><span class="hcb-ic">⬆️</span>升级为经纪人</div>';
+ }
+
+ h+='<div class="hcb-divider">设置</div>'+
+  '<div class="hcb-item" onclick="hcbShowProfile()"><span class="hcb-ic">👤</span>编辑个人资料</div>'+
+  '<div class="hcb-item" onclick="closeSidebar()"><span class="hcb-ic">✕</span>关闭</div></div>';
+
+ sb.innerHTML=h;sb.classList.add('open');ov.classList.add('show');
+}
+
+window.closeSidebar=function(){
+ var sb=document.getElementById('hcbSb'),ov=document.getElementById('hcbOv');
+ if(sb)sb.classList.remove('open');if(ov)ov.classList.remove('show');
+};
+
+window.hcbShowCoins=function(){
+ var c=getCoins();var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>💰 房币明细</h3><div style="text-align:center;font-size:32px;font-weight:800;color:#d97706;margin:12px 0">'+(c.total||0)+'</div><div style="font-size:12px;color:#9ca3af;text-align:center;margin-bottom:12px">总房币</div>';
+ if(c.history&&c.history.length){
+  h+='<div style="max-height:200px;overflow-y:auto">';
+  c.history.forEach(function(e){h+='<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f3f4f6;font-size:12px"><span style="color:#059669">+'+(e.a||0)+'</span><span>'+e.r+'</span><span style="color:#9ca3af;font-size:10px">'+(e.t||'').slice(0,10)+'</span></div>'});
+  h+='</div>';
+ }else{h+='<div class="hcb-sub">暂无记录</div>'}
+ h+='</div></div>';
+ showModal(h);
+};
+
+window.hcbShowInvite=function(){
+ var code=getRefCode();
+ var link='https://liuxinyu084-boop.github.io/house-investment-tool/?ref='+code;
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>📨 邀请好友</h3><div class="hcb-sub">好友通过你的链接注册，你获得 <b>200房币</b></div><div style="background:#f3f4f6;border-radius:8px;padding:8px 12px;font-size:12px;word-break:break-all;margin-bottom:10px">'+link+'</div><button class="hcb-btn hcb-btn-p" onclick="navigator.clipboard.writeText(\''+link+'\');showToast(\'✅ 链接已复制\');this.closest(\'.hcb-modal\').remove()">📋 复制邀请链接</button></div></div>';
+ showModal(h);
+};
+
+window.hcbShowShop=function(){
+ var c=getCoins().total||0;
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>🛒 房币商城</h3><div class="hcb-sub">余额：<b>'+c+'</b> 房币</div>';
+ [['基础购房报告','300房币',300],['专业投资报告','800房币',800],['多房源对比','1000房币',1000],['AI购房咨询','2000房币',2000]].forEach(function(i){
+  h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:8px"><div><div style="font-size:13px;font-weight:600">'+i[0]+'</div><div style="font-size:11px;color:#9ca3af">'+i[1]+'</div></div><button class="hcb-btn hcb-btn-p" style="width:auto;padding:6px 14px;font-size:12px" onclick="if('+c+'<'+i[2]+'){showToast(\'⚠️ 房币不足\');return}showToast(\'📋 功能开发中，敬请期待\')">兑换</button></div>';
+ });
+ h+='</div></div>';
+ showModal(h);
+};
+
+window.hcbShowProfile=function(){
+ var p=getProfile();
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>👤 编辑资料</h3><input id="hcbDispName" placeholder="昵称" value="'+(p.displayName||'')+'"><button class="hcb-btn hcb-btn-p" onclick="var n=document.getElementById(\'hcbDispName\').value;p=getProfile();p.displayName=n;saveProfile(p);addCoins(50,\'完善个人资料\');closeSidebar();openSidebar();this.closest(\'.hcb-modal\').remove();showToast(\'✅ 资料已保存\')">保存</button></div></div>';
+ showModal(h);
+};
+
+window.hcbShowUpgrade=function(){
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>⬆️ 升级为经纪人</h3><div class="hcb-sub">填写认证信息后升级</div><input id="hcbAgentName" placeholder="真实姓名（必填）"><input id="hcbAgentPhone" placeholder="手机号（必填）"><input id="hcbAgentCompany" placeholder="所属公司（选填）"><input id="hcbAgentAddr" placeholder="门店地址（选填）"><div class="wechat-qrcode-wrap"><label class="wechat-qrcode-label">微信二维码（用于生成经纪人专属海报）</label><input type="file" id="wechat-qrcode-upload" accept="image/jpeg,image/png" style="display:none" onchange="handleWechatQrcodeSelect(this)"><button type="button" id="wechat-qrcode-upload-btn" class="hcb-btn hcb-btn-o" onclick="document.getElementById(\'wechat-qrcode-upload\').click()" style="width:100%;margin-bottom:6px">📷 上传微信二维码</button><div id="wechat-qrcode-preview" style="display:none;margin:10px auto;text-align:center"></div><div id="wechat-qrcode-status" class="wechat-qrcode-status"></div><button type="button" id="wechat-qrcode-delete" class="hcb-btn hcb-btn-o" style="display:none;width:100%;margin-top:6px;color:#dc2626;border-color:#fecaca" onclick="handleWechatQrcodeDelete()">🗑 删除二维码</button></div><button class="hcb-btn hcb-btn-p" onclick="doUpgrade()" style="margin-top:10px">确认升级</button></div></div>';
+ showModal(h);
+};
+
+window.hcbShowCert=function(){
+ var p=getProfile();
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>📝 修改认证信息</h3><input id="hcbAName" placeholder="真实姓名" value="'+(p.displayName||'')+'"><input id="hcbAPhone" placeholder="手机号" value="'+(p.phone||'')+'"><input id="hcbAComp" placeholder="所属公司" value="'+(p.company||'')+'"><input id="hcbAAddr" placeholder="门店地址" value="'+(p.addr||'')+'"><button class="hcb-btn hcb-btn-p" onclick="doSaveCert()">保存</button></div></div>';
+ showModal(h);
+};
+
+window.hcbShowClients=function(){
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>👥 我的客户</h3><div class="hcb-sub">暂无可查看的客户数据</div></div></div>';
+ showModal(h);
+};
+
+window.hcbShowWechatQrcode=function(){
+ var p=getProfile();
+ var currentUrl=p.wxQR||'';
+ var previewHtml='';
+ if(currentUrl){
+  previewHtml='<div id="wechat-qrcode-preview" style="margin:10px auto;text-align:center"><img src="'+currentUrl+'" style="width:120px;height:120px;object-fit:cover;border-radius:8px;border:1px solid #e5e7eb" crossorigin="anonymous"></div>';
+ }
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>📷 微信二维码</h3><div class="hcb-sub">上传后将在经纪人专属海报中展示</div>'+previewHtml+'<input type="file" id="wechat-qrcode-upload" accept="image/jpeg,image/png" style="display:none" onchange="handleWechatQrcodeSelect(this)"><button type="button" id="wechat-qrcode-upload-btn" class="hcb-btn hcb-btn-o" onclick="document.getElementById(\'wechat-qrcode-upload\').click()" style="width:100%;margin-bottom:6px">📷 '+(currentUrl?'更换':'上传')+'微信二维码</button><div id="wechat-qrcode-status" class="wechat-qrcode-status"></div><button type="button" id="wechat-qrcode-delete" class="hcb-btn hcb-btn-o" style="display:'+(currentUrl?'inline-block':'none')+';width:100%;margin-top:6px;color:#dc2626;border-color:#fecaca" onclick="handleWechatQrcodeDelete()">🗑 删除二维码</button><button class="hcb-btn hcb-btn-p" style="margin-top:10px" onclick="saveWechatQrcode()">💾 保存</button></div></div>';
+ showModal(h);
+};
+
+window.saveWechatQrcode=function(){
+ var p=getProfile();
+ p.wxQR=window.__wechatQrcodeUrl||'';
+ saveProfile(p);
+ if(window.__wechatQrcodeUrl&&typeof updateUserWechatQrcode==='function'){
+  updateUserWechatQrcode(window.__wechatQrcodeUrl);
+ }
+ window.__wechatQrcodeUrl='';
+ document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+ closeSidebar();openSidebar();
+ showToast('✅ 微信二维码已保存');
+};
+
+function showModal(inner){
+ var modal=document.createElement('div');modal.className='hcb-modal';
+ modal.innerHTML=inner;document.body.appendChild(modal);
+ modal.onclick=function(e){if(e.target===modal)modal.remove()};
+}
+
+// ── Hook into existing functions ──
+function addAuthHooks(){
+ // Hook onLoginSuccess to show identity selector for new users
+ var origOnLogin=window.onLoginSuccess;
+ if(origOnLogin&&!origOnLogin._hooked){
+  var fn=origOnLogin;
+  window.onLoginSuccess=function(){
+   fn.apply(this,arguments);
+   updateAvatar();
+   var p=getProfile();
+   if(!p.identity||!p.displayName){
+    setTimeout(showIdentityModal,500);
+   }
+   // Daily login reward
+   var lim=getLimits();
+   if(!lim.loginDone){lim.loginDone=true;localStorage.setItem(LIMITS_KEY,JSON.stringify(lim));addCoins(10,'每日登录奖励')}
+  };
+  window.onLoginSuccess._hooked=true;
+ }
+
+ // Hook logout
+ var origLogout=window.handleLogout;
+ if(origLogout&&!origLogout._hooked){
+  var fn2=origLogout;
+  window.handleLogout=async function(){
+   await fn2.apply(this,arguments);
+   setTimeout(updateAvatar,200);
+  };
+  window.handleLogout._hooked=true;
+ }
+
+ // Hook poster generation
+ var origGenPoster=window.genPoster;
+ if(origGenPoster&&!origGenPoster._hooked){
+  var fn3=origGenPoster;
+  window.genPoster=function(){
+   var lim=getLimits();
+   if(lim.posterCount>=200){showToast('⚠️ 今日海报生成已达上限（200次）');return}
+   lim.posterCount++;localStorage.setItem(LIMITS_KEY,JSON.stringify(lim));
+   var p=getProfile();
+   if(p.identity==='agent')addCoins(20,'生成经纪人专属海报');
+   else addCoins(10,'生成分析海报');
+   fn3.apply(this,arguments);
+  };
+  window.genPoster._hooked=true;
+ }
+
+ // Hook property save
+ var origSave=window.handleSave;
+ if(origSave&&!origSave._hooked){
+  var fn4=origSave;
+  window.handleSave=function(){
+   var lim=getLimits();
+   if(lim.propCount<500){addCoins(30,'完善房源信息');lim.propCount++;localStorage.setItem(LIMITS_KEY,JSON.stringify(lim))}
+   fn4.apply(this,arguments);
+  };
+  window.handleSave._hooked=true;
+ }
+}
+
+function showIdentityModal(){
+ var h='<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>选择你的身份</h3><div class="hcb-sub" style="margin-bottom:14px">选择后可随时在个人中心切换</div><div class="hcb-identity-opt"><div class="sel" id="hcbIdUser" onclick="document.getElementById(\'hcbIdUser\').classList.add(\'sel\');document.getElementById(\'hcbIdAgent\').classList.remove(\'sel\')"><span class="hcb-ic-lg">🔹</span><span class="hcb-lb">普通用户</span><div class="hcb-desc">一键注册，立即使用</div></div><div id="hcbIdAgent" onclick="document.getElementById(\'hcbIdAgent\').classList.add(\'sel\');document.getElementById(\'hcbIdUser\').classList.remove(\'sel\')"><span class="hcb-ic-lg">🔸</span><span class="hcb-lb">房产经纪人</span><div class="hcb-desc">填写认证信息后注册</div></div></div><button class="hcb-btn hcb-btn-p" style="margin-top:14px" onclick="finishIdentity()">确认选择</button></div></div>';
+ var modal=document.createElement('div');modal.className='hcb-modal';modal.id='hcbIdModal';
+ modal.innerHTML=h;document.body.appendChild(modal);
+ modal.onclick=function(e){if(e.target===modal)modal.remove()};
+ window.finishIdentity=function(){
+  var isAgent=document.getElementById('hcbIdAgent').classList.contains('sel');
+  var p=getProfile();
+  if(isAgent){
+   showModal('<div class="hcb-modal-box"><div style="position:relative"><span class="hcb-close" onclick="this.closest(\'.hcb-modal\').remove()">✕</span><h3>🔸 经纪人认证</h3><input id="hcbAgName" placeholder="真实姓名（必填）"><input id="hcbAgPhone" placeholder="手机号（必填）"><input id="hcbAgComp" placeholder="所属公司（选填）"><input id="hcbAgAddr" placeholder="门店地址（选填）"><div class="wechat-qrcode-wrap"><label class="wechat-qrcode-label">微信二维码（用于生成经纪人专属海报）</label><input type="file" id="wechat-qrcode-upload" accept="image/jpeg,image/png" style="display:none" onchange="handleWechatQrcodeSelect(this)"><button type="button" id="wechat-qrcode-upload-btn" class="hcb-btn hcb-btn-o" onclick="document.getElementById(\'wechat-qrcode-upload\').click()" style="width:100%;margin-bottom:6px">📷 上传微信二维码</button><div id="wechat-qrcode-preview" style="display:none;margin:10px auto;text-align:center"></div><div id="wechat-qrcode-status" class="wechat-qrcode-status"></div><button type="button" id="wechat-qrcode-delete" class="hcb-btn hcb-btn-o" style="display:none;width:100%;margin-top:6px;color:#dc2626;border-color:#fecaca" onclick="handleWechatQrcodeDelete()">🗑 删除二维码</button></div><button class="hcb-btn hcb-btn-p" onclick="doAgentCert()" style="margin-top:10px">完成认证</button></div></div>');
+  }else{
+   p.identity='user';saveProfile(p);
+   addCoins(100,'新用户注册奖励');
+   document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+   openSidebar();showToast('✅ 注册成功！获得100房币');
+  }
+ };
+}
+window.doUpgrade=function(){
+ var n=document.getElementById('hcbAgentName').value,ph=document.getElementById('hcbAgentPhone').value;
+ if(!n||!ph){showToast('⚠️ 请填写姓名和手机号');return}
+ var p=getProfile();p.identity='agent';p.displayName=n;p.phone=ph;
+ p.company=document.getElementById('hcbAgentCompany')?document.getElementById('hcbAgentCompany').value:'';
+ p.addr=document.getElementById('hcbAgentAddr')?document.getElementById('hcbAgentAddr').value:'';
+ if(window.__wechatQrcodeUrl)p.wxQR=window.__wechatQrcodeUrl;
+ saveProfile(p);addCoins(500,'完成经纪人认证');
+ if(window.__wechatQrcodeUrl&&typeof updateUserWechatQrcode==='function'){updateUserWechatQrcode(window.__wechatQrcodeUrl);window.__wechatQrcodeUrl=''}
+ closeSidebar();openSidebar();
+ document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+ showToast('✅ 已升级为经纪人，获得500房币');
+};
+window.doSaveCert=function(){
+ var pp=getProfile();
+ pp.displayName=document.getElementById('hcbAName')?document.getElementById('hcbAName').value:pp.displayName;
+ pp.phone=document.getElementById('hcbAPhone')?document.getElementById('hcbAPhone').value:pp.phone;
+ pp.company=document.getElementById('hcbAComp')?document.getElementById('hcbAComp').value:pp.company;
+ pp.addr=document.getElementById('hcbAAddr')?document.getElementById('hcbAAddr').value:pp.addr;
+ saveProfile(pp);closeSidebar();openSidebar();
+ document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+ showToast('✅ 已更新');
+};
+window.doAgentCert=function(){
+ var n=document.getElementById('hcbAgName').value,ph=document.getElementById('hcbAgPhone').value;
+ if(!n||!ph){showToast('⚠️ 请填写姓名和手机号');return}
+ var pp=getProfile();pp.identity='agent';pp.displayName=n;pp.phone=ph;
+ pp.company=document.getElementById('hcbAgComp')?document.getElementById('hcbAgComp').value:'';
+ pp.addr=document.getElementById('hcbAgAddr')?document.getElementById('hcbAgAddr').value:'';
+ if(window.__wechatQrcodeUrl)pp.wxQR=window.__wechatQrcodeUrl;
+ saveProfile(pp);addCoins(600,'新用户注册(100)+经纪人认证(500)');
+ if(window.__wechatQrcodeUrl&&typeof updateUserWechatQrcode==='function'){updateUserWechatQrcode(window.__wechatQrcodeUrl);window.__wechatQrcodeUrl=''}
+ document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+ openSidebar();showToast('✅ 经纪人注册成功！获得600房币');
+};
+
+// ═══ 微信二维码上传全局变量 & 处理函数 ═══
+window.__wechatQrcodeUrl = '';
+
+window.handleWechatQrcodeSelect = function(input) {
+  var file = input.files[0];
+  if (!file) return;
+
+  var uploadBtn = document.getElementById('wechat-qrcode-upload-btn');
+  var preview = document.getElementById('wechat-qrcode-preview');
+  var deleteBtn = document.getElementById('wechat-qrcode-delete');
+  var status = document.getElementById('wechat-qrcode-status');
+
+  if (uploadBtn) { uploadBtn.style.display = 'none'; }
+  if (status) { status.textContent = '⏳ 正在上传…'; status.style.color = '#9ca3af'; }
+
+  if (typeof uploadWechatQrcode === 'function') {
+    uploadWechatQrcode(file).then(function(result) {
+      if (result.success) {
+        window.__wechatQrcodeUrl = result.url;
+        if (preview) {
+          preview.innerHTML = '<img src="' + result.url + '" alt="微信二维码" style="width:120px;height:120px;object-fit:cover;border-radius:8px;border:1px solid #e5e7eb">';
+          preview.style.display = 'block';
+        }
+        if (deleteBtn) { deleteBtn.style.display = 'inline-block'; }
+        if (status) { status.textContent = '✅ 上传成功'; status.style.color = '#059669'; }
+      } else {
+        if (uploadBtn) { uploadBtn.style.display = 'inline-block'; }
+        if (status) { status.textContent = '❌ ' + (result.error || '上传失败'); status.style.color = '#dc2626'; }
+        if (typeof showToast === 'function') showToast('⚠️ ' + (result.error || '上传失败'));
+      }
+    }).catch(function(e) {
+      if (uploadBtn) { uploadBtn.style.display = 'inline-block'; }
+      if (status) { status.textContent = '❌ 上传异常'; status.style.color = '#dc2626'; }
+    });
+  } else {
+    if (uploadBtn) { uploadBtn.style.display = 'inline-block'; }
+    if (status) { status.textContent = '⚠️ 上传接口未就绪'; status.style.color = '#dc2626'; }
+  }
+};
+
+window.handleWechatQrcodeDelete = function() {
+  window.__wechatQrcodeUrl = '';
+  var uploadBtn = document.getElementById('wechat-qrcode-upload-btn');
+  var preview = document.getElementById('wechat-qrcode-preview');
+  var deleteBtn = document.getElementById('wechat-qrcode-delete');
+  var status = document.getElementById('wechat-qrcode-status');
+  if (uploadBtn) { uploadBtn.style.display = 'inline-block'; }
+  if (preview) { preview.innerHTML = ''; preview.style.display = 'none'; }
+  if (deleteBtn) { deleteBtn.style.display = 'none'; }
+  if (status) { status.textContent = ''; }
+};
+
+window.hAgPoster=function(){
+ var p=getProfile();
+ if(!p||p.identity!=='agent'){showToast('⚠️ 仅经纪人可用');return}
+ var ab=document.querySelector('.btn-agent-poster');
+ if(!ab){showToast('⚠️ 海报按钮未就绪，请打开个人中心重试');return}
+ ab.click();
+};
+
+window.genAgentPoster=async function(){
+ var btn=document.querySelector('.btn-agent-poster');
+ if(!btn||btn.disabled)return;
+ var lim=getLimits();
+ if(lim.posterCount>=200){showToast('⚠️ 今日海报生成已达上限（200次）');return}
+ lim.posterCount++;localStorage.setItem(LIMITS_KEY,JSON.stringify(lim));
+ var profile=getProfile();
+ addCoins(20,'生成经纪人专属海报');
+ var orig=btn.textContent;btn.textContent='⏳ 正在生成海报...';btn.disabled=true;
+
+ function v(id){var e=document.getElementById(id);return e?e.value||'':'—'}
+ function vs(id){var e=document.getElementById(id);if(!e)return'—';var s=e.options[e.selectedIndex];return s?s.text:'—'}
+ function vf(id,d){var x=parseFloat(v(id));return isNaN(x)?d:x}
+ function esc(s){var d=document.createElement('div');d.textContent=s||'—';return d.innerHTML}
+
+ // ── 收集房源数据 ──
+ var addr=esc(v('addr')||'未命名');
+ var price=vf('price',0);var area=vf('area',0);
+ var unitPrice=area>0?Math.round(price*10000/area):0;
+ var layout=vs('layout');var floor=v('floor')||'—';
+ var hasElev=document.getElementById('elevatorChk')?document.getElementById('elevatorChk').checked:true;
+ var hYears=vs('houseYears');var propRight=vs('propertyRight');
+ var decoration=vs('decoration');
+ var downRatio=v('downRatio')||'—';var downPmt=vf('downPmt',0);
+ var loanAmt=vf('totalLoanDisplay',0)||(price-downPmt);
+ var rent=vf('rent',0);var mgmt=vf('mgmt',0);
+ var tax=vf('tax',0);
+ var annNetRent=(rent-mgmt)*12;
+ var staticROI=price>0?(annNetRent/(price*10000)*100):0;
+
+ var irrEl=document.querySelector('#dynamicROI .v.g,#dynamicROI .v.r');
+ var irrText=irrEl?irrEl.textContent.trim():'—';
+
+ var ls=document.getElementById('loanSummary');
+ var pmtText='—';if(ls){var m=ls.textContent.match(/月供.*?[¥]([0-9,]+)/);if(m)pmtText='¥'+m[1]}
+
+ var levEl=document.querySelector('#dynamicROI .di:nth-child(5) .v');
+ var levText=levEl?levEl.textContent.trim():'—';
+
+ var beGrid=document.getElementById('breakEvenGrid');
+ var buyCost='—',bePrice='—',beRate='—',payback='—',staticPayback='—';
+ if(beGrid){
+  var ds=beGrid.querySelectorAll('.di .v');
+  var ls2=beGrid.querySelectorAll('.di .l');
+  for(var i=0;i<ls2.length;i++){
+   var L=ls2[i].textContent,V=ds[i]?ds[i].textContent:'—';
+   if(L.indexOf('买入总成本')>=0)buyCost=V;
+   if(L.indexOf('盈亏平衡售价')>=0)bePrice=V;
+   if(L.indexOf('房价涨幅')>=0)beRate=V;
+   if(L.indexOf('动态回本')>=0)payback=V;
+   if(L.indexOf('静态回本')>=0)staticPayback=V;
+  }
+ }
+
+ var scDiv=document.getElementById('scoreContent');
+ var scoreNum='—',scoreGrade='';
+ var s1='—',s2='—',s3='—',s4='—',s5='—';
+ if(scDiv){
+  var sn=scDiv.querySelector('.snum');if(sn)scoreNum=sn.textContent;
+  var sg=scDiv.querySelector('.sgrade');if(sg)scoreGrade=sg.textContent;
+  var sds=scDiv.querySelectorAll('.sd .sdt .sdv');
+  if(sds[0])s1=sds[0].textContent;
+  if(sds[1])s2=sds[1].textContent;
+  if(sds[2])s3=sds[2].textContent;
+  if(sds[3])s4=sds[3].textContent;
+  if(sds[4])s5=sds[4].textContent;
+ }
+
+ var advs=[],risks=[],rtips=[];
+ document.querySelectorAll('.tip-adv .td').forEach(function(t){advs.push(t.textContent.trim())});
+ document.querySelectorAll('.tip-risk .td').forEach(function(t){risks.push(t.textContent.trim())});
+ document.querySelectorAll('.risk-high .ri-d,.risk-mid .ri-d').forEach(function(t){if(rtips.length<1)rtips.push(t.textContent.trim())});
+ if(advs.length>3)advs=advs.slice(0,3);
+ if(risks.length>2)risks=risks.slice(0,2);
+ if(rtips.length>1)rtips=rtips.slice(0,1);
+
+ var agName=esc(profile.displayName||'');
+ var agPhone=profile.phone||'';
+ var agCompany=esc(profile.company||'');
+
+ // ── 生成二维码 base64 data URL ──
+ var wxQRDataUrl='',officialQRDataUrl='';
+ if(typeof QRCode!=='undefined'&&QRCode.toDataURL){
+  try{officialQRDataUrl=await QRCode.toDataURL('https://liuxinyu084-boop.github.io/house-investment-tool/',{width:120,margin:1,color:{dark:'#1a1a2e',light:'#ffffff'}})}catch(e){}
+  var wxUrl=profile.wxQR||'';
+  if(wxUrl)try{wxQRDataUrl=await QRCode.toDataURL(wxUrl,{width:120,margin:1,color:{dark:'#07c160',light:'#ffffff'}})}catch(e){}
+ }
+
+ // ── 删除旧海报，只保留一张 ──
+ var old=document.getElementById('posterMain');
+ if(old)old.remove();
+
+ // ── 构建海报 ──
+ var poster=document.createElement('div');poster.id='posterMain';
+ poster.style.cssText='width:794px;min-height:1400px;background:#fff;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#111827;padding:0;margin:20px auto;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1)';
+
+ function card(t,v,c){
+  return '<div style="flex:1;background:linear-gradient(135deg,#f8fafc,#f1f5f9);border-radius:10px;padding:14px 8px;text-align:center;border:1px solid #e2e8f0"><div style="font-size:10px;color:#64748b;margin-bottom:6px">'+t+'</div><div style="font-size:20px;font-weight:800;color:'+c+'">'+v+'</div></div>';
+ }
+
+ var H='';
+ H+='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:36px 40px 28px;text-align:center"><div style="font-size:30px;font-weight:800;letter-spacing:3px">看房AI Book</div><div style="font-size:14px;color:rgba(255,255,255,.55);margin-top:8px">房源投资分析报告</div></div>';
+
+ // 1. 房源基础信息
+ H+='<div style="padding:24px 36px 20px"><div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📋 房源基础信息</div><table style="width:100%;font-size:12px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 房源名称：<b>'+addr+'</b></td><td style="padding:3px 0">▶ 房屋总价：<b>'+(price>0?price+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 建筑面积：<b>'+(area>0?area+'㎡':'—')+'</b></td><td style="padding:3px 0">▶ 单价：<b>'+(unitPrice>0?unitPrice.toLocaleString()+'元/㎡':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 户型：<b>'+layout+'</b></td><td style="padding:3px 0">▶ 楼层：<b>'+(floor!=='—'?floor+'层':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 电梯：<b>'+(hasElev?'有':'无')+'</b></td><td style="padding:3px 0">▶ 装修情况：<b>'+decoration+'</b></td></tr><tr><td style="padding:3px 0">▶ 房本年限：<b>'+hYears+'</b></td><td style="padding:3px 0">▶ 产权性质：<b>'+propRight+'</b></td></tr><tr><td style="padding:3px 0">▶ 首付比例：<b>'+(downRatio!=='—'?downRatio+'%':'—')+'</b></td><td style="padding:3px 0">▶ 首付金额：<b>'+(downPmt>0?downPmt+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 贷款总额：<b>'+(loanAmt>0?loanAmt+'万元':'—')+'</b></td><td style="padding:3px 0">▶ 税费：<b>'+(tax>0?tax+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 月租金：<b>'+(rent>0?rent+'元':'—')+'</b></td><td style="padding:3px 0">▶ 月物业费：<b>'+(mgmt>0?mgmt+'元':'—')+'</b></td></tr></table></div>';
+
+ // 2. 核心财务指标
+ H+='<div style="padding:20px 36px"><div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📊 核心财务指标</div><div style="display:flex;gap:8px;margin-bottom:8px">'+card('静态回报率',(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%',staticROI>=0?'#059669':'#dc2626')+card('年化IRR',irrText,'#2563eb')+card('动态回本',payback,'#ca8a04')+'</div><div style="display:flex;gap:8px">'+card('月供金额',pmtText,'#7c3aed')+card('总税费',tax>0?tax+'万元':'—','#d97706')+card('杠杆倍数',levText,'#0891b2')+'</div></div>';
+
+ // 3. 盈亏平衡
+ H+='<div style="padding:20px 36px"><div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">💰 全周期盈亏平衡</div><table style="width:100%;font-size:12px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 买入总成本：<b>'+buyCost+'</b></td><td style="padding:3px 0">▶ 盈亏平衡售价：<b>'+bePrice+'</b></td></tr><tr><td style="padding:3px 0">▶ 保本房价涨幅：<b>'+beRate+'</b></td><td style="padding:3px 0">▶ 静态回本年限：<b>'+staticPayback+'</b></td></tr></table></div>';
+
+ // 4. 综合评分
+ var scColor='#1e293b';
+ if(scoreGrade.indexOf('推荐')>=0)scColor='#059669';
+ else if(scoreGrade.indexOf('入手')>=0)scColor='#2563eb';
+ else if(scoreGrade.indexOf('谨慎')>=0)scColor='#d97706';
+ else if(scoreGrade.indexOf('不建议')>=0)scColor='#dc2626';
+ H+='<div style="padding:20px 36px"><div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📈 综合评分</div><div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:14px;padding:24px;color:#fff;text-align:center"><div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:4px">房源综合评分</div><div style="font-size:48px;font-weight:800;line-height:1">'+scoreNum+'<span style="font-size:16px;color:rgba(255,255,255,.5)">分</span></div><div style="font-size:14px;margin-top:6px;color:rgba(255,255,255,.7)">'+scoreGrade+'</div><div style="margin-top:16px;display:flex;justify-content:center;gap:20px;font-size:11px;color:rgba(255,255,255,.55)"><div style="text-align:center"><div style="font-size:16px;font-weight:700;color:rgba(255,255,255,.8)">'+s1+'</div>财务健康</div><div style="text-align:center"><div style="font-size:16px;font-weight:700;color:rgba(255,255,255,.8)">'+s2+'</div>产权合规</div><div style="text-align:center"><div style="font-size:16px;font-weight:700;color:rgba(255,255,255,.8)">'+s3+'</div>配套稀缺</div><div style="text-align:center"><div style="font-size:16px;font-weight:700;color:rgba(255,255,255,.8)">'+s4+'</div>资产流动</div><div style="text-align:center"><div style="font-size:16px;font-weight:700;color:rgba(255,255,255,.8)">'+s5+'</div>硬伤风险</div></div></div></div>';
+
+ // 5. 核心优劣势
+ var hasAdv=advs.length>0;
+ var hasRisk=risks.length>0;
+ if(hasAdv||hasRisk){
+  H+='<div style="padding:20px 36px"><div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📋 核心优劣势</div><div style="display:flex;gap:12px">';
+  if(hasAdv)H+='<div style="flex:1;background:#f0fdf4;border-radius:10px;padding:16px"><div style="font-size:12px;font-weight:700;color:#059669;margin-bottom:8px">✅ 核心优势</div>'+advs.map(function(a){return'<div style="font-size:11px;color:#065f46;line-height:1.8">• '+a+'</div>'}).join('')+'</div>';
+  if(hasRisk)H+='<div style="flex:1;background:#fef2f2;border-radius:10px;padding:16px"><div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:8px">⚠️ 核心风险</div>'+risks.map(function(r){return'<div style="font-size:11px;color:#991b1b;line-height:1.8">• '+r+'</div>'}).join('')+'</div>';
+  H+='</div>';
+  if(rtips.length)H+='<div style="margin-top:10px;background:#fefce8;border:1px solid #fde68a;border-radius:8px;padding:10px 16px;font-size:11px;color:#92400e;line-height:1.6">📊 '+rtips[0]+'</div>';
+  H+='</div>';
+ }
+
+ // 6. 经纪人联系方式
+ H+='<div style="padding:20px 36px"><div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📇 经纪人联系方式</div><div style="border:2px solid #059669;border-radius:14px;padding:20px 24px;background:linear-gradient(135deg,#f0fdf4,#ecfdf5)">';
+ H+='<div style="display:flex;align-items:center;gap:16px"><div style="flex-shrink:0;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center">'+(agName?agName.charAt(0):'经')+'</div><div style="flex:1"><div style="font-size:16px;font-weight:700;color:#111827">'+(agName||'未认证经纪人')+'</div>';
+ if(agCompany)H+='<div style="font-size:12px;color:#6b7280;margin-top:2px">'+agCompany+'</div>';
+ if(agPhone)H+='<div style="font-size:15px;font-weight:700;color:#059669;margin-top:4px">📞 '+agPhone+'</div>';
+ H+='</div></div></div></div>';
+
+ // 7. 二维码（base64 img）
+ H+='<div style="padding:16px 36px 8px"><div style="text-align:center;display:flex;justify-content:center;gap:20px;align-items:flex-start">';
+ if(wxQRDataUrl)H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:2px solid #07c160;border-radius:10px"><img src="'+wxQRDataUrl+'" width="120" height="120" style="display:block"></div><div style="font-size:12px;color:#07c160;margin-top:4px;font-weight:600">微信联系我</div></div>';
+ H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:1px solid #e5e7eb;border-radius:10px"><img src="'+officialQRDataUrl+'" width="120" height="120" style="display:block"></div><div style="font-size:12px;color:#9ca3af;margin-top:4px">扫码AI看房</div></div>';
+ H+='</div></div>';
+
+ // 8. 页脚
+ H+='<div style="padding:12px 36px 28px;text-align:center"><div style="border-top:1px solid #e5e7eb;padding-top:12px;font-size:10px;color:#9ca3af;line-height:1.8">生成时间：'+new Date().toLocaleString('zh-CN')+'<br>本报告由「看房AI Book」自动生成，客观中立，不构成任何投资建议</div></div>';
+
+ poster.innerHTML=H;
+ document.body.appendChild(poster);
+
+ // 右键保存提示
+ var tip=document.createElement('div');
+ tip.style.cssText='max-width:794px;margin:8px auto 20px;text-align:center;padding:10px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;font-size:13px;color:#92400e';
+ tip.textContent='💡 海报生成完成，请右键海报图片 → 「图片另存为」保存到本地';
+ poster.parentNode.insertBefore(tip,poster.nextSibling);
+
+ btn.textContent=orig;btn.disabled=false;
+ if(typeof showToast==='function')showToast('✅ 海报已生成');
+};
+})();
+
+// ═══════ 微信二维码上传 & 更新接口 v5.97 ═══════
+
+// 上传微信二维码到 Supabase Storage
+window.uploadWechatQrcode = async function(file) {
+  if (!file) return { success: false, error: '未选择文件' };
+
+  // 格式校验
+  var allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  if (allowedTypes.indexOf(file.type) === -1) {
+    return { success: false, error: '仅支持 JPG/JPEG/PNG 格式' };
+  }
+
+  // 大小校验：不超过 2MB
+  if (file.size > 2 * 1024 * 1024) {
+    return { success: false, error: '文件大小不能超过 2MB' };
+  }
+
+  // 生成文件名
+  var ext = file.name.split('.').pop().toLowerCase();
+  if (['jpg', 'jpeg', 'png'].indexOf(ext) === -1) {
+    return { success: false, error: '仅支持 JPG/JPEG/PNG 格式' };
+  }
+  var fileName = (typeof currentUser !== 'undefined' && currentUser ? currentUser.id : 'anon') + '-' + Date.now() + '.' + ext;
+
+  try {
+    var { data, error } = await sb.storage
+      .from('wechat-qrcodes')
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
+
+    if (error) {
+      return { success: false, error: '上传失败: ' + (error.message || JSON.stringify(error)) };
+    }
+
+    // 获取公开访问URL
+    var { data: urlData } = sb.storage
+      .from('wechat-qrcodes')
+      .getPublicUrl(fileName);
+
+    return { success: true, url: urlData.publicUrl };
+  } catch (e) {
+    return { success: false, error: '上传异常: ' + (e.message || '未知错误') };
+  }
+};
+
+// 更新用户微信二维码到 public.users 表
+window.updateUserWechatQrcode = async function(url) {
+  if (!url) return { success: false, error: '二维码URL不能为空' };
+
+  if (typeof currentUser === 'undefined' || !currentUser || !currentUser.id) {
+    return { success: false, error: '请先登录' };
+  }
+
+  var now = new Date().toISOString();
+
+  try {
+    var { data, error } = await sb
+      .from('users')
+      .upsert({
+        id: currentUser.id,
+        wechat_qrcode: url,
+        wechat_qrcode_updated_at: now,
+        updated_at: now
+      }, { onConflict: 'id' });
+
+    if (error) {
+      return { success: false, error: '更新失败: ' + (error.message || JSON.stringify(error)) };
+    }
+
+    return { success: true };
+  } catch (e) {
+    return { success: false, error: '更新异常: ' + (e.message || '未知错误') };
+  }
+};
+</script>
