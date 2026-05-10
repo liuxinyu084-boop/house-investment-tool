@@ -385,7 +385,26 @@ async function handleAuth(){
     }else{const{data,error}=await sb.auth.signInWithPassword({email:e,password:p});if(error){er.textContent=error.message||'登录失败';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false;return}currentUser=data.user;onLoginSuccess()}
   }catch(x){er.textContent='网络异常，请检查网络后重试';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false}
 }
-function onLoginSuccess(){document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;loadCloudData()}
+function onLoginSuccess(){document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;loadCloudData();
+// 从云端恢复经纪人身份
+(async function(){
+ try {
+  var { data, error } = await sb.from('users').select('*').eq('id', currentUser.id).single();
+  if (data) {
+   var p = getProfile();
+   if (!p.identity && data.identity) p.identity = data.identity;
+   if (!p.displayName && data.display_name) p.displayName = data.display_name;
+   if (!p.phone && data.phone) p.phone = data.phone;
+   if (!p.company && data.company) p.company = data.company;
+   if (!p.addr && data.addr) p.addr = data.addr;
+   if (!p.wxQR && data.wechat_qrcode) p.wxQR = data.wechat_qrcode;
+   saveProfile(p);
+   var ab = document.querySelector('.btn-agent-poster');
+   if (ab) ab.style.display = p.identity === 'agent' ? 'block' : 'none';
+  }
+ } catch (e) {}
+})();
+}
 async function handleLogout(){await sb.auth.signOut();currentUser=null;allProperties={};document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';document.getElementById('authBtn').innerHTML='登 录';document.getElementById('authBtn').disabled=false;renderPropList();updateCnt()}
 
 // ═══ Cloud ═══
@@ -1278,6 +1297,19 @@ window.doUpgrade=function(){
  if(window.__wechatQrcodeUrl&&typeof updateUserWechatQrcode==='function'){updateUserWechatQrcode(window.__wechatQrcodeUrl);window.__wechatQrcodeUrl=''}
  closeSidebar();openSidebar();
  document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+ // 存到云端，换设备也能用
+ if (typeof currentUser !== 'undefined' && currentUser && currentUser.id) {
+  sb.from('users').upsert({
+   id: currentUser.id,
+   identity: 'agent',
+   display_name: p.displayName,
+   phone: p.phone,
+   company: p.company,
+   addr: p.addr,
+   wechat_qrcode: p.wxQR || null,
+   updated_at: new Date().toISOString()
+  }, { onConflict: 'id' });
+ }
  showToast('✅ 已升级为经纪人，获得500房币');
 };
 window.doSaveCert=function(){
@@ -1300,6 +1332,19 @@ window.doAgentCert=function(){
  saveProfile(pp);addCoins(600,'新用户注册(100)+经纪人认证(500)');
  if(window.__wechatQrcodeUrl&&typeof updateUserWechatQrcode==='function'){updateUserWechatQrcode(window.__wechatQrcodeUrl);window.__wechatQrcodeUrl=''}
  document.querySelectorAll('.hcb-modal').forEach(function(m){m.remove()});
+ // 存到云端，换设备也能用
+ if (typeof currentUser !== 'undefined' && currentUser && currentUser.id) {
+  sb.from('users').upsert({
+   id: currentUser.id,
+   identity: 'agent',
+   display_name: pp.displayName,
+   phone: pp.phone,
+   company: pp.company,
+   addr: pp.addr,
+   wechat_qrcode: pp.wxQR || null,
+   updated_at: new Date().toISOString()
+  }, { onConflict: 'id' });
+ }
  openSidebar();showToast('✅ 经纪人注册成功！获得600房币');
 };
 
@@ -1506,8 +1551,8 @@ window.genAgentPoster=async function(){
 
  // 8. Bottom: QR codes
  H+='<div style="padding:16px 36px 8px"><div style="text-align:center;display:flex;justify-content:center;gap:20px;align-items:flex-start">';
- H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:2px solid #07c160;border-radius:10px"><img id="wxQRCanvas" src="" width="120" height="120" style="display:block;border:2px solid red" crossOrigin="anonymous"></div><div style="font-size:12px;color:#07c160;margin-top:4px;font-weight:600">微信联系我</div></div>';
- H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:1px solid #e5e7eb;border-radius:10px"><img id="officialQRCanvas" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://liuxinyu0924-boop.github.io/house-investment-tool/" width="120" height="120" style="display:block;border:2px solid red"></div><div style="font-size:12px;color:#9ca3af;margin-top:4px">扫码AI看房</div></div>';
+ H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:2px solid #07c160;border-radius:10px"><canvas id="wxQRCanvas" width="120" height="120"></canvas></div><div style="font-size:12px;color:#07c160;margin-top:4px;font-weight:600">微信联系我</div></div>';
+ H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:1px solid #e5e7eb;border-radius:10px"><canvas id="officialQRCanvas" width="120" height="120"></canvas></div><div style="font-size:12px;color:#9ca3af;margin-top:4px">扫码AI看房</div></div>';
  H+='</div></div>';
 
  H+='<div style="padding:12px 36px 28px;text-align:center"><div style="border-top:1px solid #e5e7eb;padding-top:12px;font-size:10px;color:#9ca3af;line-height:1.8">生成时间：'+new Date().toLocaleString('zh-CN')+'<br>本报告由「看房AI Book」自动生成，客观中立，不构成任何投资建议</div></div>';
@@ -1515,9 +1560,34 @@ window.genAgentPoster=async function(){
  poster.innerHTML=H;
  document.body.appendChild(poster);
 
- // 设置微信二维码 src（从 localStorage 读取）
- var wxi=document.getElementById('wxQRCanvas');
- if(wxi){var p=JSON.parse(localStorage.getItem('hcb_profile')||'{}');if(p.wxQR){wxi.src=p.wxQR;wxi.parentNode.style.display='inline-block'}else{wxi.parentNode.style.display='none'}}
+ // 生成微信和官方二维码（改用 Canvas，避免跨域问题）
+ setTimeout(function(){
+  var wxCanvas = document.getElementById('wxQRCanvas');
+  if (wxCanvas) {
+   if (wechatQrUrl) {
+    new QRCode(wxCanvas, {
+     text: wechatQrUrl,
+     width: 120,
+     height: 120,
+     colorDark: '#07c160',
+     colorLight: '#ffffff'
+    });
+   } else {
+    wxCanvas.parentNode.style.display = 'none';
+   }
+  }
+
+  var offCanvas = document.getElementById('officialQRCanvas');
+  if (offCanvas) {
+   new QRCode(offCanvas, {
+    text: 'https://liuxinyu0924-boop.github.io/house-investment-tool/',
+    width: 120,
+    height: 120,
+    colorDark: '#1a1a2e',
+    colorLight: '#ffffff'
+   });
+  }
+ }, 100);
 
  // 截图并下载
  setTimeout(function(){
