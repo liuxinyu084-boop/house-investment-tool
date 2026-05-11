@@ -54,7 +54,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 .pi .r{font-size:13px;font-weight:700;white-space:nowrap}
 .pi .r.g{color:var(--positive)}.pi .r.r{color:var(--negative)}
 .pe{text-align:center;color:var(--text3);font-size:12px;padding:16px 10px;line-height:1.6}
-.rc{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--r);padding:20px 16px 16px;margin-bottom:10px;text-align:center;box-shadow:0 4px 20px rgba(26,26,46,.12)}
+.rc{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--r);padding:20px 16px 16px;margin-bottom:40px;text-align:center;box-shadow:0 4px 20px rgba(26,26,46,.12)}
 .rc .rl{color:rgba(255,255,255,.55);font-size:13px;font-weight:500}
 .rc .rn{font-size:42px;font-weight:800;color:#fff;line-height:1.1;margin:4px 0 2px;transition:.3s;letter-spacing:-.5px}
 .rc .rn.g{color:#34d399}.rc .rn.r{color:#f87171}
@@ -400,7 +400,11 @@ async function handleAuth(){
     if (d.wechat_qrcode) p.wxQR = d.wechat_qrcode;
     localStorage.setItem('hcb_profile', JSON.stringify(p));
     if (d.coins_total !== undefined) {
-     localStorage.setItem('hcb_coins', JSON.stringify({ total: d.coins_total, history: [] }));
+     var coinsData = JSON.parse(localStorage.getItem('hcb_coins') || '{}');
+     if (!coinsData.total || coinsData.total < d.coins_total) {
+      coinsData.total = d.coins_total;
+      localStorage.setItem('hcb_coins', JSON.stringify(coinsData));
+     }
     }
     var ab = document.querySelector('.btn-agent-poster');
     if (ab) ab.style.display = (p.identity === 'agent') ? 'block' : 'none';
@@ -424,7 +428,11 @@ function onLoginSuccess(){document.getElementById('authOverlay').style.display='
     if (d.wechat_qrcode) p.wxQR = d.wechat_qrcode;
     localStorage.setItem('hcb_profile', JSON.stringify(p));
     if (d.coins_total !== undefined) {
-     localStorage.setItem('hcb_coins', JSON.stringify({ total: d.coins_total, history: [] }));
+     var coinsData = JSON.parse(localStorage.getItem('hcb_coins') || '{}');
+     if (!coinsData.total || coinsData.total < d.coins_total) {
+      coinsData.total = d.coins_total;
+      localStorage.setItem('hcb_coins', JSON.stringify(coinsData));
+     }
     }
     var ab = document.querySelector('.btn-agent-poster');
     if (ab) ab.style.display = (p.identity === 'agent') ? 'block' : 'none';
@@ -880,7 +888,7 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
 })();
 </script>
-<script>setInterval(function(){var r=document.getElementById("roiDisplay");if(!r)return;var c=r.parentNode;if(!c||!c.classList.contains("rc"))return;var s=document.querySelector("#mainApp .c>.sec");if(!s)return;if(c.nextElementSibling!==s){s.parentNode.insertBefore(c,s.nextElementSibling);c.style.marginBottom="10px"}},200)</script>
+<script>setInterval(function(){var r=document.getElementById("roiDisplay");if(!r)return;var c=r.parentNode;if(!c||!c.classList.contains("rc"))return;var s=document.querySelector("#mainApp .c>.sec");if(!s)return;if(c.nextElementSibling!==s){s.parentNode.insertBefore(c,s.nextElementSibling);c.style.marginBottom="80px"}},200)</script>
 </body>
 </html>
 <script src="./snapdom.min.js"></script>
@@ -932,7 +940,10 @@ async function genPoster(){
  var staticROI=price>0?(annNetRent/(price*10000)*100):0;
 
  var irrEl=document.querySelector('#dynamicROI .v.g,#dynamicROI .v.r');
- var irrText=irrEl?(irrEl.textContent.match(/[+-]?\d+\.\d+%/)?.[0] || irrEl.textContent.replace(/¥[^%]*/g,'').trim().substring(0,20)):'—';
+  // 直接从计算函数获取 IRR 百分比（不从页面提取）
+ var irrVal = irrRate();
+ var irrPercent = irrVal !== null ? (irrVal >= 0 ? '+' : '') + irrVal.toFixed(2) + '%' : '—';
+ var irrDesc = '年化内部收益率';
 
  var ls=document.getElementById('loanSummary');
  var pmtText='—';if(ls){var m=ls.textContent.match(/月供.*?¥([0-9,]+)/);if(m)pmtText='¥'+m[1]}
@@ -977,27 +988,6 @@ async function genPoster(){
  if(risks.length>2)risks=risks.slice(0,2);
  if(rtips.length>1)rtips=rtips.slice(0,1);
 
- // 预生成微信二维码 base64
- var wxQRBase64 = '';
- try {
-  var profile_qr = getProfile();
-  var wechatQrUrl_qr = profile_qr.wxQR || '';
-  if (wechatQrUrl_qr) {
-   wxQRBase64 = await new Promise(function(resolve) {
-    var img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = function() {
-     var c = document.createElement('canvas');
-     c.width = img.width; c.height = img.height;
-     c.getContext('2d').drawImage(img, 0, 0);
-     resolve(c.toDataURL('image/jpeg', 0.9));
-    };
-    img.onerror = function() { resolve(''); };
-    img.src = wechatQrUrl_qr;
-    setTimeout(function() { resolve(''); }, 5000);
-   });
-  }
- } catch(e) { wxQRBase64 = ''; }
 
  var pw=650,ph=1123;
  var poster=document.createElement('div');poster.id='__poster__';
@@ -1011,7 +1001,7 @@ async function genPoster(){
 
  H+='<div style="padding:24px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📋 房源基础信息</div><table style="width:100%;font-size:16px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 房源：<b>'+addr+'</b></td><td style="padding:3px 0">▶ 总价：<b>'+(price>0?price+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 面积：<b>'+(area>0?area+'㎡':'—')+'</b></td><td style="padding:3px 0">▶ 单价：<b>'+(unitPrice>0?unitPrice.toLocaleString()+'元/㎡':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 户型：<b>'+layout+'</b></td><td style="padding:3px 0">▶ 楼层：<b>'+(floor!=='—'?floor+'层':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 电梯：<b>'+(hasElev?'有':'无')+'</b></td><td style="padding:3px 0">▶ 装修：<b>'+decoration+'</b></td></tr><tr><td style="padding:3px 0">▶ 房本：<b>'+hYears+'</b></td><td style="padding:3px 0">▶ 产权：<b>'+propRight+'</b></td></tr><tr><td style="padding:3px 0">▶ 首付：<b>'+(downRatio!=='—'?downRatio+'%':'—')+'</b></td><td style="padding:3px 0">▶ 首付额：<b>'+(downPmt>0?downPmt+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 贷款：<b>'+(loanAmt>0?loanAmt+'万元':'—')+'</b></td><td style="padding:3px 0">▶ 税费：<b>'+(tax>0?tax+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 月租金：<b>'+(rent>0?rent+'元':'—')+'</b></td><td style="padding:3px 0">▶ 月物业：<b>'+(mgmt>0?mgmt+'元':'—')+'</b></td></tr></table></div>';
 
- H+='<div style="padding:16px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e5e7eb">📊 核心财务指标</div><div style="display:flex;gap:8px;margin-bottom:8px">'+card('静态回报率',(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%',staticROI>=0?'#059669':'#dc2626')+card('年化IRR',irrText,'#2563eb')+card('动态回本',payback,'#ca8a04')+'</div><div style="display:flex;gap:8px">'+card('月供金额',pmtText,'#7c3aed')+card('总税费',tax>0?tax+'万元':'—','#d97706')+card('杠杆倍数',levText,'#0891b2')+'</div></div>';
+ H+='<div style="padding:16px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e5e7eb">📊 核心财务指标</div><div style="display:flex;gap:8px;margin-bottom:8px">'+card('静态回报率',(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%',staticROI>=0?'#059669':'#dc2626')+'<div style="flex:1;background:linear-gradient(135deg,#f8fafc,#f1f5f9);border-radius:10px;padding:14px 10px;text-align:center;border:1px solid #e2e8f0">'+'<div style="font-size:12px;color:#64748b;margin-bottom:8px;font-weight:600">年化IRR</div>'+'<div style="font-size:20px;font-weight:900;color:#2563eb;line-height:1.1;margin-bottom:6px;letter-spacing:-1px">'+irrPercent+'</div>'+'<div style="font-size:10px;color:#9ca3af;line-height:1.4;max-height:30px;overflow:hidden;opacity:0.7">'+irrDesc+'</div>'+'</div>'+card('动态回本',payback,'#ca8a04')+'</div><div style="display:flex;gap:8px">'+card('月供金额',pmtText,'#7c3aed')+card('总税费',tax>0?tax+'万元':'—','#d97706')+card('杠杆倍数',levText,'#0891b2')+'</div></div>';
 
  H+='<div style="padding:16px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e5e7eb">💰 全周期盈亏平衡</div><table style="width:100%;font-size:16px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 买入总成本：<b>'+buyCost+'</b></td><td style="padding:3px 0">▶ 盈亏平衡售价：<b>'+bePrice+'</b></td></tr><tr><td style="padding:3px 0">▶ 保本房价涨幅：<b>'+beRate+'</b></td><td style="padding:3px 0">▶ 静态回本：<b>'+staticPayback+'</b></td></tr></table></div>';
 
@@ -1029,11 +1019,7 @@ async function genPoster(){
  if(rtips.length)H+='<div style="padding:8px 36px 16px"><div style="background:#fefce8;border:1px solid #fde68a;border-radius:8px;padding:12px 16px;font-size:11px;color:#92400e;line-height:1.6">📊 '+rtips[0]+'</div></div>';
 
  // 二维码区域（base64 直接嵌入）
- H+='<div style="padding:10px 36px;text-align:center;display:flex;justify-content:center;gap:16px">';
- if (wxQRBase64) {
-  H+='<div style="text-align:center"><div style="display:inline-block;padding:6px;background:#fff;border:2px solid #07c160;border-radius:10px"><img src="'+wxQRBase64+'" width="120" height="120" style="display:block;object-fit:contain"></div><div style="font-size:14px;color:#07c160;margin-top:4px;font-weight:600">微信联系我</div></div>';
- }
- var offQRBase64_gen = '';
+ H+='<div style="padding:10px 36px;text-align:center;display:flex;justify-content:center;gap:16px">'; var offQRBase64_gen = '';
  try {
   if (typeof QRCode !== 'undefined' && QRCode.toDataURL) {
    offQRBase64_gen = await QRCode.toDataURL('https://liuxinyu0924-boop.github.io/house-investment-tool/', {width:120,margin:1,color:{dark:'#1a1a2e',light:'#ffffff'}});
@@ -1052,7 +1038,10 @@ H+='<div style="padding:16px 36px 30px;text-align:center;border-top:1px solid #e
  setTimeout(function(){
   if (window.snapdom) {
    snapdom(poster, { scale: 2, backgroundColor: '#ffffff' }).then(function(result) {
-    return result.download({ format: 'png', filename: '看房AI分析海报' });
+    // 延迟 1 秒再触发下载，确保文件完整
+    setTimeout(function() {
+     result.download({ format: 'png', filename: '看房AI分析海报' });
+    }, 1000);
    }).then(function() {
     poster.remove();
     btn.textContent = orig;
@@ -1081,7 +1070,7 @@ H+='<div style="padding:16px 36px 30px;text-align:center;border-top:1px solid #e
     btn.textContent=orig;btn.disabled=false;
    });
   }
- }, 500);
+ }, 1500);
 
 }
 })();
@@ -1117,6 +1106,17 @@ function addCoins(amount,reason,cb){
  var d=G(COINS_KEY);d.total=(d.total||0)+amount;if(!d.history)d.history=[];
  d.history.unshift({a:amount,r:reason,t:new Date().toISOString()});
  localStorage.setItem(COINS_KEY,JSON.stringify(d));
+ // 自动同步房币到云端
+ if (typeof currentUser !== 'undefined' && currentUser && currentUser.id) {
+  var totalCoins = d.total;
+  sb.from('users').upsert({
+   id: currentUser.id,
+   coins_total: totalCoins,
+   updated_at: new Date().toISOString()
+  }, { onConflict: 'id' }).then(function() {
+   console.log('房币自动同步成功，最新数量：' + totalCoins);
+  }).catch(function() {});
+ }
  if(typeof showToast==='function')showToast('💰 +'+amount+'房币：'+reason);
  if(cb)cb(d);
 }
@@ -1633,7 +1633,10 @@ window.genAgentPoster=async function(){
  var annNetRent=(rent-mgmt)*12;
  var staticROI=price>0?(annNetRent/(price*10000)*100):0;
  var irrEl=document.querySelector('#dynamicROI .v.g,#dynamicROI .v.r');
- var irrText=irrEl?(irrEl.textContent.match(/[+-]?\d+\.\d+%/)?.[0] || irrEl.textContent.replace(/¥[^%]*/g,'').trim().substring(0,20)):'—';
+  // 直接从计算函数获取 IRR 百分比（不从页面提取）
+ var irrVal = irrRate();
+ var irrPercent = irrVal !== null ? (irrVal >= 0 ? '+' : '') + irrVal.toFixed(2) + '%' : '—';
+ var irrDesc = '年化内部收益率';
  var ls=document.getElementById('loanSummary');
  var pmtText='—';if(ls){var m=ls.textContent.match(/月供.*?[¥\u00a5]([0-9,]+)/);if(m)pmtText='¥'+m[1]}
  var levEl=document.querySelector('#dynamicROI .di:nth-child(5) .v');
@@ -1680,7 +1683,7 @@ window.genAgentPoster=async function(){
  var H='';
  H+='<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:36px 40px 28px;text-align:center"><div style="font-size:30px;font-weight:800;letter-spacing:3px">看房AI Book</div><div style="font-size:14px;color:rgba(255,255,255,.55);margin-top:8px">房源投资分析报告</div></div>';
  H+='<div style="padding:24px 36px 20px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📋 房源基础信息</div><table style="width:100%;font-size:16px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 房源名称：<b>'+addr+'</b></td><td style="padding:3px 0">▶ 房屋总价：<b>'+(price>0?price+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 建筑面积：<b>'+(area>0?area+'㎡':'—')+'</b></td><td style="padding:3px 0">▶ 单价：<b>'+(unitPrice>0?unitPrice.toLocaleString()+'元/㎡':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 户型：<b>'+layout+'</b></td><td style="padding:3px 0">▶ 楼层：<b>'+(floor!=='—'?floor+'层':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 电梯：<b>'+(hasElev?'有':'无')+'</b></td><td style="padding:3px 0">▶ 装修情况：<b>'+decoration+'</b></td></tr><tr><td style="padding:3px 0">▶ 房本年限：<b>'+hYears+'</b></td><td style="padding:3px 0">▶ 产权性质：<b>'+propRight+'</b></td></tr><tr><td style="padding:3px 0">▶ 首付比例：<b>'+(downRatio!=='—'?downRatio+'%':'—')+'</b></td><td style="padding:3px 0">▶ 首付金额：<b>'+(downPmt>0?downPmt+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 贷款总额：<b>'+(loanAmt>0?loanAmt+'万元':'—')+'</b></td><td style="padding:3px 0">▶ 税费：<b>'+(tax>0?tax+'万元':'—')+'</b></td></tr><tr><td style="padding:3px 0">▶ 月租金：<b>'+(rent>0?rent+'元':'—')+'</b></td><td style="padding:3px 0">▶ 月物业费：<b>'+(mgmt>0?mgmt+'元':'—')+'</b></td></tr></table></div>';
- H+='<div style="padding:20px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📊 核心财务指标</div><div style="display:flex;gap:8px;margin-bottom:8px">'+card('静态回报率',(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%',staticROI>=0?'#059669':'#dc2626')+card('年化IRR',irrText,'#2563eb')+card('动态回本',payback,'#ca8a04')+'</div><div style="display:flex;gap:8px">'+card('月供金额',pmtText,'#7c3aed')+card('总税费',tax>0?tax+'万元':'—','#d97706')+card('杠杆倍数',levText,'#0891b2')+'</div></div>';
+ H+='<div style="padding:20px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">📊 核心财务指标</div><div style="display:flex;gap:8px;margin-bottom:8px">'+card('静态回报率',(staticROI>=0?'+':'')+staticROI.toFixed(2)+'%',staticROI>=0?'#059669':'#dc2626')+'<div style="flex:1;background:linear-gradient(135deg,#f8fafc,#f1f5f9);border-radius:10px;padding:14px 10px;text-align:center;border:1px solid #e2e8f0">'+'<div style="font-size:12px;color:#64748b;margin-bottom:8px;font-weight:600">年化IRR</div>'+'<div style="font-size:20px;font-weight:900;color:#2563eb;line-height:1.1;margin-bottom:6px;letter-spacing:-1px">'+irrPercent+'</div>'+'<div style="font-size:10px;color:#9ca3af;line-height:1.4;max-height:30px;overflow:hidden;opacity:0.7">'+irrDesc+'</div>'+'</div>'+card('动态回本',payback,'#ca8a04')+'</div><div style="display:flex;gap:8px">'+card('月供金额',pmtText,'#7c3aed')+card('总税费',tax>0?tax+'万元':'—','#d97706')+card('杠杆倍数',levText,'#0891b2')+'</div></div>';
  H+='<div style="padding:20px 36px"><div style="font-size:18px;font-weight:700;color:#1e293b;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e5e7eb">💰 全周期盈亏平衡</div><table style="width:100%;font-size:16px;color:#374151;border-collapse:collapse"><tr><td style="padding:3px 0;width:50%">▶ 买入总成本：<b>'+buyCost+'</b></td><td style="padding:3px 0">▶ 盈亏平衡售价：<b>'+bePrice+'</b></td></tr><tr><td style="padding:3px 0">▶ 保本房价涨幅：<b>'+beRate+'</b></td><td style="padding:3px 0">▶ 静态回本年限：<b>'+staticPayback+'</b></td></tr></table></div>';
  var scColor='#1e293b';
  if(scoreGrade.indexOf('推荐')>=0)scColor='#059669';
@@ -1728,7 +1731,10 @@ window.genAgentPoster=async function(){
  setTimeout(function(){
   if (window.snapdom) {
    snapdom(poster, { scale: 2, backgroundColor: '#ffffff' }).then(function(result) {
-    return result.download({ format: 'png', filename: '经纪人专属海报' });
+    // 延迟 1 秒再触发下载，确保文件完整
+    setTimeout(function() {
+     result.download({ format: 'png', filename: '经纪人专属海报' });
+    }, 1000);
    }).then(function() {
     poster.remove();
     btn.textContent = orig;
@@ -1746,7 +1752,7 @@ window.genAgentPoster=async function(){
    btn.disabled = false;
    showToast('⚠️ 库未加载，请刷新重试');
   }
- }, 300);
+ }, 1500);
 };
 })();
 
