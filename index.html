@@ -198,12 +198,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 <div class="fg"><label>所在楼层</label><div style="display:flex;align-items:center;gap:8px"><input type="number" id="floor" step="1" placeholder="如 12">
 <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px"><input type="checkbox" id="elevatorChk" checked onchange="var v=this.checked;document.getElementById('elevYes').checked=v;document.getElementById('elevNo').checked=!v;var k=document.getElementById('elevKnob');if(k)k.style.left=v?'3px':'19px';var s=document.getElementById('elevSwitch');if(s)s.style.background=v?'#3b82f6':'#d1d5db'" style="position:absolute;opacity:0;width:0;height:0"><span id="elevSwitch" style="display:inline-block;width:38px;height:22px;background:#3b82f6;border-radius:11px;position:relative;transition:background .25s;vertical-align:middle"><span id="elevKnob" style="position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:left .25s"></span></span>电梯</label><span style="display:none"><input type="radio" name="elevator" value="yes" id="elevYes" checked><input type="radio" name="elevator" value="no" id="elevNo"></span></div></div></div><div class="br">
 <button class="btn btn-p" onclick="handleSave()">💾 保存当前房源</button>
-<button class="btn btn-o" onclick="resetForm()">✖ 新建空白</button>
-</div>
-<div class="tb">
-<button class="btn btn-o" onclick="exportData()">📤 导出备份</button>
-<button class="btn btn-o" onclick="document.getElementById('importFile').click()">📥 导入恢复</button>
-<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+<button class="btn btn-o" onclick="resetForm()">✖ 新建房源</button>
 </div>
 <div class="pl" id="propList"><div class="pe">你还没有保存任何房源<br>填好信息，点「保存当前房源」</div></div><div class="sh" onclick="T(this)" style="margin-top:12px"><span><span class="ar">▶</span>📝 房源详细信息（选填）</span></div><div class="sb">
 <div class="fgr">
@@ -247,7 +242,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 <div class="cw"><div class="ch" onclick="T(this)"><span><span class="ar">▶</span><span class="ct">💰 ② 贷款 &amp; 税费自动测算</span></span></div><div class="cb">
 <!-- ═══ 二、贷款测算 ═══ -->
 <div class="sec">
-<div class="st">💰 ② 贷款 &amp; 税费自动测算</div>
+<div class="subs-title" style="font-size:14px;font-weight:700;color:#1e293b;margin-top:8px;margin-bottom:8px">一、贷款</div>
 <div class="fgr">
 <div class="fg"><label>还款方式<span class="tip-term" data-tip="决定你每个月还多少钱。等额本息：每月还一样多，前期利息多；等额本金：每月越还越少，总利息少">ⓘ</span></label><select id="repayMethod" onchange="calc()"><option value="">— 请选择 —</option><option value="equalPayment">等额本息</option><option value="equalPrincipal">等额本金</option></select></div>
 <div class="fg"><label>贷款类型</label><select id="loanType" onchange="onLoanTypeChange()"><option value="">— 请选择 —</option><option value="commercial">纯商业贷款</option><option value="fund">纯公积金贷款</option><option value="combined">组合贷款</option></select></div>
@@ -262,6 +257,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 <div class="fgr"><div class="fg"><label>贷款年限（年）</label><input type="number" id="loanYears" placeholder="如 30" oninput="calc()"></div></div>
 <div class="stats" id="loanSummary">选好贷款信息后自动显示月供</div>
 <div class="ref-std" id="pmtRef"></div>
+<div class="subs-title" style="font-size:14px;font-weight:700;color:#1e293b;margin-top:16px;margin-bottom:8px">二、税费自动测算</div>
 </div>
 
 </div></div>
@@ -868,7 +864,37 @@ function handleSave(){const d=gatherData();if(!d.addr){showToast('⚠️ 请先�
 function loadProp(id){const d=allProperties[id];if(!d)return;editingId=id;fillData(d);window.scrollTo({top:0,behavior:'smooth'})}
 async function deleteProp(id){const n=allProperties[id]?.addr||'未命名';if(!confirm('确定删除「'+n+'」？'))return;delete allProperties[id];await cloudDelete(id);if(editingId===id){editingId=null;resetForm()}renderPropList();updateCnt();showToast('🗑️ 已删除：'+n)}
 function resetForm(){editingId=null;['addr','price','area','layout','floor','houseYears','purchaseCount','ownership','downPmt','downRatio','tax','rent','repayMethod','loanType','commRate','fundRate','combFundAmt','combFundRate','combCommAmt','combCommRate','loanYears','salePrice','propertyType','legalStatus','buildDecade','propertyRight','decoration','schoolDistrict','onlyResidence','metroDist','schoolLevel','mallDist','hospitalDist','buildEra','dealActivity','priceTrend','listingCount'].forEach(id=>document.getElementById(id).value='');['renov','agency','otherCost','mgmt','holdYears'].forEach(id=>{const el=document.getElementById(id);if(id==='holdYears')el.value=10;else el.value=0});['defNoise','defTop','defGround','defDark','defOther'].forEach(id=>document.getElementById(id).checked=false);const evYes=document.getElementById('elevYes'),evNo=document.getElementById('elevNo');if(evYes)evYes.checked=false;if(evNo)evNo.checked=false;taxIsAuto=false;ratioIsApplied=false;downPmtIsManual=false;document.getElementById('taxTag').textContent='手动';document.getElementById('taxTag').className='tag tag-manual';document.getElementById('dpTag').textContent='自动';document.getElementById('dpTag').className='tag tag-auto';document.getElementById('dpHint').textContent='选首付比例后自动算';document.getElementById('taxHint').innerHTML='选房本年限+套数+面积后自动算';document.getElementById('totalLoanDisplay').textContent='—';document.getElementById('loanSummary').innerHTML='选好还款方式+贷款类型+年限后自动算月供';document.getElementById('amortSection').style.display='none';document.getElementById('combStats').innerHTML='';document.getElementById('lgCommercial').className='lg';document.getElementById('lgFund').className='lg';document.getElementById('lgCombined').className='lg';calc();updateCnt();showToast('🧹 已清空')}
-function renderPropList(){const list=document.getElementById('propList'),keys=Object.keys(allProperties);if(!keys.length){list.innerHTML='<div class="pe">还没有保存任何房源<br>填好信息，点「保存当前房源」</div>';return}keys.sort((a,b)=>(allProperties[b].updatedAt||'').localeCompare(allProperties[a].updatedAt||''));let h='';for(const id of keys){const p=allProperties[id],r=calcROI(p),rc=r>=0?'g':'r',rt=r!==null?(r>=0?'+':'')+r.toFixed(1)+'%':'—',ie=editingId===id;h+='<div class="pi"'+(ie?' style="border:2px solid var(--accent);background:var(--accent-bg)"':'')+' onclick="loadProp(\''+id+'\')"><div class="i"><div class="n">'+esc(p.addr||'未命名')+(ie?' <span style="font-size:10px;color:var(--accent)">编辑中</span>':'')+'</div><div class="m">总价'+fmtWan(p.price||0)+'万 · '+(p.updatedAt||'')+'</div></div><div class="r '+rc+'">'+rt+'</div><button class="btn btn-d" onclick="event.stopPropagation();deleteProp(\''+id+'\')">✕</button></div>'}list.innerHTML=h}
+function renderPropList(){
+ const list=document.getElementById('propList'),keys=Object.keys(allProperties);
+ if(!keys.length){
+  list.innerHTML='<div class="pe">还没有保存任何房源<br>填好信息，点「保存当前房源」</div>';
+  return;
+ }
+ keys.sort((a,b)=>(allProperties[b].updatedAt||'').localeCompare(allProperties[a].updatedAt||''));
+ // 顶部统计
+ let h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px;color:var(--text2)">'+
+  '<span>📂 已保存 <b>'+keys.length+'</b> 套房源</span>'+
+  '<span style="cursor:pointer;color:var(--accent)" onclick="var s=document.getElementById(\'propListInner\');if(s.style.maxHeight==\'none\'){s.style.maxHeight=\'200px\';this.textContent=\'展开全部 ↓\'}else{s.style.maxHeight=\'none\';this.textContent=\'收起 ↑\'}">展开全部 ↓</span>'+
+  '</div>';
+ // 列表容器（默认最多显示 200px 高度，可滚动）
+ h+='<div id="propListInner" style="max-height:200px;overflow-y:auto;border:1px solid #e5e7eb;border-radius:8px">';
+ for(const id of keys){
+  const p=allProperties[id],r=calcROI(p),
+  rc=r>=0?'g':'r',
+  rt=r!==null?(r>=0?'+':'')+r.toFixed(1)+'%':'—',
+  ie=editingId===id;
+  h+='<div class="pi"'+(ie?' style="border:2px solid var(--accent);background:var(--accent-bg)"':'')+
+   ' onclick="loadProp(\''+id+'\')">'+
+   '<div class="i"><div class="n">'+esc(p.addr||'未命名')+
+   (ie?' <span style="font-size:10px;color:var(--accent)">编辑中</span>':'')+'</div>'+
+   '<div class="m">总价'+fmtWan(p.price||0)+'万 · '+(p.updatedAt||'')+'</div></div>'+
+   '<div class="r '+rc+'">'+rt+'</div>'+
+   '<button class="btn btn-d" onclick="event.stopPropagation();deleteProp(\''+id+'\')">✕</button>'+
+   '</div>';
+ }
+ h+='</div>';
+ list.innerHTML=h;
+}
 function calcROI(p){if(!p||!p.price)return null;const a=((p.rent||0)-(p.mgmt||0))*12;return p.price>0?(a/(p.price*10000))*100:null}
 function updateCnt(){document.getElementById('hdCnt').textContent='已保存 '+Object.keys(allProperties).length+' 套房源'}
 function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
@@ -889,6 +915,7 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
 })();
 </script>
 <script>setInterval(function(){var r=document.getElementById("roiDisplay");if(!r)return;var c=r.parentNode;if(!c||!c.classList.contains("rc"))return;var s=document.querySelector("#mainApp .c>.sec");if(!s)return;if(c.nextElementSibling!==s){s.parentNode.insertBefore(c,s.nextElementSibling);c.style.marginBottom="80px"}},200)</script>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
 </body>
 </html>
 <script src="./snapdom.min.js"></script>
@@ -900,19 +927,18 @@ var _bti=setInterval(function(){
  clearInterval(_bti);
  var bar=document.createElement('div');bar.className='report-bar';
  bar.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 16px;background:linear-gradient(transparent,#f3f4f6 40%);display:flex;flex-direction:column;gap:8px;justify-content:center;align-items:center';
- var rbtn=document.createElement('button');rbtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#3b82f6;color:#fff;border:none;cursor:pointer';
- rbtn.textContent='📋 生成专业购房报告';rbtn.onclick=function(){typeof showToast==='function'&&showToast('📋 报告生成功能开发中，敬请期待')};
  var pbtn=document.createElement('button');pbtn.className='btn-poster';
  pbtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#059669;color:#fff;border:none;cursor:pointer';
  pbtn.textContent='🖨️ 生成分析海报';
- bar.appendChild(rbtn);bar.appendChild(pbtn);
+ bar.appendChild(pbtn);
+ var abtn=document.createElement('button');
+ abtn.className='btn-agent-poster';
+ abtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#059669;color:#fff;border:none;cursor:pointer;';
+ abtn.textContent='📇 生成经纪人专属海报';
+ abtn.onclick=function(){if(typeof genAgentPoster==='function'){genAgentPoster();}else{showToast('⚠️ 请刷新后重试');}};
+ bar.appendChild(abtn);
  document.body.appendChild(bar);document.body.style.paddingBottom='130px';
  pbtn.onclick=genPoster;
- var abtn=document.createElement('button');abtn.className='btn-agent-poster';
- abtn.style.cssText='max-width:640px;width:100%;height:44px;font-size:14px;font-weight:700;border-radius:8px;background:#059669;color:#fff;border:none;cursor:pointer;display:none';
- abtn.textContent='📇 生成经纪人专属海报';
- abtn.onclick=function(){if(typeof genAgentPoster==='function')genAgentPoster();else if(typeof showToast==='function')showToast('⚠️ 海报功能加载中，请稍后重试');};
- bar.appendChild(abtn);
 },300);
 
 async function genPoster(){
@@ -939,8 +965,7 @@ async function genPoster(){
  var annNetRent=(rent-mgmt)*12;
  var staticROI=price>0?(annNetRent/(price*10000)*100):0;
 
- var irrEl=document.querySelector('#dynamicROI .v.g,#dynamicROI .v.r');
-  // 直接从计算函数获取 IRR 百分比（不从页面提取）
+ // 直接从计算函数获取 IRR 百分比（不从页面提取）
  var irrVal = irrRate();
  var irrPercent = irrVal !== null ? (irrVal >= 0 ? '+' : '') + irrVal.toFixed(2) + '%' : '—';
  var irrDesc = '年化内部收益率';
@@ -1202,7 +1227,7 @@ function openSidebar(){
 
  if(p.identity==='agent'){
   h+='<div class="hcb-divider">🔸 经纪人专属</div>'+
-   '<div class="hcb-item" onclick="hAgPoster()"><span class="hcb-ic">🖨️</span>生成专属海报</div>'+
+   '<div class="hcb-item" onclick="if(typeof genAgentPoster===\'function\'){genAgentPoster();closeSidebar();}else{showToast(\'⚠️ 请刷新后重试\');}"><span class="hcb-ic">🖨️</span>生成专属海报</div>'+
    '<div class="hcb-item" onclick="hcbShowClients()"><span class="hcb-ic">👥</span>我的客户</div>'+
    '<div class="hcb-item" onclick="hcbShowWechatQrcode()"><span class="hcb-ic">📷</span>上传微信二维码</div>'+
    '<div class="hcb-item" onclick="hcbShowCert()"><span class="hcb-ic">📝</span>修改认证信息</div>';
@@ -1212,6 +1237,8 @@ function openSidebar(){
 
  h+='<div class="hcb-divider">设置</div>'+
   '<div class="hcb-item" onclick="hcbShowProfile()"><span class="hcb-ic">👤</span>编辑个人资料</div>'+
+  '<div class="hcb-item" onclick="exportData();closeSidebar()"><span class="hcb-ic">📤</span>导出备份</div>'+
+  '<div class="hcb-item" onclick="document.getElementById(\'importFile\').click();closeSidebar()"><span class="hcb-ic">📥</span>导入恢复</div>'+
   '<div class="hcb-item" onclick="closeSidebar()"><span class="hcb-ic">✕</span>关闭</div></div>';
 
  sb.innerHTML=h;sb.classList.add('open');ov.classList.add('show');
@@ -1525,9 +1552,11 @@ window.handleWechatQrcodeDelete = function() {
 window.hAgPoster=function(){
  var p=getProfile();
  if(!p||p.identity!=='agent'){showToast('⚠️ 仅经纪人可用');return}
- var ab=document.querySelector('.btn-agent-poster');
- if(!ab){showToast('⚠️ 海报按钮未就绪，请打开个人中心重试');return}
- ab.click();
+ if(typeof genAgentPoster==='function'){
+  genAgentPoster();
+ } else {
+  showToast('⚠️ 海报功能加载中，请稍后重试');
+ }
 };
 
 window.downloadPosterAsImage = function(element, filename) {
@@ -1632,8 +1661,7 @@ window.genAgentPoster=async function(){
  var rent=vf('rent',0), mgmt=vf('mgmt',0), tax=vf('tax',0);
  var annNetRent=(rent-mgmt)*12;
  var staticROI=price>0?(annNetRent/(price*10000)*100):0;
- var irrEl=document.querySelector('#dynamicROI .v.g,#dynamicROI .v.r');
-  // 直接从计算函数获取 IRR 百分比（不从页面提取）
+ // 直接从计算函数获取 IRR 百分比（不从页面提取）
  var irrVal = irrRate();
  var irrPercent = irrVal !== null ? (irrVal >= 0 ? '+' : '') + irrVal.toFixed(2) + '%' : '—';
  var irrDesc = '年化内部收益率';
