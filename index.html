@@ -162,7 +162,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 <div class="auth-overlay" id="authOverlay">
 <div class="auth-box">
 <h1>🏠 看房 AI Book</h1>
-<p class="sub">登录后使用全部功能，数据云端同步</p><div style="font-size:10px;color:#9ca3af;margin-top:4px">v5.97</div>
+<p class="sub">登录后使用全部功能，数据云端同步</p><div style="font-size:10px;color:#9ca3af;margin-top:4px">v6.02</div>
 <div class="auth-tabs">
 <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">登录</button>
 <button class="auth-tab" id="tabReg" onclick="switchAuthTab('register')">注册</button>
@@ -182,7 +182,7 @@ body{padding-bottom:76px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI"
 <div class="user-bar"><span class="uemail" id="userEmail"></span><button onclick="handleLogout()">退出</button></div>
 <h1>🏠 看房 AI Book</h1>
 <p>贷款拆解 · 月供明细 · 双维度回报率 · IRR · 自动评分</p>
-<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v5.97</span>
+<div class="badge" id="hdCnt"></div><span style="font-size:10px;opacity:0.5;margin-left:8px">v6.02</span>
 </div>
 <div class="c">
 
@@ -385,45 +385,52 @@ async function handleAuth(){
       if(data.session){currentUser=data.user;onLoginSuccess()}else{ok.textContent='注册成功！';setTimeout(async()=>{const{data:d2}=await sb.auth.getSession();if(d2.session){currentUser=d2.session.user;onLoginSuccess()}},1500)}
     }else{const{data,error}=await sb.auth.signInWithPassword({email:e,password:p});if(error){er.textContent=error.message||'登录失败';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false;return}currentUser=data.user;onLoginSuccess()}
   }catch(x){er.textContent='网络异常，请检查网络后重试';b.innerHTML=authMode==='login'?'登 录':'注 册';b.disabled=false}
+ // 登录成功后从云端恢复数据（独立于 onLoginSuccess，确保一定执行）
+ setTimeout(function(){
+  if (!currentUser || !currentUser.id) return;
+  sb.from('users').select('*').eq('id', currentUser.id).single().then(function(r){
+   if (r.data) {
+    var d = r.data;
+    var p = JSON.parse(localStorage.getItem('hcb_profile') || '{}');
+    if (d.identity) p.identity = d.identity;
+    if (d.display_name) p.displayName = d.display_name;
+    if (d.phone) p.phone = d.phone;
+    if (d.company) p.company = d.company;
+    if (d.addr) p.addr = d.addr;
+    if (d.wechat_qrcode) p.wxQR = d.wechat_qrcode;
+    localStorage.setItem('hcb_profile', JSON.stringify(p));
+    if (d.coins_total !== undefined) {
+     localStorage.setItem('hcb_coins', JSON.stringify({ total: d.coins_total, history: [] }));
+    }
+    var ab = document.querySelector('.btn-agent-poster');
+    if (ab) ab.style.display = (p.identity === 'agent') ? 'block' : 'none';
+   }
+  }).catch(function(){});
+ }, 3000);
 }
 function onLoginSuccess(){document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;loadCloudData();
-// 从云端恢复经纪人身份
-(async function(){
- try {
-  var { data, error } = await sb.from('users').select('*').eq('id', currentUser.id).single();
-  if (data) {
-   var p = getProfile();
-   if (!p.identity && data.identity) p.identity = data.identity;
-   if (!p.displayName && data.display_name) p.displayName = data.display_name;
-   if (!p.phone && data.phone) p.phone = data.phone;
-   if (!p.company && data.company) p.company = data.company;
-   if (!p.addr && data.addr) p.addr = data.addr;
-   if (!p.wxQR && data.wechat_qrcode) p.wxQR = data.wechat_qrcode;
-   saveProfile(p);
-   var ab = document.querySelector('.btn-agent-poster');
-   if (ab) ab.style.display = p.identity === 'agent' ? 'block' : 'none';
-  }
- } catch (e) {}
-})();
- // 折叠面板修复——克隆替换重新绑定（与控制台执行一致）
+ // 从云端恢复身份、昵称、房币
  setTimeout(function(){
-  var allHeaders = document.querySelectorAll('.ch, .sh');
-  allHeaders.forEach(function(el) {
-   var newEl = el.cloneNode(true);
-   el.parentNode.replaceChild(newEl, el);
-   newEl.style.cursor = 'pointer';
-   newEl.style.pointerEvents = 'auto';
-   newEl.style.zIndex = '10';
-   newEl.style.position = 'relative';
-   newEl.addEventListener('click', function() {
-    var b = this.nextElementSibling;
-    var r = this.querySelector('.ar');
-    if (!b || !r) return;
-    var o = b.classList.toggle('o');
-    r.style.transform = o ? 'rotate(90deg)' : 'rotate(0deg)';
-   });
-  });
- }, 800);
+  if (!currentUser || !currentUser.id) return;
+  sb.from('users').select('*').eq('id', currentUser.id).single().then(function(r){
+   if (r.data) {
+    var d = r.data;
+    var p = JSON.parse(localStorage.getItem('hcb_profile') || '{}');
+    if (d.identity) p.identity = d.identity;
+    if (d.display_name) p.displayName = d.display_name;
+    if (d.phone) p.phone = d.phone;
+    if (d.company) p.company = d.company;
+    if (d.addr) p.addr = d.addr;
+    if (d.wechat_qrcode) p.wxQR = d.wechat_qrcode;
+    localStorage.setItem('hcb_profile', JSON.stringify(p));
+    if (d.coins_total !== undefined) {
+     localStorage.setItem('hcb_coins', JSON.stringify({ total: d.coins_total, history: [] }));
+    }
+    var ab = document.querySelector('.btn-agent-poster');
+    if (ab) ab.style.display = (p.identity === 'agent') ? 'block' : 'none';
+   }
+  }).catch(function(){});
+ }, 2000);
 }
 async function handleLogout(){await sb.auth.signOut();currentUser=null;allProperties={};document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';document.getElementById('authBtn').innerHTML='登 录';document.getElementById('authBtn').disabled=false;renderPropList();updateCnt()}
 
@@ -872,25 +879,18 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
   document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
 
- // ===== 修复折叠面板点击事件 =====
- setTimeout(function(){
-  var allHeaders = document.querySelectorAll('.ch, .sh');
-  allHeaders.forEach(function(el) {
-   var newEl = el.cloneNode(true);
-   el.parentNode.replaceChild(newEl, el);
-   newEl.style.cursor = 'pointer';
-   newEl.style.pointerEvents = 'auto';
-   newEl.style.zIndex = '10';
-   newEl.style.position = 'relative';
-   newEl.onclick = function() {
-    var b = this.nextElementSibling;
-    var r = this.querySelector('.ar');
-    if (!b || !r) return;
-    var o = b.classList.toggle('o');
-    r.style.transform = o ? 'rotate(90deg)' : 'rotate(0deg)';
-   };
-  });
- }, 500);
+ // ===== 永久修复折叠面板（事件委托方式，避免被覆盖） =====
+ document.addEventListener('click', function(e) {
+  var target = e.target.closest('.ch, .sh');
+  if (!target) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var b = target.nextElementSibling;
+  var r = target.querySelector('.ar');
+  if (!b || !r) return;
+  var o = b.classList.toggle('o');
+  r.style.transform = o ? 'rotate(90deg)' : 'rotate(0deg)';
+ });
 })();function T(e){var b=e.nextElementSibling,r=e.querySelector(".ar");if(!b||!r)return;var o=b.classList.toggle("o");r.style.transform=o?'rotate(90deg)':'rotate(0deg)'}
 </script>
 <script>setInterval(function(){var r=document.getElementById("roiDisplay");if(!r)return;var c=r.parentNode;if(!c||!c.classList.contains("rc"))return;var s=document.querySelector("#mainApp .c>.sec");if(!s)return;if(c.nextElementSibling!==s){s.parentNode.insertBefore(c,s.nextElementSibling);c.style.marginBottom="10px"}},200)</script>
@@ -1101,6 +1101,9 @@ H+='<div style="padding:16px 36px 30px;text-align:center;border-top:1px solid #e
 </script><script>
 /* ═══════ 房币体系 · 个人中心 · 双身份 · 等级成长 v5.97 ═══════ */
 (function(){
+window.getProfile = function(){try{var d=JSON.parse(localStorage.getItem('hcb_profile')||'{}');return d&&typeof d==='object'?d:{};}catch(e){return{};}};
+window.saveProfile = function(p){try{localStorage.setItem('hcb_profile',JSON.stringify(p));}catch(e){}};
+window.getCoins = function(){try{var d=JSON.parse(localStorage.getItem('hcb_coins')||'{}');return{total:d.total||0,history:d.history||[]};}catch(e){return{total:0,history:[]};}};
 var COINS_KEY='hcb_coins',PROFILE_KEY='hcb_profile',REF_KEY='hcb_ref',LIMITS_KEY='hcb_limits';
 var AGENT_LEVELS=[{name:'实习经纪人',coin:0,invites:0},{name:'正式经纪人',coin:0,invites:10},{name:'资深经纪人',coin:0,invites:50},{name:'金牌经纪人',coin:0,invites:200},{name:'城市合伙人',coin:0,invites:1000}];
 var USER_LEVELS=[{name:'看房新手',coin:0},{name:'看房达人',coin:500},{name:'置业顾问',coin:2000},{name:'投资能手',coin:10000},{name:'房产专家',coin:50000}];
@@ -1118,6 +1121,11 @@ function addCoins(amount,reason,cb){
 }
 function getProfile(){var d=G(PROFILE_KEY);return d||{identity:'',level:1,displayName:'',phone:'',company:'',addr:'',wxQR:''}}
 function saveProfile(p){localStorage.setItem(PROFILE_KEY,JSON.stringify(p))}
+// ===== 全局可访问的包装函数（确保跨作用域调用）=====
+window.getProfile = getProfile;
+window.saveProfile = saveProfile;
+window.getCoins = getCoins;
+window.addCoins = addCoins;
 function getLimits(){
  var d=G(LIMITS_KEY);var today=new Date().toDateString();
  if(d.date!==today){d={date:today,loginDone:false,posterCount:0,shareCount:0,propCount:0};localStorage.setItem(LIMITS_KEY,JSON.stringify(d))}
@@ -1254,6 +1262,15 @@ window.hcbShowProfile=function(){
     var profile = getProfile();
     profile.displayName = n;
     saveProfile(profile);
+    // 同步昵称到云端
+    if (typeof currentUser !== 'undefined' && currentUser && currentUser.id) {
+     sb.from('users').upsert({
+      id: currentUser.id,
+      display_name: profile.displayName,
+      coins_total: getCoins().total,
+      updated_at: new Date().toISOString()
+     }, { onConflict: 'id' });
+    }
     addCoins(50, '完善个人资料');
     closeSidebar();
     openSidebar();
@@ -1409,6 +1426,7 @@ window.doUpgrade=function(){
    company: p.company,
    addr: p.addr,
    wechat_qrcode: p.wxQR || null,
+   coins_total: getCoins().total,
    updated_at: new Date().toISOString()
   }, { onConflict: 'id' });
  }
@@ -1444,6 +1462,7 @@ window.doAgentCert=function(){
    company: pp.company,
    addr: pp.addr,
    wechat_qrcode: pp.wxQR || null,
+   coins_total: getCoins().total,
    updated_at: new Date().toISOString()
   }, { onConflict: 'id' });
  }
@@ -1727,9 +1746,6 @@ window.genAgentPoster=async function(){
    showToast('⚠️ 库未加载，请刷新重试');
   }
  }, 300);
-
- btn.textContent = orig;
- btn.disabled = false;
 };
 })();
 
@@ -1758,7 +1774,7 @@ window.uploadWechatQrcode = async function(file) {
   var fileName = (typeof currentUser !== 'undefined' && currentUser ? currentUser.id : 'anon') + '-' + Date.now() + '.' + ext;
 
   try {
-    var { data, error } = await sb.storage
+    var r = await sb.storage
       .from('wechat-qrcodes')
       .upload(fileName, file, {
         cacheControl: '3600',
@@ -1791,7 +1807,7 @@ window.updateUserWechatQrcode = async function(url) {
   var now = new Date().toISOString();
 
   try {
-    var { data, error } = await sb
+    var r = await sb
       .from('users')
       .upsert({
         id: currentUser.id,
@@ -1809,4 +1825,9 @@ window.updateUserWechatQrcode = async function(url) {
     return { success: false, error: '更新异常: ' + (e.message || '未知错误') };
   }
 };
+</script>
+<script>
+window.getProfile = function(){ try { var d = JSON.parse(localStorage.getItem('hcb_profile') || '{}'); return d && typeof d === 'object' ? d : {}; } catch(e) { return {}; } };
+window.saveProfile = function(p){ try { localStorage.setItem('hcb_profile', JSON.stringify(p)); } catch(e) {} };
+window.getCoins = function(){ try { var d = JSON.parse(localStorage.getItem('hcb_coins') || '{}'); return { total: d.total || 0, history: d.history || [] }; } catch(e) { return { total: 0, history: [] }; } };
 </script>
