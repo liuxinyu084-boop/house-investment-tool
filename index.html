@@ -6,7 +6,7 @@
 <title>看房 AI Book</title>
 <link rel="dns-prefetch" href="https://webvtoarwrulkynixank.supabase.co">
 <link rel="preconnect" href="https://webvtoarwrulkynixank.supabase.co">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="./supabase.min.js"></script>
 <script>if(typeof supabase==='undefined')document.write('<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"><\/script>')</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -878,26 +878,13 @@ function showToast(m){const e=document.getElementById('toast');e.textContent=m;e
   try{const{data}=await sb.auth.getSession();if(data&&data.session&&data.session.user){currentUser=data.session.user;document.getElementById('authOverlay').style.display='none';document.getElementById('mainApp').style.display='block';document.getElementById('userEmail').textContent=currentUser.email;await loadCloudData();return}}catch(e){}
   document.getElementById('authOverlay').style.display='flex';document.getElementById('mainApp').style.display='none';
   document.getElementById('authPassword').addEventListener('keydown',function(e){if(e.key==='Enter')handleAuth()});
-
- // ===== 永久修复折叠面板（事件委托方式，避免被覆盖） =====
- document.addEventListener('click', function(e) {
-  var target = e.target.closest('.ch, .sh');
-  if (!target) return;
-  e.preventDefault();
-  e.stopPropagation();
-  var b = target.nextElementSibling;
-  var r = target.querySelector('.ar');
-  if (!b || !r) return;
-  var o = b.classList.toggle('o');
-  r.style.transform = o ? 'rotate(90deg)' : 'rotate(0deg)';
- });
-})();function T(e){var b=e.nextElementSibling,r=e.querySelector(".ar");if(!b||!r)return;var o=b.classList.toggle("o");r.style.transform=o?'rotate(90deg)':'rotate(0deg)'}
+})();
 </script>
 <script>setInterval(function(){var r=document.getElementById("roiDisplay");if(!r)return;var c=r.parentNode;if(!c||!c.classList.contains("rc"))return;var s=document.querySelector("#mainApp .c>.sec");if(!s)return;if(c.nextElementSibling!==s){s.parentNode.insertBefore(c,s.nextElementSibling);c.style.marginBottom="10px"}},200)</script>
 </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/@zumer/snapdom@2.9.0/dist/snapdom.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+<script src="./snapdom.min.js"></script>
+<script src="./qrcode.min.js"></script>
 <script>
 (function(){
 var _bti=setInterval(function(){
@@ -1098,7 +1085,21 @@ H+='<div style="padding:16px 36px 30px;text-align:center;border-top:1px solid #e
 
 }
 })();
-</script><script>
+</script>
+<script>
+// 折叠面板事件委托——无论元素何时渲染都能正常展开/收起
+document.addEventListener('click', function(e) {
+ var header = e.target.closest('.ch, .sh');
+ if (!header) return;
+ e.stopPropagation();
+ var body = header.nextElementSibling;
+ var arrow = header.querySelector('.ar');
+ if (!body || !arrow) return;
+ var isOpen = body.classList.toggle('o');
+ arrow.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+});
+</script>
+<script>
 /* ═══════ 房币体系 · 个人中心 · 双身份 · 等级成长 v5.97 ═══════ */
 (function(){
 window.getProfile = function(){try{var d=JSON.parse(localStorage.getItem('hcb_profile')||'{}');return d&&typeof d==='object'?d:{};}catch(e){return{};}};
